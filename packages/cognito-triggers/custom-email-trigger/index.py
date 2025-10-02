@@ -17,7 +17,7 @@ def main(event, context):
         forgotten_password_link = os.getenv('FORGOTTEN_PASSWORD_LINK')
         contact_link = os.getenv('CONTACT_LINK')
 
-        current_time = datetime.datetime.now(datetime.UTC)
+        current_time = datetime.datetime.now(datetime.timezone.utc)
 
         current_time_plus_one_hour = current_time + datetime.timedelta(hours=1)
         ts = current_time_plus_one_hour.timestamp()

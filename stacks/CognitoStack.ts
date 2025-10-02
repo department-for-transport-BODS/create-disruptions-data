@@ -28,7 +28,7 @@ export const CognitoStack = ({ stack }: StackContext) => {
         handler: "packages/cognito-triggers/custom-email-trigger/index.main",
         timeout: 30,
         memorySize: 256,
-        runtime: "python3.9",
+        runtime: "python3.13",
         enableLiveDev: false,
     });
 

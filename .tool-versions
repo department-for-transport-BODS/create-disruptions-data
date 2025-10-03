@@ -1,4 +1,4 @@
-nodejs 20.10.0
+nodejs 22.18.0
 awscli 2.15.23
 pnpm 9.12.2
 python 3.12.10

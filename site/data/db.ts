@@ -471,7 +471,17 @@ export const removeConsequenceFromDisruption = async (
         await trx
             .insertInto("disruptionsEdited")
             .values({
-                ...mapDisruptionToDb(currentDisruption),
+                ...mapDisruptionToDb({
+                    ...currentDisruption,
+                    validityStartTimestamp: getDate(currentDisruption.validityStartTimestamp).toDate(),
+                    validityEndTimestamp: currentDisruption.validityEndTimestamp
+                        ? getDate(currentDisruption.validityEndTimestamp).toDate()
+                        : null,
+                    publishStartTimestamp: getDate(currentDisruption.publishStartTimestamp).toDate(),
+                    publishEndTimestamp: currentDisruption.publishEndTimestamp
+                        ? getDate(currentDisruption.publishEndTimestamp).toDate()
+                        : null,
+                }),
                 publishStatus: isPending ? PublishStatus.pendingAndEditing : PublishStatus.editing,
                 history: json([...(currentDisruption.history ?? []), newHistory]),
                 orgId,
@@ -808,12 +818,33 @@ export const upsertConsequence = async (
                     ...currentDisruption,
                     publishStatus: isPending ? PublishStatus.pendingAndEditing : PublishStatus.editing,
                     history,
+                    validityStartTimestamp: getDate(currentDisruption.validityStartTimestamp).toDate(),
+                    validityEndTimestamp: currentDisruption.validityEndTimestamp
+                        ? getDate(currentDisruption.validityEndTimestamp).toDate()
+                        : null,
+                    publishStartTimestamp: getDate(currentDisruption.publishStartTimestamp).toDate(),
+                    publishEndTimestamp: currentDisruption.publishEndTimestamp
+                        ? getDate(currentDisruption.publishEndTimestamp).toDate()
+                        : null,
                 }),
             )
             .onConflict((oc) =>
-                oc
-                    .column("id")
-                    .doUpdateSet((eb) => createDisruptionConflictMapping(eb, mapDisruptionToDb(currentDisruption))),
+                oc.column("id").doUpdateSet((eb) =>
+                    createDisruptionConflictMapping(
+                        eb,
+                        mapDisruptionToDb({
+                            ...currentDisruption,
+                            validityStartTimestamp: getDate(currentDisruption.validityStartTimestamp).toDate(),
+                            validityEndTimestamp: currentDisruption.validityEndTimestamp
+                                ? getDate(currentDisruption.validityEndTimestamp).toDate()
+                                : null,
+                            publishStartTimestamp: getDate(currentDisruption.publishStartTimestamp).toDate(),
+                            publishEndTimestamp: currentDisruption.publishEndTimestamp
+                                ? getDate(currentDisruption.publishEndTimestamp).toDate()
+                                : null,
+                        }),
+                    ),
+                ),
             )
             .execute();
 
@@ -876,6 +907,14 @@ export const upsertSocialMediaPost = async (
                         ...currentDisruption,
                         socialMediaPosts: newSocialMediaPosts,
                         publishStatus: isPending ? PublishStatus.pendingAndEditing : PublishStatus.editing,
+                        validityStartTimestamp: getDate(currentDisruption.validityStartTimestamp).toDate(),
+                        validityEndTimestamp: currentDisruption.validityEndTimestamp
+                            ? getDate(currentDisruption.validityEndTimestamp).toDate()
+                            : null,
+                        publishStartTimestamp: getDate(currentDisruption.publishStartTimestamp).toDate(),
+                        publishEndTimestamp: currentDisruption.publishEndTimestamp
+                            ? getDate(currentDisruption.publishEndTimestamp).toDate()
+                            : null,
                     }),
                 })
                 .execute();
@@ -930,6 +969,14 @@ export const removeSocialMediaPostFromDisruption = async (
                         ...currentDisruption,
                         socialMediaPosts: newSocialMediaPosts,
                         publishStatus: isPending ? PublishStatus.pendingAndEditing : PublishStatus.editing,
+                        validityStartTimestamp: getDate(currentDisruption.validityStartTimestamp).toDate(),
+                        validityEndTimestamp: currentDisruption.validityEndTimestamp
+                            ? getDate(currentDisruption.validityEndTimestamp).toDate()
+                            : null,
+                        publishStartTimestamp: getDate(currentDisruption.publishStartTimestamp).toDate(),
+                        publishEndTimestamp: currentDisruption.publishEndTimestamp
+                            ? getDate(currentDisruption.publishEndTimestamp).toDate()
+                            : null,
                     }),
                 })
                 .execute();

@@ -9,13 +9,13 @@
         "@types/aws-lambda": "^8.10.110",
         "@types/bluebird": "^3.5.42",
         "@types/lodash": "^4.14.191",
-        "@types/node": "^18.13.0",
+        "@types/node": "^24.3.0",
         "@types/papaparse": "^5.3.7",
         "vitest": "^0.29.1"
     },
     "dependencies": {
         "bluebird": "^3.7.2",
-        "kysely": "^0.27.5",
+        "kysely": "^0.28.5",
         "lodash": "^4.17.21",
         "ospoint": "^0.2.1",
         "papaparse": "^5.4.1",

@@ -9,7 +9,7 @@ import { executeClient } from "../utils/execute-client";
 const isDataSource = (input: string): input is Datasource => input in Datasource;
 
 export const main: Handler = async (event: APIGatewayEvent, context): Promise<APIGatewayProxyResultV2> => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
     return executeClient(event, getQueryInput, getServicesForOperator);
 };
 

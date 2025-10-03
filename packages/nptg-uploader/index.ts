@@ -69,7 +69,7 @@ export const parseNptgAndUpload = async (nptgString: string) => {
 };
 
 export const main: Handler = async (event, context) => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
 
     const { NPTG_BUCKET_NAME: nptgBucketName } = process.env;
 

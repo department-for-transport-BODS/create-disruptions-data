@@ -13,7 +13,7 @@ The site is deployed using [SST](https://sst.dev/), this allows the creation of 
 
 ### Requirements
 
-- Node.js 20+
+- Node.js 22+
 - pnpm 9+
 - Docker
 - awscli

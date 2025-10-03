@@ -46,7 +46,7 @@ export const SiriAPIStack = ({ stack }: StackContext) => {
         defaults: {
             function: {
                 timeout: 20,
-                runtime: "nodejs20.x",
+                runtime: "nodejs22.x",
                 bind: [dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostROSecret, dbPortSecret],
                 vpc,
                 vpcSubnets: {

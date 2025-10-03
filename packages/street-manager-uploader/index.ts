@@ -6,7 +6,7 @@ import { Handler, SQSEvent } from "aws-lambda";
 import { getRoadworkByPermitReferenceNumber, updateToRoadworksTable, writeToRoadworksTable } from "./utils";
 
 export const main: Handler = async (event: SQSEvent, context) => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
     const dbClient = getDbClient();
 
     const roadwork = roadworkSchema.safeParse(JSON.parse(event.Records[0].body));

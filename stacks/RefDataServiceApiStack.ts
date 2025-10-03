@@ -58,7 +58,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
             MAX_NAPTAN_CODES: "50",
             MAX_ADMIN_AREA_CODES: "50",
         },
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -76,7 +76,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         environment: {
             MAX_NOC_CODES: "50",
         },
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -91,7 +91,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         handler: "packages/ref-data-service-api/get-services-for-operator/index.main",
         timeout: 30,
         memorySize: 512,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -106,7 +106,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         handler: "packages/ref-data-service-api/get-service-by-id/index.main",
         timeout: 30,
         memorySize: 512,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -124,7 +124,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         environment: {
             MAX_ATCO_CODES: "100",
         },
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -139,7 +139,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         handler: "packages/ref-data-service-api/get-service-stops/index.main",
         timeout: 30,
         memorySize: 512,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -154,7 +154,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         handler: "packages/ref-data-service-api/get-service-journeys/index.main",
         timeout: 30,
         memorySize: 512,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -169,7 +169,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         handler: "packages/ref-data-service-api/get-service-routes/index.main",
         timeout: 30,
         memorySize: 512,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -184,7 +184,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         handler: "packages/ref-data-service-api/get-admin-area-codes/index.main",
         timeout: 10,
         memorySize: 512,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -199,7 +199,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         handler: "packages/ref-data-service-api/get-admin-areas/index.main",
         timeout: 10,
         memorySize: 512,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -218,7 +218,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
             STREET_MANAGER_SQS_QUEUE_URL: streetManagerSqsQueue.queueUrl,
             TEST_STREET_MANAGER_TOPIC_ARN: streetManagerTestTopic?.topicArn ?? "",
         },
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -236,7 +236,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         environment: {
             MAX_ADMIN_AREA_CODES: "50",
         },
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 
@@ -251,7 +251,7 @@ export function RefDataServiceApiStack({ stack }: StackContext) {
         handler: "packages/ref-data-service-api/get-roadwork-by-id/index.main",
         timeout: 10,
         memorySize: 512,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
     });
 

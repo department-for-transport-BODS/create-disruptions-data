@@ -98,7 +98,7 @@ export const RdsStack = ({ stack }: StackContext) => {
             handler: "packages/local-db-creator/index.main",
             timeout: 300,
             memorySize: 512,
-            runtime: "nodejs20.x",
+            runtime: "nodejs22.x",
             architecture: "arm_64",
             enableLiveDev: false,
             nodejs: {
@@ -127,7 +127,7 @@ export const RdsStack = ({ stack }: StackContext) => {
         handler: "packages/db-migrator/index.main",
         timeout: 300,
         memorySize: 512,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         enableLiveDev: false,
         nodejs: {
             install: ["pg", "kysely"],
@@ -151,7 +151,7 @@ export const RdsStack = ({ stack }: StackContext) => {
         handler: "packages/db-migrator/index.main",
         timeout: 300,
         memorySize: 512,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         enableLiveDev: false,
         nodejs: {
             install: ["pg", "kysely"],

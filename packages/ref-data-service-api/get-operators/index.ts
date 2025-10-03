@@ -10,7 +10,7 @@ const MAX_NOC_CODES = process.env.MAX_NOC_CODES || "5";
 const MAX_ADMIN_AREA_CODES = process.env.MAX_ADMIN_AREA_CODES || "5";
 
 export const main: Handler = async (event: APIGatewayEvent, context): Promise<APIGatewayProxyResultV2> => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
     return executeClient(event, getQueryInput, getOperators);
 };
 

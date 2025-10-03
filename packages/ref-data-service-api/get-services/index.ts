@@ -24,7 +24,7 @@ const MAX_ATCO_CODES = process.env.MAX_ATCO_CODES || "5";
 const MAX_NOC_CODES = process.env.MAX_NOC_CODES || "5";
 
 export const main: Handler = async (event: APIGatewayEvent, context): Promise<APIGatewayProxyResultV2> => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
 
     if (event.queryStringParameters?.atcoCodes) {
         return executeClient(event, getServicesByStopsQueryInput, getServicesByStops, formatServicesWithStops);

@@ -63,7 +63,7 @@ const getTndsDataAndUploadToS3 = async (txcZippedBucketName: string, prefix: str
 };
 
 export const main: Handler = async (event, context) => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
 
     const { TXC_ZIPPED_BUCKET_NAME: txcZippedBucketName } = process.env;
 

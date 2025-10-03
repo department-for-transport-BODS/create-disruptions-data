@@ -60,7 +60,7 @@ export const RoadworksNotificationStack = ({ stack }: StackContext) => {
         ],
         timeout: 60,
         memorySize: 1536,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
     });
 
     new Cron(stack, "cdd-roadworks-cancelled-notification-cron", {
@@ -107,7 +107,7 @@ export const RoadworksNotificationStack = ({ stack }: StackContext) => {
         ],
         timeout: 60,
         memorySize: 1536,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
     });
 
     new Cron(stack, "cdd-roadworks-new-notification-cron", {

@@ -114,7 +114,7 @@ export const processFile = async (fileName: string, csvBucketName: string) => {
 };
 
 export const main: Handler = async (event, context) => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
 
     try {
         const { CSV_BUCKET_NAME: csvBucketName } = process.env;

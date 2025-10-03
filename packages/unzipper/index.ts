@@ -55,7 +55,7 @@ export const unzip = async (object: Stream, unzippedBucketName: string, key: str
 };
 
 export const main: S3Handler = async (event, context) => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
 
     const {
         bucket: { name: bucketName },

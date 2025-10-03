@@ -37,7 +37,7 @@ const cleardownDatabase = async () => {
 };
 
 export const main: Handler = async (event, context) => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
 
     logger.info("Starting DB Cleardown");
 

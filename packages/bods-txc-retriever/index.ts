@@ -49,7 +49,7 @@ const getBodsDataAndUploadToS3 = async (bodsUrl: string, txcZippedBucketName: st
 };
 
 export const main: Handler = async (event, context) => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
 
     const {
         BODS_URL: bodsUrl,

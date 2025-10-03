@@ -13,7 +13,7 @@ export function QueueStack({ stack }: StackContext) {
                 bind: [dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostSecret, dbPortSecret],
                 handler: "packages/street-manager-uploader/index.main",
                 timeout: 10,
-                runtime: "nodejs20.x",
+                runtime: "nodejs22.x",
                 logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
                 vpc,
                 vpcSubnets: {

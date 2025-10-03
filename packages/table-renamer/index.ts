@@ -46,7 +46,7 @@ export const deleteAndRenameTables = async (tables: TableKey[], db: Kysely<Datab
 };
 
 export const main: Handler = async (event, context) => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
 
     const { STAGE: stage } = process.env;
     try {

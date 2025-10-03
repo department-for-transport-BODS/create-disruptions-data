@@ -38,7 +38,7 @@ export const DynamoMigratorStack = ({ stack }: StackContext) => {
         handler: "packages/dynamo-disruption-migrator/index.bulkMigrator",
         timeout: 900,
         memorySize: 5120,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
         environment: {
             DISRUPTIONS_TABLE: disruptionsTable.tableName,
             DISRUPTION_TEMPLATES_TABLE: templateDisruptionsTable.tableName,
@@ -73,7 +73,7 @@ export const DynamoMigratorStack = ({ stack }: StackContext) => {
         handler: "packages/dynamo-disruption-migrator/index.incrementalMigrator",
         timeout: 120,
         memorySize: 1024,
-        runtime: "nodejs20.x",
+        runtime: "nodejs22.x",
     });
 
     disruptionsTable.addConsumers(stack, {

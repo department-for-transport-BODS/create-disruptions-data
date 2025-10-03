@@ -7,7 +7,7 @@ import axios from "axios";
 const s3Client = new S3Client({ region: "eu-west-2" });
 
 export const main: Handler = async (event, context) => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
 
     try {
         const {

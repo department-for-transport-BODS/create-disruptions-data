@@ -1,5 +1,5 @@
 {
-    "extends": "@tsconfig/node20/tsconfig.json",
+    "extends": "@tsconfig/node22/tsconfig.json",
     "compilerOptions": {
         "rootDir": ".",
         "moduleResolution": "node",
@@ -14,5 +14,6 @@
         "noEmit": true,
         "resolveJsonModule": true
     },
-    "include": ["@bods-integrated-data/shared", "."]
+    "include": ["@bods-integrated-data/shared", "."],
+    "exclude": ["node_modules"]
 }

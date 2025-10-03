@@ -5,7 +5,7 @@ import { AdminAreaCodes, getAdminAreaCodes } from "../utils/db";
 import { executeClientWithoutInput } from "../utils/execute-client";
 
 export const main: Handler = async (event: APIGatewayEvent, context): Promise<APIGatewayProxyResultV2> => {
-    withLambdaRequestTracker(event ?? {}, context ?? {});
+    withLambdaRequestTracker(event, context);
     return executeClientWithoutInput(event, getAdminAreaCodes, sortAdminAreaCodes);
 };
 

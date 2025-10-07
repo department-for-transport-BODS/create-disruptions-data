@@ -99,7 +99,7 @@
         "mock-req-res": "^1.2.1",
         "mockdate": "^3.0.5",
         "next-router-mock": "^0.9.10",
-        "nodemailer": "^6.9.14",
+        "nodemailer": "^7.0.7",
         "postcss": "^8.4.31",
         "sass": "^1.69.4",
         "tailwindcss": "^3.3.3",

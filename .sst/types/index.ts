@@ -63,7 +63,16 @@ declare module "sst/node/config" {
 import "sst/node/function";
 declare module "sst/node/function" {
   export interface FunctionResources {
-    "cdd-local-database-creator-function": {
+    "cdd-kysely-db-migrator-migrate-function": {
+      functionName: string;
+    }
+  }
+}
+
+import "sst/node/function";
+declare module "sst/node/function" {
+  export interface FunctionResources {
+    "cdd-kysely-db-migrator-rollback-function": {
       functionName: string;
     }
   }

@@ -198,6 +198,43 @@ export const RdsStack = ({ stack }: StackContext) => {
             : {}),
     });
 
+    const encryptedCluster = new rds.DatabaseCluster(stack, "cdd-db-cluster", {
+        clusterIdentifier: `cdd-db-cluster-${stack.stage}`,
+        engine: rds.DatabaseClusterEngine.auroraPostgres({ version: rds.AuroraPostgresEngineVersion.VER_16_8 }),
+        writer: rds.ClusterInstance.serverlessV2("cdd-instance-1", {
+            enablePerformanceInsights: true,
+        }),
+        readers:
+            stack.stage === "prod"
+                ? [
+                      rds.ClusterInstance.serverlessV2("cdd-instance-2", {
+                          enablePerformanceInsights: true,
+                      }),
+                  ]
+                : [],
+        serverlessV2MinCapacity: stack.stage === "prod" ? 1 : 0.5,
+        serverlessV2MaxCapacity: stack.stage === "prod" ? 24 : 12,
+        vpcSubnets: {
+            subnetType: SubnetType.PRIVATE_ISOLATED,
+        },
+        securityGroups: [dbSg],
+        vpc,
+        defaultDatabaseName: "disruptions",
+        ...(stack.stage === "prod"
+            ? {
+                  backup: {
+                      retention: BACKUP_RETENTION_DAYS,
+                  },
+              }
+            : {}),
+        storageEncrypted: true,
+    });
+
+    const cfnEncryptedCluster = encryptedCluster.node.defaultChild as rds.CfnDBCluster;
+
+    cfnEncryptedCluster.masterUserPassword = undefined;
+    cfnEncryptedCluster.manageMasterUserPassword = true;
+
     const cfnCluster = cluster.node.defaultChild as rds.CfnDBCluster;
 
     cfnCluster.masterUserPassword = undefined;

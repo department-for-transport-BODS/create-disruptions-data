@@ -48,6 +48,18 @@ make bastion-tunnel
 make start-site
 ```
 
+## Importing reference data
+In order to have a working local environment you will need to import reference data into your local database. You can do this by running the following command:
+```bash
+make execute-step-function
+```
+Pre-requisites:
+- Ensure you are authenticated against the sandbox AWS account
+- Have the SST infrastructure running for your dev stage
+- Have the bastion tunnel established to connect to your local database
+
+The step function can take up to 2 hours to complete as it imports a large amount of data.
+
 ### Issues
 
 -   There is a known issue where the site process does not stop correctly and so continues to run on port 3000 in the background, this will lead to a port conflict error where the site will start on port 3001. To prevent this, run `make kill-site` to stop the process

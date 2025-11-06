@@ -69,6 +69,9 @@ migrate-local-database:
 rollback-local-database:
 	pnpm --filter @create-disruptions-data/shared-ts kysely migrate down
 
+execute-step-function:
+	./scripts/execute-step-function.sh
+
 setup-dev: update-secrets create-local-database migrate-local-database
 
 # CLI helpers

@@ -200,7 +200,7 @@ export const RdsStack = ({ stack }: StackContext) => {
 
     const encryptedCluster = new rds.DatabaseCluster(stack, "cdd-db-cluster", {
         clusterIdentifier: `cdd-db-cluster-${stack.stage}`,
-        engine: rds.DatabaseClusterEngine.auroraPostgres({ version: rds.AuroraPostgresEngineVersion.VER_16_8 }),
+        engine: rds.DatabaseClusterEngine.auroraPostgres({ version: rds.AuroraPostgresEngineVersion.VER_16_4 }),
         writer: rds.ClusterInstance.serverlessV2("cdd-instance-1", {
             enablePerformanceInsights: true,
         }),

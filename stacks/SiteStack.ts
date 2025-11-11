@@ -64,6 +64,9 @@ export const SiteStack = ({ stack }: StackContext) => {
         runtime: "nodejs20.x",
         warm: stack.stage === "prod" || stack.stage === "preprod" ? 50 : 10,
         memorySize: stack.stage === "prod" ? "3072 MB" : "1024 MB",
+        regional: {
+            enableServerUrlIamAuth: true,
+        },
         cdk: {
             server: {
                 vpc,

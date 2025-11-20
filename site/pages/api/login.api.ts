@@ -76,13 +76,18 @@ const login = async (req: NextApiRequest, res: NextApiResponse) => {
         return;
     } catch (e) {
         if (e instanceof NotAuthorizedException) {
+            const message =
+                e.message === "Password attempts exceeded"
+                    ? "You have entered incorrect details too many times. Please wait a few minutes and try again"
+                    : "Incorrect username or password";
+
             setCookieOnResponseObject(
                 COOKIES_LOGIN_ERRORS,
                 JSON.stringify({
                     inputs: req.body as object,
                     errors: [
                         {
-                            errorMessage: "Incorrect username or password",
+                            errorMessage: message,
                             id: "",
                         },
                     ],
@@ -93,6 +98,7 @@ const login = async (req: NextApiRequest, res: NextApiResponse) => {
             redirectTo(res, LOGIN_PAGE_PATH);
             return;
         }
+
         if (e instanceof PasswordResetRequiredException) {
             setCookieOnResponseObject(
                 COOKIES_LOGIN_ERRORS,

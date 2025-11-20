@@ -214,6 +214,41 @@ describe("login", () => {
         expect(writeHeadMock).toBeCalledWith(302, { Location: LOGIN_PAGE_PATH });
     });
 
+    it("should redirect to login page when password attempts exceeded", async () => {
+        initiateAuthSpy.mockImplementation(() => {
+            throw new NotAuthorizedException({
+                message: "Password attempts exceeded",
+                $metadata: {},
+            });
+        });
+
+        const { req, res } = getMockRequestAndResponse({
+            body: {
+                email: "dummyUser@gmail.com",
+                password: "dummyPassword",
+            },
+            mockWriteHeadFn: writeHeadMock,
+        });
+
+        await login(req, res);
+
+        const errors: ErrorInfo[] = [
+            {
+                errorMessage:
+                    "You have entered incorrect details too many times. Please wait a few minutes and try again",
+                id: "",
+            },
+        ];
+        expect(setCookieOnResponseObject).toHaveBeenCalledTimes(1);
+        expect(setCookieOnResponseObject).toHaveBeenCalledWith(
+            COOKIES_LOGIN_ERRORS,
+            JSON.stringify({ inputs: req.body as object, errors }),
+            res,
+        );
+
+        expect(writeHeadMock).toBeCalledWith(302, { Location: LOGIN_PAGE_PATH });
+    });
+
     it("should redirect to correct page if login redirect cookie is set", async () => {
         initiateAuthSpy.mockImplementation(() =>
             Promise.resolve({

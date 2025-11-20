@@ -225,8 +225,8 @@ export const getStops = async (dbClient: Kysely<Database>, input: StopsQueryInpu
         .$if(!!input.searchInput, (qb) =>
             qb.where((eb) =>
                 eb.or([
-                    eb("stops.commonName", "like", input.searchInput ? `%${input.searchInput}%` : "---"),
-                    eb("stops.atcoCode", "like", input.searchInput ? `%${input.searchInput}%` : "---"),
+                    eb("stops.commonName", "ilike", input.searchInput ? `%${input.searchInput}%` : "---"),
+                    eb("stops.atcoCode", "ilike", input.searchInput ? `%${input.searchInput}%` : "---"),
                 ]),
             ),
         )

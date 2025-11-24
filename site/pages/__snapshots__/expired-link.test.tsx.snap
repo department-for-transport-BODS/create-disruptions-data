@@ -74,7 +74,7 @@ exports[`ExpiredLink > should render correctly 1`] = `
                 <br />
                 <a
                   class="govuk-notification-banner__link"
-                  href="mailto:bodshelpdesk@kpmg.co.uk"
+                  href="mailto:bodshelpdesk@kainos.com"
                 >
                   Contact
                 </a>

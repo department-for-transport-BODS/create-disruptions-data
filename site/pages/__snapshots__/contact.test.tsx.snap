@@ -75,14 +75,14 @@ exports[`contact > should render correctly 1`] = `
           <p
             class="govuk-body"
           >
-            Telephone: 0800 028 0930
+            Telephone: 0800 000 000
             <br />
             Email: 
             <a
               class="govuk-link"
-              href="mailto:bodshelpdesk@kpmg.co.uk"
+              href="mailto:bodshelpdesk@kainos.com"
             >
-              bodshelpdesk@kpmg.co.uk
+              bodshelpdesk@kainos.com
             </a>
           </p>
           <h3

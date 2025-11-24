@@ -10,7 +10,7 @@
         "@aws-sdk/client-sqs": "^3.830.0",
         "@create-disruptions-data/shared-ts": "workspace:^",
         "@types/aws-lambda": "^8.10.110",
-        "axios": "^1.7.7",
+        "axios": "^1.13.2",
         "dayjs": "^1.11.10",
         "geolib": "^3.3.3",
         "kysely": "^0.27.5",

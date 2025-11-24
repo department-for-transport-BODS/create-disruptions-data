@@ -68,13 +68,13 @@ jobs:
           aws-region: ${{ vars.AWS_DEFAULT_REGION }}
 
       - name: Get SUPPORT_EMAIL and SUPPORT_PHONE from SSM
-        id: get_support_contacts_manual
         run: |
-          ENVIRONMENT=${{ inputs.stage }}
-          support_email=$(aws ssm get-parameter --name "/create-disruptions-data/$ENVIRONMENT/support_email" --with-decryption | jq -r '.Parameter.Value')
-          support_phone=$(aws ssm get-parameter --name "/create-disruptions-data/$ENVIRONMENT/support_phone" --with-decryption | jq -r '.Parameter.Value')
-          echo "SUPPORT_EMAIL=$support_email" >> $GITHUB_ENV
-          echo "SUPPORT_PHONE=$support_phone" >> $GITHUB_ENV
+          ENV=${{ inputs.stage }}
+          PROJECT_NAME=${{ vars.project_name }}
+          export SUPPORT_EMAIL=$(aws ssm get-parameter --name "/$PROJECT_NAME/$ENV/app/support/email" --with-decryption | jq -r '.Parameter.Value')
+          export SUPPORT_PHONE=$(aws ssm get-parameter --name "/$PROJECT_NAME/$ENV/app/support/phone" --with-decryption | jq -r '.Parameter.Value')
+          echo "SUPPORT_EMAIL=$SUPPORT_EMAIL" >> $GITHUB_ENV
+          echo "SUPPORT_PHONE=$SUPPORT_PHONE" >> $GITHUB_ENV
 
       - name: Deploy to ${{ inputs.stage }}
         env:

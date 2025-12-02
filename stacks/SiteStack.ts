@@ -86,6 +86,8 @@ export const SiteStack = ({ stack }: StackContext) => {
             API_BASE_URL: apiUrl,
             MAP_BOX_ACCESS_TOKEN: process.env.MAP_BOX_ACCESS_TOKEN || "",
             FEEDBACK_EMAIL_ADDRESS: stack.stage === "prod" ? "bodshelpdesk@kpmg.co.uk" : "feedback@dft-create-data.com",
+            SUPPORT_EMAIL: process.env.SUPPORT_EMAIL || "",
+            SUPPORT_PHONE: process.env.SUPPORT_PHONE || "",
             AWS_SES_IDENTITY_ARN: process.env.AWS_SES_IDENTITY_ARN || "",
             COGNITO_CLIENT_ID: clientId,
             COGNITO_CLIENT_SECRET: clientSecret.toString(),

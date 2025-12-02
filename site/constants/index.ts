@@ -10,10 +10,10 @@ import {
 import { DisplayValuePair } from "../interfaces";
 import { ConsequenceType } from "../schemas/type-of-consequence.schema";
 
-export const SUPPORT_EMAIL_ADDRESS = "bodshelpdesk@kpmg.co.uk";
+export const SUPPORT_EMAIL_ADDRESS = process.env.SUPPORT_EMAIL;
 export const FEEDBACK_EMAIL_ADDRESS = process.env.FEEDBACK_EMAIL_ADDRESS;
 
-export const SUPPORT_PHONE_NUMBER = "0800 028 0930";
+export const SUPPORT_PHONE_NUMBER = process.env.SUPPORT_PHONE;
 
 export const DISRUPTION_REASONS: DisplayValuePair<
     MiscellaneousReason | PersonnelReason | EnvironmentReason | EquipmentReason

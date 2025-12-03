@@ -4,7 +4,7 @@ import { SnsAction } from "aws-cdk-lib/aws-cloudwatch-actions";
 import { SubnetType } from "aws-cdk-lib/aws-ec2";
 import { AccessKey, ManagedPolicy, PolicyStatement, User } from "aws-cdk-lib/aws-iam";
 import { Secret } from "aws-cdk-lib/aws-secretsmanager";
-import { Cron, Function, NextjsSite, StackContext, use } from "sst/constructs";
+import { Config, Cron, Function, NextjsSite, StackContext, use } from "sst/constructs";
 import { getDomain } from "../shared-ts/utils/domain";
 import { CognitoStack } from "./CognitoStack";
 import { DynamoDBStack } from "./DynamoDBStack";
@@ -20,6 +20,10 @@ export const SiteStack = ({ stack }: StackContext) => {
     const { dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostROSecret, dbHostSecret, dbPortSecret } =
         use(RdsStack);
     const { vpc, siteSg } = use(VpcStack);
+
+    const supportEmail = new Config.Secret(stack, "SUPPORT_EMAIL");
+
+    const supportPhone = new Config.Secret(stack, "SUPPORT_PHONE");
 
     const siteImageBucket = createBucket(stack, "cdd-image-bucket", true);
 
@@ -79,15 +83,22 @@ export const SiteStack = ({ stack }: StackContext) => {
         dev: {
             deploy: false,
         },
-        bind: [dbUsernameSecret, dbPasswordSecret, dbHostSecret, dbHostROSecret, dbPortSecret, dbNameSecret],
+        bind: [
+            dbUsernameSecret,
+            dbPasswordSecret,
+            dbHostSecret,
+            dbHostROSecret,
+            dbPortSecret,
+            dbNameSecret,
+            supportEmail,
+            supportPhone,
+        ],
         environment: {
             ORGANISATIONS_TABLE_NAME: organisationsTable.tableName,
             STAGE: stack.stage,
             API_BASE_URL: apiUrl,
             MAP_BOX_ACCESS_TOKEN: process.env.MAP_BOX_ACCESS_TOKEN || "",
             FEEDBACK_EMAIL_ADDRESS: stack.stage === "prod" ? "bodshelpdesk@kpmg.co.uk" : "feedback@dft-create-data.com",
-            SUPPORT_EMAIL: process.env.SUPPORT_EMAIL || "",
-            SUPPORT_PHONE: process.env.SUPPORT_PHONE || "",
             AWS_SES_IDENTITY_ARN: process.env.AWS_SES_IDENTITY_ARN || "",
             COGNITO_CLIENT_ID: clientId,
             COGNITO_CLIENT_SECRET: clientSecret.toString(),
@@ -99,6 +110,8 @@ export const SiteStack = ({ stack }: StackContext) => {
             DOMAIN_NAME: `${isUserEnv(stack.stage) ? "http://" : "https://"}${
                 isUserEnv(stack.stage) ? "localhost:3000" : getDomain(stack.stage)
             }`,
+            SUPPORT_EMAIL: supportEmail.value,
+            SUPPORT_PHONE: supportPhone.value,
         },
         customDomain: {
             domainName:

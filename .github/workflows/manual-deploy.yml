@@ -67,21 +67,10 @@ jobs:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/cdd-github-actions-role-eu-west-2
           aws-region: ${{ vars.AWS_DEFAULT_REGION }}
 
-      - name: Get SUPPORT_EMAIL and SUPPORT_PHONE from SSM
-        run: |
-          ENV=${{ inputs.stage }}
-          PROJECT_NAME=${{ vars.project_name }}
-          export SUPPORT_EMAIL=$(aws ssm get-parameter --name "/$PROJECT_NAME/$ENV/app/support/email" --with-decryption | jq -r '.Parameter.Value')
-          export SUPPORT_PHONE=$(aws ssm get-parameter --name "/$PROJECT_NAME/$ENV/app/support/phone" --with-decryption | jq -r '.Parameter.Value')
-          echo "SUPPORT_EMAIL=$SUPPORT_EMAIL" >> $GITHUB_ENV
-          echo "SUPPORT_PHONE=$SUPPORT_PHONE" >> $GITHUB_ENV
-
       - name: Deploy to ${{ inputs.stage }}
         env:
           ROOT_DOMAIN: ${{ vars.ROOT_DOMAIN }}
           AWS_SES_IDENTITY_ARN: ${{ secrets.AWS_SES_TEST_IDENTITY }}
           MAP_BOX_ACCESS_TOKEN: ${{ secrets.MAP_BOX_ACCESS_TOKEN }}
-          SUPPORT_EMAIL: ${{ env.SUPPORT_EMAIL }}
-          SUPPORT_PHONE: ${{ env.SUPPORT_PHONE }}
         run: |
           pnpm run deploy --stage ${{ inputs.stage }}

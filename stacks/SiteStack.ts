@@ -21,23 +21,12 @@ export const SiteStack = ({ stack }: StackContext) => {
         use(RdsStack);
     const { vpc, siteSg } = use(VpcStack);
 
-    const supportEmailValue = process.env.SUPPORT_EMAIL;
-    const supportPhoneValue = process.env.SUPPORT_PHONE;
-
-    if (!supportEmailValue) {
-        throw new Error("SUPPORT_EMAIL must be set");
-    }
-
-    if (!supportPhoneValue) {
-        throw new Error("SUPPORT_PHONE must be set");
-    }
-
     const supportEmail = new Config.Parameter(stack, "SUPPORT_EMAIL", {
-        value: supportEmailValue,
+        value: process.env.SUPPORT_EMAIL ?? "",
     });
 
     const supportPhone = new Config.Parameter(stack, "SUPPORT_PHONE", {
-        value: supportPhoneValue,
+        value: process.env.SUPPORT_PHONE ?? "",
     });
 
     const siteImageBucket = createBucket(stack, "cdd-image-bucket", true);

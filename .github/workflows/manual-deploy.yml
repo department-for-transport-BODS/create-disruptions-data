@@ -67,6 +67,20 @@ jobs:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/cdd-github-actions-role-eu-west-2
           aws-region: ${{ vars.AWS_DEFAULT_REGION }}
 
+      - name: Load support contact from SSM
+        shell: bash
+        env:
+          STAGE: ${{ inputs.stage }}
+        run: |
+          EMAIL=$(aws ssm get-parameter --name "/create-disruptions-data/$STAGE/support/email" --with-decryption --query 'Parameter.Value' --output text)
+          PHONE=$(aws ssm get-parameter --name "/create-disruptions-data/$STAGE/support/phone" --with-decryption --query 'Parameter.Value' --output text)
+          if [ -z "$EMAIL" ] || [ -z "$PHONE" ]; then
+            echo "Support contact parameters are missing for $STAGE" >&2
+            exit 1
+          fi
+          pnpm sst env set --stage "$STAGE" SUPPORT_EMAIL "$EMAIL"
+          pnpm sst env set --stage "$STAGE" SUPPORT_PHONE "$PHONE"
+
       - name: Deploy to ${{ inputs.stage }}
         env:
           ROOT_DOMAIN: ${{ vars.ROOT_DOMAIN }}

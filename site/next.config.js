@@ -30,6 +30,8 @@ const nextConfig = {
         API_BASE_URL: process.env.API_BASE_URL,
         MAP_BOX_ACCESS_TOKEN: process.env.MAP_BOX_ACCESS_TOKEN,
         DOMAIN_NAME: process.env.DOMAIN_NAME,
+        SUPPORT_EMAIL: process.env.SUPPORT_EMAIL,
+        SUPPORT_PHONE: process.env.SUPPORT_PHONE,
     },
     headers() {
         return [

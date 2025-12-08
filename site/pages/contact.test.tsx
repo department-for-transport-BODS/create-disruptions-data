@@ -6,7 +6,9 @@ describe("contact", () => {
     afterEach(cleanup);
 
     it("should render correctly", () => {
-        const { asFragment } = render(<Contact />);
+        const { asFragment } = render(
+            <Contact supportEmail={"bodshelpdesk@kainos.com"} supportPhone={"0800 000 000"} />,
+        );
         expect(asFragment()).toMatchSnapshot();
     });
 });

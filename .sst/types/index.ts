@@ -240,6 +240,24 @@ declare module "sst/node/api" {
   }
 }
 
+import "sst/node/config";
+declare module "sst/node/config" {
+  export interface SecretResources {
+    "SUPPORT_EMAIL": {
+      value: string;
+    }
+  }
+}
+
+import "sst/node/config";
+declare module "sst/node/config" {
+  export interface SecretResources {
+    "SUPPORT_PHONE": {
+      value: string;
+    }
+  }
+}
+
 import "sst/node/bucket";
 declare module "sst/node/bucket" {
   export interface BucketResources {

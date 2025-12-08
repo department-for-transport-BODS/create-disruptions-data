@@ -8,7 +8,7 @@ afterEach(() => {
 
 describe("ExpiredLink", () => {
     it("should render correctly", () => {
-        const { asFragment } = render(<ExpiredLink />);
+        const { asFragment } = render(<ExpiredLink supportEmail={"bodshelpdesk@kainos.com"} />);
         expect(asFragment()).toMatchSnapshot();
     });
 });

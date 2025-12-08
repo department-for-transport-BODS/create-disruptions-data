@@ -1,5 +1,4 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
-import { getDomain } from "@create-disruptions-data/shared-ts/utils/domain";
 import { FEEDBACK_EMAIL_ADDRESS, STAGE } from "../../constants";
 import { Feedback } from "../../interfaces";
 
@@ -33,7 +32,7 @@ export const setFeedbackMailOptions = (feedback: Feedback[]): SendEmailCommand =
                 Data: subject,
             },
         },
-        Source: `no-reply@${getDomain(STAGE)}`,
+        Source: FEEDBACK_EMAIL_ADDRESS,
     });
 };
 

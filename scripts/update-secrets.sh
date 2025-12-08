@@ -49,4 +49,6 @@ pnpm sst secrets set DB_PORT 5432 --stage $stage
 pnpm sst secrets set DB_USERNAME $username --stage $stage
 pnpm sst secrets set DB_PASSWORD $password --stage $stage
 pnpm sst secrets set DB_NAME $db_name --stage $stage
+pnpm sst secrets set SUPPORT_EMAIL dummy@email.com --stage $stage
+pnpm sst secrets set SUPPORT_PHONE 0123456789 --stage $stage
 

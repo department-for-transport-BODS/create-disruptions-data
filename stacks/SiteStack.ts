@@ -21,13 +21,9 @@ export const SiteStack = ({ stack }: StackContext) => {
         use(RdsStack);
     const { vpc, siteSg } = use(VpcStack);
 
-    const supportEmail = new Config.Parameter(stack, "SUPPORT_EMAIL", {
-        value: process.env.SUPPORT_EMAIL ?? "",
-    });
+    const supportEmail = new Config.Secret(stack, "SUPPORT_EMAIL");
 
-    const supportPhone = new Config.Parameter(stack, "SUPPORT_PHONE", {
-        value: process.env.SUPPORT_PHONE ?? "",
-    });
+    const supportPhone = new Config.Secret(stack, "SUPPORT_PHONE");
 
     const siteImageBucket = createBucket(stack, "cdd-image-bucket", true);
 
@@ -114,8 +110,6 @@ export const SiteStack = ({ stack }: StackContext) => {
             DOMAIN_NAME: `${isUserEnv(stack.stage) ? "http://" : "https://"}${
                 isUserEnv(stack.stage) ? "localhost:3000" : getDomain(stack.stage)
             }`,
-            SUPPORT_EMAIL: supportEmail.value,
-            SUPPORT_PHONE: supportPhone.value,
         },
         customDomain: {
             domainName:

@@ -1,11 +1,15 @@
 import { ReactElement } from "react";
+import { Config } from "sst/node/config";
 import { TwoThirdsLayout } from "../components/layout/Layout";
-import { SUPPORT_EMAIL_ADDRESS } from "../constants";
 
 const title = "Register link timeout - Create Transport Disruption Data Service";
 const description = "Register link timeout page for the Create Transport Disruption Data Service";
 
-const ExpiredLink = (): ReactElement => (
+interface ExpiredLinkProps {
+    supportEmail: string;
+}
+
+const ExpiredLink = ({ supportEmail }: ExpiredLinkProps): ReactElement => (
     <TwoThirdsLayout title={title} description={description}>
         <div
             className="govuk-notification-banner"
@@ -22,7 +26,7 @@ const ExpiredLink = (): ReactElement => (
                 <p className="govuk-notification-banner__heading">
                     The link to create your password has expired <br />
                     <br />
-                    <a className="govuk-notification-banner__link" href={`mailto:${SUPPORT_EMAIL_ADDRESS}`}>
+                    <a className="govuk-notification-banner__link" href={`mailto:${supportEmail}`}>
                         Contact
                     </a>{" "}
                     the support desk to be issued a new link
@@ -31,5 +35,11 @@ const ExpiredLink = (): ReactElement => (
         </div>
     </TwoThirdsLayout>
 );
+
+export const getServerSideProps = () => {
+    const supportEmail = Config.SUPPORT_EMAIL || "";
+
+    return { props: { supportEmail } };
+};
 
 export default ExpiredLink;

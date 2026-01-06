@@ -33,7 +33,7 @@ import { fetchOperators } from "../../../data/refDataApi";
 import { CreateConsequenceProps, PageState } from "../../../interfaces";
 import { Operator } from "../../../schemas/consequence.schema";
 import { ModeType } from "../../../schemas/organisation.schema";
-import { filterVehicleModes, isOperatorConsequence, removeDuplicatesBasedOnMode } from "../../../utils";
+import { filterVehicleModes, isOperatorConsequence } from "../../../utils";
 import { destroyCookieOnResponseObject, getPageState } from "../../../utils/apiUtils";
 import { getSessionWithOrgDetail } from "../../../utils/apiUtils/auth";
 import {
@@ -371,8 +371,6 @@ export const getServerSideProps = async (
 
     const operatorsData = await fetchOperators({ adminAreaCodes: session.adminAreaCodes ?? ["undefined"] });
 
-    const uniqueOperators: Operator[] = removeDuplicatesBasedOnMode(operatorsData, "id");
-
     const operatorUserNocCodes =
         session.isOperatorUser && session.operatorOrgId
             ? await getNocCodesForOperatorOrg(session.orgId, session.operatorOrgId)
@@ -384,10 +382,10 @@ export const getServerSideProps = async (
             consequenceIndex: index,
             consequenceCount: disruption.consequences?.length ?? 0,
             operators: session.isOperatorUser
-                ? uniqueOperators.filter((operator) => {
+                ? operatorsData.filter((operator) => {
                       return operatorUserNocCodes.includes(operator.nocCode);
                   })
-                : uniqueOperators,
+                : operatorsData,
             disruptionDescription: disruption.description || "",
             sessionWithOrg: session,
             template: disruption.template?.toString() || "",

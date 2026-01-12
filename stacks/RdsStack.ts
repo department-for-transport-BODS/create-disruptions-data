@@ -271,6 +271,7 @@ export const RdsStack = ({ stack }: StackContext) => {
             subnetType: SubnetType.PRIVATE_WITH_EGRESS,
         },
         securityGroup: bastionSg,
+        requireImdsv2: true,
     });
 
     Tags.of(bastionHost.instance).add("Bastion", "true");

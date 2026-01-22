@@ -16,7 +16,7 @@
     "dependencies": {
         "bluebird": "^3.7.2",
         "kysely": "^0.27.5",
-        "lodash": "^4.17.21",
+        "lodash": "^4.17.23",
         "ospoint": "^0.2.1",
         "papaparse": "^5.4.1",
         "pg": "^8.13.1"

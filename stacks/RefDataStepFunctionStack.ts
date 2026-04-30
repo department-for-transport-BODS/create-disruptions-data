@@ -26,6 +26,11 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     const tndsFtpUsernameSecret = new Config.Secret(stack, "TNDS_FTP_USERNAME");
     const tndsFtpPasswordSecret = new Config.Secret(stack, "TNDS_FTP_PASSWORD");
 
+    // NaPTAN data source details
+    const naptanBucketName = new Config.Parameter(stack, "NAPTAN_BUCKET_NAME");
+    const naptanBucketRegion = new Config.Parameter(stack, "NAPTAN_BUCKET_REGION");
+    const naptanBucketKey = new Config.Parameter(stack, "NAPTAN_BUCKET_KEY");
+
     const csvBucket = createBucket(stack, "cdd-ref-csv-data", false);
     const txcBucket = createBucket(stack, "cdd-ref-txc-data", false, [{ enabled: true, expiration: Duration.days(5) }]);
     const txcZippedBucket = createBucket(stack, "cdd-ref-txc-zipped-data", false, [
@@ -291,7 +296,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         lambdaFunction: new Function(stack, "cdd-csv-ref-data-uploader-function", {
             functionName: `cdd-csv-ref-data-uploader-${stack.stage}`,
             handler: "packages/ref-data-csv-uploader/index.main",
-            bind: [dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostSecret, dbPortSecret],
+            bind: [dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostSecret, dbPortSecret, naptanBucketName, naptanBucketRegion, naptanBucketKey],
             vpc,
             vpcSubnets: {
                 subnetType: SubnetType.PRIVATE_WITH_EGRESS,
@@ -306,11 +311,18 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
             environment: {
                 CSV_BUCKET_NAME: csvBucket.bucketName,
+                NAPTAN_BUCKET_NAME: naptanBucketName.value,
+                NAPTAN_BUCKET_REGION: naptanBucketRegion.value,
+                NAPTAN_BUCKET_KEY: naptanBucketKey.value,
             },
             permissions: [
                 new PolicyStatement({
                     actions: ["s3:GetObject"],
                     resources: [`${csvBucket.bucketArn}/*`],
+                }),
+                new PolicyStatement({
+                    actions: ["s3:GetObject"],
+                    resources: [`arn:aws:s3:::${naptanBucketName.value}/*`],
                 }),
                 new PolicyStatement({
                     actions: ["cloudwatch:PutMetricData"],
@@ -494,7 +506,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         .branch(tndsTxcRetrieverTask)
         .branch(bodsTxcRetrieverTask)
         .branch(nocRetrieverTask)
-        .branch(naptanRetrieverTask)
+        //.branch(naptanRetrieverTask)
         .branch(nptgRetrieverTask)
         .branch(bankHolidaysRetrieverTask);
 

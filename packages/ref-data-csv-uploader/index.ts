@@ -121,8 +121,7 @@ export const main: Handler = async (event, context) => {
         const { 
             CSV_BUCKET_NAME: csvBucketName,
             NAPTAN_BUCKET_NAME: naptanBucketName,
-            NAPTAN_BUCKET_REGION: naptanBucketRegion,
-            NAPTAN_BUCKET_KEY: naptanBucketKey
+            NAPTAN_BUCKET_KEY: naptanBucketKey,
         } = process.env;
 
         if (!csvBucketName) {

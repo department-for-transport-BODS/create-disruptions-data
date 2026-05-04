@@ -47,7 +47,13 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         stateName: "Cleardown Database",
         lambdaFunction: new Function(stack, "cdd-ref-data-cleardown-db-function", {
             functionName: `cdd-db-cleardown-${stack.stage}`,
-            bind: [dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostSecret, dbPortSecret],
+            bind: [
+                dbUsernameSecret, 
+                dbPasswordSecret, 
+                dbNameSecret, 
+                dbHostSecret, 
+                dbPortSecret
+            ],
             vpc,
             vpcSubnets: {
                 subnetType: SubnetType.PRIVATE_WITH_EGRESS,
@@ -94,7 +100,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         }),
     });
 
-    const naptanRetrieverTask = new LambdaInvoke(stack, "cdd-naptan-retriever-task", {
+    const _naptanRetrieverTask = new LambdaInvoke(stack, "cdd-naptan-retriever-task", {
         stateName: "Retrieve NaPTAN Data",
         lambdaFunction: new Function(stack, "cdd-naptan-retriever-function", {
             functionName: `cdd-naptan-retriever-${stack.stage}`,
@@ -296,7 +302,16 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         lambdaFunction: new Function(stack, "cdd-csv-ref-data-uploader-function", {
             functionName: `cdd-csv-ref-data-uploader-${stack.stage}`,
             handler: "packages/ref-data-csv-uploader/index.main",
-            bind: [dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostSecret, dbPortSecret, naptanBucketName, naptanBucketRegion, naptanBucketKey],
+            bind: [
+                dbUsernameSecret, 
+                dbPasswordSecret, 
+                dbNameSecret, 
+                dbHostSecret, 
+                dbPortSecret, 
+                naptanBucketName, 
+                naptanBucketRegion, 
+                naptanBucketKey
+            ],
             vpc,
             vpcSubnets: {
                 subnetType: SubnetType.PRIVATE_WITH_EGRESS,

@@ -22,7 +22,7 @@
         "vitest": "^3.0.9"
     },
     "dependencies": {
-        "@aws-sdk/client-s3": "^3.830.0",
+        "@aws-sdk/client-s3": "^3.974.0",
         "@create-disruptions-data/shared-ts": "workspace:^",
         "js2xmlparser": "^5.0.0",
         "json-2-csv": "^4.1.0",

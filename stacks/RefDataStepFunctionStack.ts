@@ -27,10 +27,18 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     const tndsFtpPasswordSecret = new Config.Secret(stack, "TNDS_FTP_PASSWORD");
 
     // NaPTAN data source details
-    const naptanBucketName = new Config.Parameter(stack, "NAPTAN_BUCKET_NAME");
-    const naptanBucketRegion = new Config.Parameter(stack, "NAPTAN_BUCKET_REGION");
-    const naptanBucketKey = new Config.Parameter(stack, "NAPTAN_BUCKET_KEY");
-    const naptanRoleArn = new Config.Parameter(stack, "NAPTAN_ROLE_ARN");
+    const naptanBucketName = new Config.Parameter(stack, "NAPTAN_BUCKET_NAME", {
+        value: process.env.NAPTAN_BUCKET_NAME ?? "",
+    });
+    const naptanBucketRegion = new Config.Parameter(stack, "NAPTAN_BUCKET_REGION", {
+        value: process.env.NAPTAN_BUCKET_REGION ?? "",
+    });
+    const naptanBucketKey = new Config.Parameter(stack, "NAPTAN_BUCKET_KEY", {
+        value: process.env.NAPTAN_BUCKET_KEY ?? "",
+    });
+    const naptanRoleArn = new Config.Parameter(stack, "NAPTAN_ROLE_ARN", {
+        value: process.env.NAPTAN_ROLE_ARN ?? "",
+    });
 
     const csvBucket = createBucket(stack, "cdd-ref-csv-data", false);
     const txcBucket = createBucket(stack, "cdd-ref-txc-data", false, [{ enabled: true, expiration: Duration.days(5) }]);

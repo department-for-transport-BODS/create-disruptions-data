@@ -48,13 +48,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         stateName: "Cleardown Database",
         lambdaFunction: new Function(stack, "cdd-ref-data-cleardown-db-function", {
             functionName: `cdd-db-cleardown-${stack.stage}`,
-            bind: [
-                dbUsernameSecret, 
-                dbPasswordSecret, 
-                dbNameSecret, 
-                dbHostSecret, 
-                dbPortSecret
-            ],
+            bind: [dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostSecret, dbPortSecret],
             vpc,
             vpcSubnets: {
                 subnetType: SubnetType.PRIVATE_WITH_EGRESS,
@@ -304,13 +298,13 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             functionName: `cdd-csv-ref-data-uploader-${stack.stage}`,
             handler: "packages/ref-data-csv-uploader/index.main",
             bind: [
-                dbUsernameSecret, 
-                dbPasswordSecret, 
-                dbNameSecret, 
-                dbHostSecret, 
-                dbPortSecret, 
-                naptanBucketName, 
-                naptanBucketRegion, 
+                dbUsernameSecret,
+                dbPasswordSecret,
+                dbNameSecret,
+                dbHostSecret,
+                dbPortSecret,
+                naptanBucketName,
+                naptanBucketRegion,
                 naptanBucketKey,
                 naptanRoleArn,
             ],

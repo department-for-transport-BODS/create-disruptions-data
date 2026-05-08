@@ -118,7 +118,7 @@ export const main: Handler = async (event, context) => {
     withLambdaRequestTracker(event ?? {}, context ?? {});
 
     try {
-        const { 
+        const {
             CSV_BUCKET_NAME: csvBucketName,
             NAPTAN_BUCKET_NAME: naptanBucketName,
             NAPTAN_BUCKET_KEY: naptanBucketKey,

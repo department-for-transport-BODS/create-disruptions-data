@@ -40,7 +40,8 @@
     "overrides": {
         "react": "18.3.1",
         "react-dom": "18.3.1",
-        "jszip": "3.8.0"
+        "jszip": "3.8.0",
+        "@smithy/types": "4.14.1"
     },
     "dependencies": {
         "@aws-sdk/client-dynamodb": "^3.830.0",
@@ -55,5 +56,10 @@
     "packageManager": "pnpm@9.12.2",
     "engines": {
         "pnpm": "^9.0.0"
+    },
+    "pnpm": {
+        "overrides": {
+            "@smithy/types": "4.14.1"
+        }
     }
 }

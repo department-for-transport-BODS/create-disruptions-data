@@ -60,6 +60,11 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         }),
     });
 
+    const crossAccountAssumeRolePolicy = new PolicyStatement({
+        actions: ["sts:AssumeRole"],
+        resources: ["arn:aws:iam::390403896175:role/bods-1297-data-landing-zone-cross-account-role"],
+    });
+
     const nocRetrieverTask = new LambdaInvoke(stack, "cdd-noc-retriever-task", {
         stateName: "Retrieve NOC Data",
         lambdaFunction: new Function(stack, "cdd-noc-retriever-function", {
@@ -306,6 +311,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
             environment: {
                 CSV_BUCKET_NAME: csvBucket.bucketName,
+                SOURCE_ROLE_ARN: "arn:aws:iam::390403896175:role/bods-1297-data-landing-zone-cross-account-role",
             },
             permissions: [
                 new PolicyStatement({
@@ -316,6 +322,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
                     actions: ["cloudwatch:PutMetricData"],
                     resources: ["*"],
                 }),
+                crossAccountAssumeRolePolicy,
             ],
             enableLiveDev: false,
         }),

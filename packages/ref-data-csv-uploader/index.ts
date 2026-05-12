@@ -1,7 +1,8 @@
 import { Database } from "@create-disruptions-data/shared-ts/db/types";
 import { getDbClient } from "@create-disruptions-data/shared-ts/utils/db";
 import { logger, withLambdaRequestTracker } from "@create-disruptions-data/shared-ts/utils/logger";
-import { getObject } from "@create-disruptions-data/shared-ts/utils/s3";
+import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { fromTemporaryCredentials } from "@aws-sdk/credential-providers";
 import { Handler } from "aws-lambda";
 import { Promise as BluebirdPromise } from "bluebird";
 import snakeCase from "lodash/snakeCase";
@@ -10,11 +11,50 @@ import { parse } from "papaparse";
 
 const dbClient = getDbClient();
 const fileNames = ["Stops.csv", "NOCLines.csv", "NOCTable.csv", "PublicName.csv"];
+const region = process.env.AWS_REGION ?? "eu-west-2";
 
-export const processFile = async (fileName: string, csvBucketName: string) => {
+const getSourceS3Client = (roleArn?: string) => {
+    if (!roleArn) {
+        return new S3Client({ region });
+    }
+
+    return new S3Client({
+        region,
+        credentials: fromTemporaryCredentials({
+            clientConfig: { region },
+            params: {
+                RoleArn: roleArn,
+                RoleSessionName: "cdd-csv-ref-data-uploader",
+            },
+        }),
+    });
+};
+
+const getSourceObject = async (bucket: string, key: string, roleArn?: string) => {
+    logger.info("Getting item from S3");
+
+    try {
+        const sourceClient = getSourceS3Client(roleArn);
+
+        return await sourceClient.send(
+            new GetObjectCommand({
+                Bucket: bucket,
+                Key: decodeURIComponent(key),
+            }),
+        );
+    } catch (error) {
+        if (error instanceof Error) {
+            throw new Error(`Failed to get item from s3: ${error.stack || ""}`);
+        }
+
+        throw error;
+    }
+};
+
+export const processFile = async (fileName: string, csvBucketName: string, sourceRoleArn?: string) => {
     logger.info(`Starting CSV Uploader for ${fileName}`);
 
-    const file = await getObject(csvBucketName, fileName, logger);
+    const file = await getSourceObject(csvBucketName, fileName, sourceRoleArn);
 
     const body = (await file.Body?.transformToString()) || "";
 
@@ -117,14 +157,22 @@ export const main: Handler = async (event, context) => {
     withLambdaRequestTracker(event ?? {}, context ?? {});
 
     try {
-        const { CSV_BUCKET_NAME: csvBucketName } = process.env;
+        const {
+            CSV_BUCKET_NAME: csvBucketName,
+            SOURCE_ROLE_ARN: sourceRoleArn,
+            SST_Parameter_value_SOURCE_ROLE_ARN: sstSourceRoleArn,
+            NAPTAN_ROLE_ARN: legacyNaptanRoleArn,
+            SST_Parameter_value_NAPTAN_ROLE_ARN: sstLegacyNaptanRoleArn,
+        } = process.env;
 
         if (!csvBucketName) {
             throw new Error("Missing env vars - CSV_BUCKET_NAME must be set");
         }
 
+        const roleArn = sourceRoleArn ?? sstSourceRoleArn ?? legacyNaptanRoleArn ?? sstLegacyNaptanRoleArn;
+
         for (const fileName of fileNames) {
-            await processFile(fileName, csvBucketName);
+            await processFile(fileName, csvBucketName, roleArn);
         }
     } catch (e) {
         if (e instanceof Error) {

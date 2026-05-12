@@ -1,8 +1,8 @@
+import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { fromTemporaryCredentials } from "@aws-sdk/credential-providers";
 import { Database } from "@create-disruptions-data/shared-ts/db/types";
 import { getDbClient } from "@create-disruptions-data/shared-ts/utils/db";
 import { logger, withLambdaRequestTracker } from "@create-disruptions-data/shared-ts/utils/logger";
-import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { fromTemporaryCredentials } from "@aws-sdk/credential-providers";
 import { Handler } from "aws-lambda";
 import { Promise as BluebirdPromise } from "bluebird";
 import snakeCase from "lodash/snakeCase";

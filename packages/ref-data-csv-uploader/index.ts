@@ -168,11 +168,26 @@ export const main: Handler = async (event, context) => {
             NAPTAN_BUCKET_KEY: naptanBucketKey,
         } = process.env;
 
+        // CSV bucket is always required as it's the primary data source
         if (!csvBucketName) {
             throw new Error("Missing env vars - CSV_BUCKET_NAME must be set");
         }
 
+        // NAPTAN bucket and key must be paired - cannot have one without the other
+        if (naptanBucketName && !naptanBucketKey) {
+            throw new Error("Missing env vars - NAPTAN_BUCKET_KEY must be set when NAPTAN_BUCKET_NAME is provided");
+        }
+
+        if (naptanBucketKey && !naptanBucketName) {
+            throw new Error("Missing env vars - NAPTAN_BUCKET_NAME must be set when NAPTAN_BUCKET_KEY is provided");
+        }
+
         const roleArn = sourceRoleArn ?? sstSourceRoleArn ?? legacyNaptanRoleArn ?? sstLegacyNaptanRoleArn;
+
+        // NAPTAN bucket is in a different AWS account, so cross-account role assumption is mandatory
+        if (naptanBucketName && !roleArn) {
+            throw new Error("Missing env vars - SOURCE_ROLE_ARN or NAPTAN_ROLE_ARN must be set when NAPTAN_BUCKET_NAME is provided");
+        }
 
         for (const fileName of fileNames) {
             if (fileName === "Stops.csv" && naptanBucketName && naptanBucketKey) {

@@ -111,6 +111,10 @@ jobs:
           SUPPORT_EMAIL: ${{ secrets.SUPPORT_EMAIL }}
           SUPPORT_PHONE: ${{ secrets.SUPPORT_PHONE }}
           SOURCE_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
+          NAPTAN_BUCKET_NAME: ${{ vars.NAPTAN_BUCKET_NAME }}
+          NAPTAN_BUCKET_REGION: ${{ vars.NAPTAN_BUCKET_REGION }}
+          NAPTAN_BUCKET_KEY: ${{ vars.NAPTAN_BUCKET_KEY }}
+          NAPTAN_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
         run: |
           pnpm run deploy --stage test
 
@@ -171,6 +175,10 @@ jobs:
           SUPPORT_EMAIL: ${{ secrets.SUPPORT_EMAIL }}
           SUPPORT_PHONE: ${{ secrets.SUPPORT_PHONE }}
           SOURCE_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
+          NAPTAN_BUCKET_NAME: ${{ vars.NAPTAN_BUCKET_NAME }}
+          NAPTAN_BUCKET_REGION: ${{ vars.NAPTAN_BUCKET_REGION }}
+          NAPTAN_BUCKET_KEY: ${{ vars.NAPTAN_BUCKET_KEY }}
+          NAPTAN_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
         run: |
           pnpm run deploy --stage preprod
 

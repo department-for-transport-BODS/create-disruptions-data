@@ -51,10 +51,11 @@ const getSourceObject = async (bucket: string, key: string, roleArn?: string) =>
     }
 };
 
-export const processFile = async (fileName: string, csvBucketName: string, sourceRoleArn?: string) => {
+export const processFile = async (fileName: string, csvBucketName: string, s3Key?: string, sourceRoleArn?: string) => {
     logger.info(`Starting CSV Uploader for ${fileName}`);
 
-    const file = await getSourceObject(csvBucketName, fileName, sourceRoleArn);
+    const fileKey = s3Key || fileName;
+    const file = await getSourceObject(csvBucketName, fileKey, sourceRoleArn);
 
     const body = (await file.Body?.transformToString()) || "";
 
@@ -163,6 +164,8 @@ export const main: Handler = async (event, context) => {
             SST_Parameter_value_SOURCE_ROLE_ARN: sstSourceRoleArn,
             NAPTAN_ROLE_ARN: legacyNaptanRoleArn,
             SST_Parameter_value_NAPTAN_ROLE_ARN: sstLegacyNaptanRoleArn,
+            NAPTAN_BUCKET_NAME: naptanBucketName,
+            NAPTAN_BUCKET_KEY: naptanBucketKey,
         } = process.env;
 
         if (!csvBucketName) {
@@ -172,7 +175,12 @@ export const main: Handler = async (event, context) => {
         const roleArn = sourceRoleArn ?? sstSourceRoleArn ?? legacyNaptanRoleArn ?? sstLegacyNaptanRoleArn;
 
         for (const fileName of fileNames) {
-            await processFile(fileName, csvBucketName, roleArn);
+            if (fileName === "Stops.csv" && naptanBucketName && naptanBucketKey) {
+                logger.info(`Using external NaPTAN bucket: ${naptanBucketName}/${naptanBucketKey}`);
+                await processFile("Stops.csv", naptanBucketName, naptanBucketKey, roleArn);
+            } else {
+                await processFile(fileName, csvBucketName, undefined, roleArn);
+            }
         }
     } catch (e) {
         if (e instanceof Error) {

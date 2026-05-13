@@ -37,6 +37,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     const bankHolidaysBucket = createBucket(stack, "cdd-ref-bank-holidays-data", false, [
         { enabled: true, expiration: Duration.days(5) },
     ]);
+    const sourceRoleArn = process.env.SOURCE_ROLE_ARN;
 
     const cleardownDbTask = new LambdaInvoke(stack, "cdd-ref-data-cleardown-db-task", {
         stateName: "Cleardown Database",
@@ -60,10 +61,12 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         }),
     });
 
-    const crossAccountAssumeRolePolicy = new PolicyStatement({
-        actions: ["sts:AssumeRole"],
-        resources: ["arn:aws:iam::390403896175:role/bods-1297-data-landing-zone-cross-account-role"],
-    });
+    const crossAccountAssumeRolePolicy = sourceRoleArn
+        ? new PolicyStatement({
+              actions: ["sts:AssumeRole"],
+              resources: [sourceRoleArn],
+          })
+        : undefined;
 
     const nocRetrieverTask = new LambdaInvoke(stack, "cdd-noc-retriever-task", {
         stateName: "Retrieve NOC Data",
@@ -311,7 +314,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
             environment: {
                 CSV_BUCKET_NAME: csvBucket.bucketName,
-                SOURCE_ROLE_ARN: "arn:aws:iam::390403896175:role/bods-1297-data-landing-zone-cross-account-role",
+                ...(sourceRoleArn ? { SOURCE_ROLE_ARN: sourceRoleArn } : {}),
             },
             permissions: [
                 new PolicyStatement({
@@ -322,7 +325,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
                     actions: ["cloudwatch:PutMetricData"],
                     resources: ["*"],
                 }),
-                crossAccountAssumeRolePolicy,
+                ...(crossAccountAssumeRolePolicy ? [crossAccountAssumeRolePolicy] : []),
             ],
             enableLiveDev: false,
         }),

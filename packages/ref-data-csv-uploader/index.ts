@@ -11,7 +11,7 @@ import { parse } from "papaparse";
 
 const dbClient = getDbClient();
 const fileNames = ["Stops.csv", "NOCLines.csv", "NOCTable.csv", "PublicName.csv"];
-const region = process.env.AWS_REGION ?? "eu-west-2";
+const region = process.env.AWS_REGION;
 
 const getSourceS3Client = (roleArn?: string) => {
     if (!roleArn) {

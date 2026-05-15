@@ -195,7 +195,7 @@ export const main: Handler = async (event, context) => {
                 logger.info(`Using external NaPTAN bucket: ${naptanBucketName}/${naptanBucketKey}`);
                 await processFile("Stops.csv", naptanBucketName, naptanBucketKey, roleArn);
             } else {
-                await processFile(fileName, csvBucketName, undefined, roleArn);
+                await processFile(fileName, csvBucketName);
             }
         }
     } catch (e) {

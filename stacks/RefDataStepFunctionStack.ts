@@ -51,6 +51,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     const bankHolidaysBucket = createBucket(stack, "cdd-ref-bank-holidays-data", false, [
         { enabled: true, expiration: Duration.days(5) },
     ]);
+    const sourceRoleArn = process.env.SOURCE_ROLE_ARN;
 
     const cleardownDbTask = new LambdaInvoke(stack, "cdd-ref-data-cleardown-db-task", {
         stateName: "Cleardown Database",
@@ -73,6 +74,13 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             enableLiveDev: false,
         }),
     });
+
+    const crossAccountAssumeRolePolicy = sourceRoleArn
+        ? new PolicyStatement({
+              actions: ["sts:AssumeRole"],
+              resources: [sourceRoleArn],
+          })
+        : undefined;
 
     const nocRetrieverTask = new LambdaInvoke(stack, "cdd-noc-retriever-task", {
         stateName: "Retrieve NOC Data",
@@ -330,6 +338,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
             environment: {
                 CSV_BUCKET_NAME: csvBucket.bucketName,
+                ...(sourceRoleArn ? { SOURCE_ROLE_ARN: sourceRoleArn } : {}),
                 NAPTAN_BUCKET_NAME: naptanBucketName.value,
                 NAPTAN_BUCKET_REGION: naptanBucketRegion.value,
                 NAPTAN_BUCKET_KEY: naptanBucketKey.value,
@@ -347,10 +356,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
                     actions: ["cloudwatch:PutMetricData"],
                     resources: ["*"],
                 }),
-                new PolicyStatement({
-                    actions: ["sts:AssumeRole"],
-                    resources: [naptanRoleArn.value],
-                }),
+                ...(crossAccountAssumeRolePolicy ? [crossAccountAssumeRolePolicy] : []),
             ],
             enableLiveDev: false,
         }),

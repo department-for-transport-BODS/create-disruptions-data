@@ -101,7 +101,11 @@ export const parseNptgAndUpload = async (nptgString: string) => {
 export const main: Handler = async (event, context) => {
     withLambdaRequestTracker(event ?? {}, context ?? {});
 
-    const { NAPTAN_BUCKET_NAME: naptanBucketName, NAPTAN_ROLE_ARN: naptanRoleArn, NPTG_S3_KEY: nptgS3Key } = process.env;
+    const {
+        NAPTAN_BUCKET_NAME: naptanBucketName,
+        NAPTAN_ROLE_ARN: naptanRoleArn,
+        NPTG_S3_KEY: nptgS3Key,
+    } = process.env;
 
     if (!naptanBucketName) {
         throw new Error("NAPTAN_BUCKET_NAME must be set");

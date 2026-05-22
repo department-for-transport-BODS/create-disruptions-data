@@ -372,7 +372,16 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         lambdaFunction: new Function(stack, "cdd-nptg-uploader-function", {
             functionName: `cdd-nptg-uploader-${stack.stage}`,
             handler: "packages/nptg-uploader/index.main",
-            bind: [dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostSecret, dbPortSecret, naptanBucketName, naptanRoleArn, nptgS3Key],
+            bind: [
+                dbUsernameSecret,
+                dbPasswordSecret,
+                dbNameSecret,
+                dbHostSecret,
+                dbPortSecret,
+                naptanBucketName,
+                naptanRoleArn,
+                nptgS3Key,
+            ],
             vpc,
             vpcSubnets: {
                 subnetType: SubnetType.PRIVATE_WITH_EGRESS,

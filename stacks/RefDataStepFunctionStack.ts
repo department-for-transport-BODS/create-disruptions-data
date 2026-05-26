@@ -43,6 +43,12 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     const nptgS3Key = new Config.Parameter(stack, "NPTG_S3_KEY", {
         value: process.env.NPTG_S3_KEY ?? "",
     });
+    const nptgBucketName = new Config.Parameter(stack, "NPTG_BUCKET_NAME", {
+        value: process.env.NPTG_BUCKET_NAME ?? process.env.NAPTAN_BUCKET_NAME ?? "",
+    });
+    const nptgRoleArn = new Config.Parameter(stack, "NPTG__ARN", {
+        value: process.env.NPTG__ARN ?? process.env.NAPTAN_ROLE_ARN ?? "",
+    });
 
     const csvBucket = createBucket(stack, "cdd-ref-csv-data", false);
     const txcBucket = createBucket(stack, "cdd-ref-txc-data", false, [{ enabled: true, expiration: Duration.days(5) }]);
@@ -378,8 +384,8 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
                 dbNameSecret,
                 dbHostSecret,
                 dbPortSecret,
-                naptanBucketName,
-                naptanRoleArn,
+                nptgBucketName,
+                nptgRoleArn,
                 nptgS3Key,
             ],
             vpc,
@@ -395,14 +401,14 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             runtime: "nodejs22.x",
             logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
             environment: {
-                NAPTAN_BUCKET_NAME: naptanBucketName.value,
-                NAPTAN_ROLE_ARN: naptanRoleArn.value,
+                NPTG_BUCKET_NAME: nptgBucketName.value,
+                NPTG__ARN: nptgRoleArn.value,
                 NPTG_S3_KEY: nptgS3Key.value,
             },
             permissions: [
                 new PolicyStatement({
                     actions: ["s3:GetObject"],
-                    resources: [`arn:aws:s3:::${naptanBucketName.value}/*`],
+                    resources: [`arn:aws:s3:::${nptgBucketName.value}/*`],
                 }),
                 new PolicyStatement({
                     actions: ["cloudwatch:PutMetricData"],

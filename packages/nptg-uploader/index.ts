@@ -101,18 +101,14 @@ export const parseNptgAndUpload = async (nptgString: string) => {
 export const main: Handler = async (event, context) => {
     withLambdaRequestTracker(event ?? {}, context ?? {});
 
-    const {
-        NAPTAN_BUCKET_NAME: naptanBucketName,
-        NAPTAN_ROLE_ARN: naptanRoleArn,
-        NPTG_S3_KEY: nptgS3Key,
-    } = process.env;
+    const { NPTG_BUCKET_NAME: nptgBucketName, NPTG__ARN: nptgRoleArn, NPTG_S3_KEY: nptgS3Key } = process.env;
 
-    if (!naptanBucketName) {
-        throw new Error("NAPTAN_BUCKET_NAME must be set");
+    if (!nptgBucketName) {
+        throw new Error("NPTG_BUCKET_NAME must be set");
     }
 
-    if (!naptanRoleArn) {
-        throw new Error("NAPTAN_ROLE_ARN must be set");
+    if (!nptgRoleArn) {
+        throw new Error("NPTG__ARN must be set");
     }
 
     if (!nptgS3Key) {
@@ -122,7 +118,7 @@ export const main: Handler = async (event, context) => {
     try {
         logger.info("Starting NPTG Uploader");
 
-        const file = await getSourceObject(naptanBucketName, nptgS3Key, naptanRoleArn);
+        const file = await getSourceObject(nptgBucketName, nptgS3Key, nptgRoleArn);
 
         const body = (await file.Body?.transformToString()) || "";
 

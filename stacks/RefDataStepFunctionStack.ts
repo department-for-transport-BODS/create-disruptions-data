@@ -46,8 +46,8 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     const nptgBucketName = new Config.Parameter(stack, "NPTG_BUCKET_NAME", {
         value: process.env.NPTG_BUCKET_NAME ?? process.env.NAPTAN_BUCKET_NAME ?? "",
     });
-    const nptgRoleArn = new Config.Parameter(stack, "NPTG__ARN", {
-        value: process.env.NPTG__ARN ?? process.env.NAPTAN_ROLE_ARN ?? "",
+    const nptgRoleArn = new Config.Parameter(stack, "NPTG_ROLE_ARN", {
+        value: process.env.NPTG_ROLE_ARN ?? process.env.NAPTAN_ROLE_ARN ?? "",
     });
 
     const csvBucket = createBucket(stack, "cdd-ref-csv-data", false);
@@ -402,7 +402,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
             environment: {
                 NPTG_BUCKET_NAME: nptgBucketName.value,
-                NPTG__ARN: nptgRoleArn.value,
+                NPTG_ROLE_ARN: nptgRoleArn.value,
                 NPTG_S3_KEY: nptgS3Key.value,
             },
             permissions: [

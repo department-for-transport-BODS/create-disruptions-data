@@ -101,14 +101,14 @@ export const parseNptgAndUpload = async (nptgString: string) => {
 export const main: Handler = async (event, context) => {
     withLambdaRequestTracker(event ?? {}, context ?? {});
 
-    const { NPTG_BUCKET_NAME: nptgBucketName, NPTG__ARN: nptgRoleArn, NPTG_S3_KEY: nptgS3Key } = process.env;
+    const { NPTG_BUCKET_NAME: nptgBucketName, NPTG_ROLE_ARN: nptgRoleArn, NPTG_S3_KEY: nptgS3Key } = process.env;
 
     if (!nptgBucketName) {
         throw new Error("NPTG_BUCKET_NAME must be set");
     }
 
     if (!nptgRoleArn) {
-        throw new Error("NPTG__ARN must be set");
+        throw new Error("NPTG_ROLE_ARN must be set");
     }
 
     if (!nptgS3Key) {

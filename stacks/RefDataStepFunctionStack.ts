@@ -26,20 +26,6 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     const tndsFtpUsernameSecret = new Config.Secret(stack, "TNDS_FTP_USERNAME");
     const tndsFtpPasswordSecret = new Config.Secret(stack, "TNDS_FTP_PASSWORD");
 
-    // NaPTAN data source details
-    const naptanBucketName = new Config.Parameter(stack, "NAPTAN_BUCKET_NAME", {
-        value: process.env.NAPTAN_BUCKET_NAME ?? "",
-    });
-    const naptanBucketRegion = new Config.Parameter(stack, "NAPTAN_BUCKET_REGION", {
-        value: process.env.NAPTAN_BUCKET_REGION ?? "",
-    });
-    const naptanBucketKey = new Config.Parameter(stack, "NAPTAN_BUCKET_KEY", {
-        value: process.env.NAPTAN_BUCKET_KEY ?? "",
-    });
-    const naptanRoleArn = new Config.Parameter(stack, "NAPTAN_ROLE_ARN", {
-        value: process.env.NAPTAN_ROLE_ARN ?? "",
-    });
-
     const csvBucket = createBucket(stack, "cdd-ref-csv-data", false);
     const txcBucket = createBucket(stack, "cdd-ref-txc-data", false, [{ enabled: true, expiration: Duration.days(5) }]);
     const txcZippedBucket = createBucket(stack, "cdd-ref-txc-zipped-data", false, [
@@ -51,7 +37,6 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     const bankHolidaysBucket = createBucket(stack, "cdd-ref-bank-holidays-data", false, [
         { enabled: true, expiration: Duration.days(5) },
     ]);
-    const sourceRoleArn = process.env.SOURCE_ROLE_ARN;
 
     const cleardownDbTask = new LambdaInvoke(stack, "cdd-ref-data-cleardown-db-task", {
         stateName: "Cleardown Database",
@@ -74,13 +59,6 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             enableLiveDev: false,
         }),
     });
-
-    const crossAccountAssumeRolePolicy = sourceRoleArn
-        ? new PolicyStatement({
-              actions: ["sts:AssumeRole"],
-              resources: [sourceRoleArn],
-          })
-        : undefined;
 
     const nocRetrieverTask = new LambdaInvoke(stack, "cdd-noc-retriever-task", {
         stateName: "Retrieve NOC Data",
@@ -111,7 +89,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         }),
     });
 
-    const _naptanRetrieverTask = new LambdaInvoke(stack, "cdd-naptan-retriever-task", {
+    const naptanRetrieverTask = new LambdaInvoke(stack, "cdd-naptan-retriever-task", {
         stateName: "Retrieve NaPTAN Data",
         lambdaFunction: new Function(stack, "cdd-naptan-retriever-function", {
             functionName: `cdd-naptan-retriever-${stack.stage}`,
@@ -313,17 +291,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         lambdaFunction: new Function(stack, "cdd-csv-ref-data-uploader-function", {
             functionName: `cdd-csv-ref-data-uploader-${stack.stage}`,
             handler: "packages/ref-data-csv-uploader/index.main",
-            bind: [
-                dbUsernameSecret,
-                dbPasswordSecret,
-                dbNameSecret,
-                dbHostSecret,
-                dbPortSecret,
-                naptanBucketName,
-                naptanBucketRegion,
-                naptanBucketKey,
-                naptanRoleArn,
-            ],
+            bind: [dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostSecret, dbPortSecret],
             vpc,
             vpcSubnets: {
                 subnetType: SubnetType.PRIVATE_WITH_EGRESS,
@@ -338,10 +306,6 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
             environment: {
                 CSV_BUCKET_NAME: csvBucket.bucketName,
-                ...(sourceRoleArn ? { SOURCE_ROLE_ARN: sourceRoleArn } : {}),
-                NAPTAN_BUCKET_NAME: naptanBucketName.value,
-                NAPTAN_BUCKET_REGION: naptanBucketRegion.value,
-                NAPTAN_BUCKET_KEY: naptanBucketKey.value,
             },
             permissions: [
                 new PolicyStatement({
@@ -349,14 +313,9 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
                     resources: [`${csvBucket.bucketArn}/*`],
                 }),
                 new PolicyStatement({
-                    actions: ["s3:GetObject"],
-                    resources: [`arn:aws:s3:::${naptanBucketName.value}/*`],
-                }),
-                new PolicyStatement({
                     actions: ["cloudwatch:PutMetricData"],
                     resources: ["*"],
                 }),
-                ...(crossAccountAssumeRolePolicy ? [crossAccountAssumeRolePolicy] : []),
             ],
             enableLiveDev: false,
         }),
@@ -535,7 +494,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         .branch(tndsTxcRetrieverTask)
         .branch(bodsTxcRetrieverTask)
         .branch(nocRetrieverTask)
-        //.branch(naptanRetrieverTask)
+        .branch(naptanRetrieverTask)
         .branch(nptgRetrieverTask)
         .branch(bankHolidaysRetrieverTask);
 

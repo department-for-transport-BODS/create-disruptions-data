@@ -53,9 +53,7 @@ export const getItem = async (
                 : {}),
         };
         const command = new GetObjectCommand(input);
-        const presignClient = s3 as unknown as Parameters<typeof getSignedUrl>[0];
-        const presignCommand = command as unknown as Parameters<typeof getSignedUrl>[1];
-        const url = await getSignedUrl(presignClient, presignCommand, { expiresIn: 3600 });
+        const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
         return url;
     } catch (error) {
         if (error instanceof Error) {

@@ -40,7 +40,14 @@
     "overrides": {
         "react": "18.3.1",
         "react-dom": "18.3.1",
-        "jszip": "3.8.0"
+        "jszip": "3.8.0",
+        "@smithy/types": "4.14.1"
+    },
+    "pnpm": {
+        "overrides": {
+            "fast-xml-parser@>=4.0.0 <5.0.0": ">=4.5.4",
+            "fast-xml-parser@>=5.0.0": ">=5.3.5"
+        }
     },
     "pnpm": {
         "overrides": {
@@ -61,5 +68,10 @@
     "packageManager": "pnpm@9.12.2",
     "engines": {
         "pnpm": "^9.0.0"
+    },
+    "pnpm": {
+        "overrides": {
+            "@smithy/types": "4.14.1"
+        }
     }
 }

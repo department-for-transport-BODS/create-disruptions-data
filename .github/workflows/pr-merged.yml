@@ -108,14 +108,6 @@ jobs:
           MAP_BOX_ACCESS_TOKEN: ${{ secrets.MAP_BOX_ACCESS_TOKEN }}
           SUPPORT_EMAIL: ${{ secrets.SUPPORT_EMAIL }}
           SUPPORT_PHONE: ${{ secrets.SUPPORT_PHONE }}
-          SOURCE_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
-          NAPTAN_BUCKET_NAME: ${{ vars.NAPTAN_BUCKET_NAME }}
-          NAPTAN_BUCKET_REGION: ${{ vars.NAPTAN_BUCKET_REGION }}
-          NAPTAN_BUCKET_KEY: ${{ vars.NAPTAN_BUCKET_KEY }}
-          NAPTAN_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
-          NPTG_BUCKET_NAME: ${{ vars.NAPTAN_BUCKET_NAME }}
-          NPTG_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
-          NPTG_S3_KEY: ${{ vars.NPTG_S3_KEY }}
         run: |
           pnpm run deploy --stage test
 
@@ -174,14 +166,6 @@ jobs:
           MAP_BOX_ACCESS_TOKEN: ${{ secrets.MAP_BOX_ACCESS_TOKEN }}
           SUPPORT_EMAIL: ${{ secrets.SUPPORT_EMAIL }}
           SUPPORT_PHONE: ${{ secrets.SUPPORT_PHONE }}
-          SOURCE_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
-          NAPTAN_BUCKET_NAME: ${{ vars.NAPTAN_BUCKET_NAME }}
-          NAPTAN_BUCKET_REGION: ${{ vars.NAPTAN_BUCKET_REGION }}
-          NAPTAN_BUCKET_KEY: ${{ vars.NAPTAN_BUCKET_KEY }}
-          NAPTAN_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
-          NPTG_BUCKET_NAME: ${{ vars.NAPTAN_BUCKET_NAME }}
-          NPTG_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
-          NPTG_S3_KEY: ${{ vars.NPTG_S3_KEY }}
         run: |
           pnpm run deploy --stage preprod
 

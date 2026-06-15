@@ -13,15 +13,8 @@ const s3 = new S3Client({ region: "eu-west-2" });
 
 const replaceSpecialCharacters = (input: string) => input.replace(/[^a-zA-Z0-9._\-!\*\'\(\)\/]/g, "_");
 
-export const getObject = async (
-    bucket: string,
-    key: string,
-    logger: Logger,
-    client?: S3Client,
-): Promise<GetObjectCommandOutput> => {
+export const getObject = async (bucket: string, key: string, logger: Logger): Promise<GetObjectCommandOutput> => {
     logger.info("Getting item from S3");
-
-    const s3Client = client ?? s3;
 
     try {
         const input = {
@@ -30,7 +23,7 @@ export const getObject = async (
         };
         const command = new GetObjectCommand(input);
 
-        return await s3Client.send(command);
+        return await s3.send(command);
     } catch (error) {
         if (error instanceof Error) {
             throw new Error(`Failed to get item from s3: ${error.stack || ""}`);

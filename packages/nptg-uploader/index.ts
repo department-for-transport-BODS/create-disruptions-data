@@ -88,9 +88,9 @@ export const main: Handler = async (event, context) => {
 
         logger.info("NPTG upload complete");
     } catch (e) {
-        if(e instanceof Error) {
+        if (e instanceof Error) {
             logger.error("There was a problem with the NPTG uploader", e);
         }
-        throw e
+        throw e;
     }
 };

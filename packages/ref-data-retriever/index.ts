@@ -68,21 +68,9 @@ export const main: Handler = async (event, context) => {
         }
     } catch (e) {
         if (e instanceof Error) {
-            logger.error(e);
-
-            return {
-                statusCode: 500,
-                body: JSON.stringify({
-                    error: "There was a problem with the data retriever",
-                }),
-            };
+            logger.error("There was a problem with the data retriever", e);
         }
 
-        return {
-            statusCode: 500,
-            body: JSON.stringify({
-                error: "There was a problem with the data retriever",
-            }),
-        };
+        throw e;
     }
 };

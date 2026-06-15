@@ -3,14 +3,14 @@ import { TreatMissingData } from "aws-cdk-lib/aws-cloudwatch";
 import { SnsAction } from "aws-cdk-lib/aws-cloudwatch-actions";
 import { SubnetType } from "aws-cdk-lib/aws-ec2";
 import { PolicyStatement } from "aws-cdk-lib/aws-iam";
-import { EventType, Bucket as S3Bucket, StorageClass } from "aws-cdk-lib/aws-s3";
+import { Bucket as S3Bucket, EventType, StorageClass } from "aws-cdk-lib/aws-s3";
 import { LambdaDestination } from "aws-cdk-lib/aws-s3-notifications";
 import { Cron, Function, StackContext, use } from "sst/constructs";
 import { DynamoDBStack } from "./DynamoDBStack";
 import { MonitoringStack } from "./MonitoringStack";
 import { RdsStack } from "./RdsStack";
 import { VpcStack } from "./VpcStack";
-import { createBucket, getRefDataApiUrl } from "./utils";
+import { createBucket, getRefDataApiUrl, isUserEnv } from "./utils";
 
 export const SiriGeneratorStack = ({ stack }: StackContext) => {
     const { organisationsTableV2: organisationsTable } = use(DynamoDBStack);
@@ -165,6 +165,7 @@ export const SiriGeneratorStack = ({ stack }: StackContext) => {
         memorySize: 1536,
         runtime: "python3.11",
         enableLiveDev: false,
+        python: { noDocker: isUserEnv(stack.stage) },
     });
 
     const validatorBucket = S3Bucket.fromBucketName(

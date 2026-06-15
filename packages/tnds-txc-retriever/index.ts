@@ -85,7 +85,7 @@ export const main: Handler = async (event, context) => {
         };
     } catch (e) {
         if (e instanceof Error) {
-            logger.error(e, "There was an error retrieving TNDS TXC data");
+            logger.error("There was an error retrieving TNDS TXC data", e);
         }
 
         throw e;

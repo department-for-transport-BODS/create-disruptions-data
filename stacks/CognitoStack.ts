@@ -30,6 +30,7 @@ export const CognitoStack = ({ stack }: StackContext) => {
         memorySize: 256,
         runtime: "python3.13",
         enableLiveDev: false,
+        python: { noDocker: isUserEnv(stack.stage) },
     });
 
     const userPool = new UserPool(stack, "cdd-user-pool", {
@@ -60,10 +61,10 @@ export const CognitoStack = ({ stack }: StackContext) => {
         email:
             stack.stage === "prod"
                 ? UserPoolEmail.withSES({
-                      fromEmail: `noreply@${getDomain(stack.stage)}`,
-                      fromName: "Create Transport Disruption Data Service",
-                      sesVerifiedDomain: getDomain(stack.stage),
-                  })
+                    fromEmail: `noreply@${getDomain(stack.stage)}`,
+                    fromName: "Create Transport Disruption Data Service",
+                    sesVerifiedDomain: getDomain(stack.stage),
+                })
                 : UserPoolEmail.withCognito(),
         selfSignUpEnabled: false,
         accountRecovery: AccountRecovery.EMAIL_ONLY,

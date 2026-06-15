@@ -128,7 +128,7 @@ export const main: Handler = async (event, context) => {
         }
     } catch (e) {
         if (e instanceof Error) {
-            logger.error(e);
+            logger.error("There was a problem with the CSV uploader", e);
         }
 
         throw e;

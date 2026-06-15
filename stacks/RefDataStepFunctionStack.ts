@@ -40,16 +40,6 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         value: process.env.NAPTAN_ROLE_ARN ?? "",
     });
 
-    const nptgS3Key = new Config.Parameter(stack, "NPTG_S3_KEY", {
-        value: process.env.NPTG_S3_KEY ?? "",
-    });
-    const nptgBucketName = new Config.Parameter(stack, "NPTG_BUCKET_NAME", {
-        value: process.env.NPTG_BUCKET_NAME ?? process.env.NAPTAN_BUCKET_NAME ?? "",
-    });
-    const nptgRoleArn = new Config.Parameter(stack, "NPTG_ROLE_ARN", {
-        value: process.env.NPTG_ROLE_ARN ?? process.env.NAPTAN_ROLE_ARN ?? "",
-    });
-
     const csvBucket = createBucket(stack, "cdd-ref-csv-data", false);
     const txcBucket = createBucket(stack, "cdd-ref-txc-data", false, [{ enabled: true, expiration: Duration.days(5) }]);
     const txcZippedBucket = createBucket(stack, "cdd-ref-txc-zipped-data", false, [
@@ -378,16 +368,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         lambdaFunction: new Function(stack, "cdd-nptg-uploader-function", {
             functionName: `cdd-nptg-uploader-${stack.stage}`,
             handler: "packages/nptg-uploader/index.main",
-            bind: [
-                dbUsernameSecret,
-                dbPasswordSecret,
-                dbNameSecret,
-                dbHostSecret,
-                dbPortSecret,
-                nptgBucketName,
-                nptgRoleArn,
-                nptgS3Key,
-            ],
+            bind: [dbUsernameSecret, dbPasswordSecret, dbNameSecret, dbHostSecret, dbPortSecret],
             vpc,
             vpcSubnets: {
                 subnetType: SubnetType.PRIVATE_WITH_EGRESS,
@@ -401,20 +382,17 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             runtime: "nodejs22.x",
             logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
             environment: {
-                NPTG_BUCKET_NAME: nptgBucketName.value,
-                NPTG_ROLE_ARN: nptgRoleArn.value,
-                NPTG_S3_KEY: nptgS3Key.value,
+                NPTG_BUCKET_NAME: nptgBucket.bucketName,
             },
             permissions: [
                 new PolicyStatement({
                     actions: ["s3:GetObject"],
-                    resources: [`arn:aws:s3:::${nptgBucketName.value}/*`],
+                    resources: [`${nptgBucket.bucketArn}/*`],
                 }),
                 new PolicyStatement({
                     actions: ["cloudwatch:PutMetricData"],
                     resources: ["*"],
                 }),
-                ...(crossAccountAssumeRolePolicy ? [crossAccountAssumeRolePolicy] : []),
             ],
             enableLiveDev: false,
         }),

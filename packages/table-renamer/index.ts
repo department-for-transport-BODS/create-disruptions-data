@@ -67,7 +67,7 @@ export const main: Handler = async (event, context) => {
         logger.info("Table Renamer run successfully completed");
     } catch (e) {
         if (e instanceof Error) {
-            logger.error("Error running the Table Renamer", e);
+            logger.error(e, "Error running the Table Renamer");
         }
 
         throw e;

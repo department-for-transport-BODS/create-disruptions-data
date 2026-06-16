@@ -68,7 +68,7 @@ export const main: Handler = async (event, context) => {
         }
     } catch (e) {
         if (e instanceof Error) {
-            logger.error("There was a problem with the data retriever", e);
+            logger.error(e, "There was a problem with the data retriever");
         }
 
         throw e;

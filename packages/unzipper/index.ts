@@ -87,7 +87,7 @@ export const main: S3Handler = async (event, context) => {
         await unzip(object.Body, unzippedBucketName, key);
     } catch (e) {
         if (e instanceof Error) {
-            logger.error(`Error unzipping file at s3://${bucketName}/${key}`, e);
+            logger.error(e, `Error unzipping file at s3://${bucketName}/${key}`);
         }
 
         throw e;

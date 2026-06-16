@@ -344,7 +344,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             environment: {
                 NPTG_BUCKET_NAME: "bods-1297-data-landing-zone",
                 NPTG_S3_KEY: "raw/nptg",
-                NPTG_ROLE_ARN: "arn:aws:iam::390403896175:role/bods-1297-data-landing-zone-cross-account-role" 
+                NPTG_ROLE_ARN: "arn:aws:iam::390403896175:role/bods-1297-data-landing-zone-cross-account-role",
             },
             permissions: [
                 new PolicyStatement({

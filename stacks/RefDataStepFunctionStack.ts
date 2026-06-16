@@ -34,6 +34,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     const nptgBucket = createBucket(stack, "cdd-ref-nptg-data", false, [
         { enabled: true, expiration: Duration.days(5) },
     ]);
+
     const bankHolidaysBucket = createBucket(stack, "cdd-ref-bank-holidays-data", false, [
         { enabled: true, expiration: Duration.days(5) },
     ]);
@@ -341,7 +342,9 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             runtime: "nodejs22.x",
             logRetention: stack.stage === "prod" ? "one_month" : "two_weeks",
             environment: {
-                NPTG_BUCKET_NAME: nptgBucket.bucketName,
+                NPTG_BUCKET_NAME: "bods-1297-data-landing-zone",
+                NPTG_S3_KEY: "raw/nptg",
+                NPTG_ROLE_ARN: "arn:aws:iam::390403896175:role/bods-1297-data-landing-zone-cross-account-role",
             },
             permissions: [
                 new PolicyStatement({

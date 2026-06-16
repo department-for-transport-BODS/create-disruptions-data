@@ -30,6 +30,7 @@ export const CognitoStack = ({ stack }: StackContext) => {
         memorySize: 256,
         runtime: "python3.13",
         enableLiveDev: false,
+        python: { noDocker: isUserEnv(stack.stage) },
     });
 
     const userPool = new UserPool(stack, "cdd-user-pool", {

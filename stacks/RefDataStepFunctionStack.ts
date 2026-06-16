@@ -16,7 +16,7 @@ import { LambdaInvoke } from "aws-cdk-lib/aws-stepfunctions-tasks";
 import { Config, Function, StackContext, use } from "sst/constructs";
 import { RdsStack } from "./RdsStack";
 import { VpcStack } from "./VpcStack";
-import { createBucket } from "./utils";
+import { createBucket, isUserEnv } from "./utils";
 
 export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     const { vpc, lambdaSg } = use(VpcStack);
@@ -353,7 +353,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
                     resources: ["*"],
                 }),
             ],
-            enableLiveDev: false,
+            enableLiveDev: true,
         }),
         outputPath: JsonPath.DISCARD,
     });
@@ -403,6 +403,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
                 }),
             ],
             enableLiveDev: true,
+            python: { noDocker: isUserEnv(stack.stage) },
         }),
         payload: {
             type: InputType.OBJECT,
@@ -442,7 +443,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             timeout: 120,
             memorySize: 1024,
             runtime: "nodejs22.x",
-            enableLiveDev: false,
+            enableLiveDev: true,
             environment: {
                 STAGE: stack.stage,
             },

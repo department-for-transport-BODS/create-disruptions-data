@@ -67,7 +67,7 @@ jobs:
           NAPTAN_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
           NPTG_BUCKET_NAME: ${{ vars.NAPTAN_BUCKET_NAME }}
           NPTG_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
-          NPTG_S3_KEY: ${{ vars.NPTG_S3_KEY }}
+          NPTG_BUCKET_KEY: ${{ vars.NPTG_BUCKET_KEY }}
         run: |
           pnpm run deploy --stage prod
 

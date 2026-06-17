@@ -40,8 +40,8 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         value: process.env.NAPTAN_ROLE_ARN ?? "",
     });
 
-    const nptgS3Key = new Config.Parameter(stack, "NPTG_S3_KEY", {
-        value: process.env.NPTG_S3_KEY ?? "",
+    const nptgS3Key = new Config.Parameter(stack, "NPTG_BUCKET_KEY", {
+        value: process.env.NPTG_BUCKET_KEY ?? "",
     });
     const nptgBucketName = new Config.Parameter(stack, "NPTG_BUCKET_NAME", {
         value: process.env.NPTG_BUCKET_NAME ?? process.env.NAPTAN_BUCKET_NAME ?? "",
@@ -403,7 +403,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             environment: {
                 NPTG_BUCKET_NAME: nptgBucketName.value,
                 NPTG_ROLE_ARN: nptgRoleArn.value,
-                NPTG_S3_KEY: nptgS3Key.value,
+                NPTG_BUCKET_KEY: nptgS3Key.value,
             },
             permissions: [
                 new PolicyStatement({

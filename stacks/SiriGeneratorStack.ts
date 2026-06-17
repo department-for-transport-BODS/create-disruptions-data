@@ -10,7 +10,7 @@ import { DynamoDBStack } from "./DynamoDBStack";
 import { MonitoringStack } from "./MonitoringStack";
 import { RdsStack } from "./RdsStack";
 import { VpcStack } from "./VpcStack";
-import { createBucket, getRefDataApiUrl } from "./utils";
+import { createBucket, getRefDataApiUrl, isUserEnv } from "./utils";
 
 export const SiriGeneratorStack = ({ stack }: StackContext) => {
     const { organisationsTableV2: organisationsTable } = use(DynamoDBStack);
@@ -165,6 +165,7 @@ export const SiriGeneratorStack = ({ stack }: StackContext) => {
         memorySize: 1536,
         runtime: "python3.11",
         enableLiveDev: false,
+        python: { noDocker: isUserEnv(stack.stage) },
     });
 
     const validatorBucket = S3Bucket.fromBucketName(

@@ -66,13 +66,10 @@ export const main: Handler = async (event, context) => {
 
         logger.info("Table Renamer run successfully completed");
     } catch (e) {
-        logger.error(`Error running the Table Renamer ${e}`);
+        if (e instanceof Error) {
+            logger.error(e, "Error running the Table Renamer");
+        }
 
-        return {
-            statusCode: 500,
-            body: JSON.stringify({
-                error: "There was a problem with the table renamer",
-            }),
-        };
+        throw e;
     }
 };

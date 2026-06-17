@@ -71,7 +71,7 @@ const localitiesSchema = z.object({
         })
         .optional(),
     AdministrativeAreaRef: z.string(),
-    NptgDistrictRef: z.string(),
+    NptgDistrictRef: z.string().nullish(),
     SourceLocalityType: z.string(),
     Location: z.object({
         Translation: z.object({
@@ -108,7 +108,7 @@ export const nptgSchema = z
             qualifierDistrictRef: null,
             parentLocalityRef: locality.ParentNptgLocalityRef?._,
             administrativeAreaCode: locality.AdministrativeAreaRef,
-            nptgDistrictCode: locality.NptgDistrictRef,
+            nptgDistrictCode: locality.NptgDistrictRef ?? null,
             sourceLocalityType: locality.SourceLocalityType,
             gridType: null,
             easting: locality.Location.Translation.Easting,

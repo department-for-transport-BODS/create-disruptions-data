@@ -42,10 +42,16 @@
         "react-dom": "18.3.1",
         "jszip": "3.8.0"
     },
+    "pnpm": {
+        "overrides": {
+            "fast-xml-parser@>=4.0.0 <5.0.0": ">=4.5.4",
+            "fast-xml-parser@>=5.0.0": ">=5.3.5"
+        }
+    },
     "dependencies": {
-        "@aws-sdk/client-dynamodb": "^3.830.0",
-        "@aws-sdk/lib-dynamodb": "^3.830.0",
-        "@aws-sdk/util-dynamodb": "^3.830.0",
+        "@aws-sdk/client-dynamodb": "^3.974.0",
+        "@aws-sdk/lib-dynamodb": "^3.974.0",
+        "@aws-sdk/util-dynamodb": "^3.974.0",
         "@create-disruptions-data/shared-ts": "workspace:^",
         "dotenv": "^16.4.5",
         "pino": "^9.6.0",

@@ -12,19 +12,18 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # 6.0.3
         with:
           ref: ${{ github.head_ref }}
 
       - name: Setup Node.js and cache
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # 6.4.0
         with:
           node-version: '20.x'
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # 6.0.8
         name: Install pnpm
         with:
-          version: 9
           run_install: false
 
       - name: Get pnpm store directory
@@ -32,7 +31,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # 5.0.5
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -44,7 +43,7 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: Set up Python 3.12.10
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # 6.2.0
         with:
           python-version: 3.12.10
 
@@ -70,20 +69,20 @@ jobs:
       contents: write
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # 6.0.3
         with:
           ref: ${{ github.head_ref }}
 
       - name: Get Latest Release
         id: latest_release
-        uses: cardinalby/git-get-release-action@v1
+        uses: cardinalby/git-get-release-action@2ab178299eecb253f820dcf2cce11f62be1178f7 # 1.2.6
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           latest: true
 
       - name: Create release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # 3.0.0
         with:
           tag_name: ${{ github.head_ref }}
           name: Hotfix ${{ steps.latest_release.outputs.tag_name }}

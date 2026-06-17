@@ -89,21 +89,8 @@ export const main: Handler = async (event, context) => {
         logger.info("NPTG upload complete");
     } catch (e) {
         if (e instanceof Error) {
-            logger.error(e);
-
-            return {
-                statusCode: 500,
-                body: JSON.stringify({
-                    error: "There was a problem with the nptg uploader",
-                }),
-            };
+            logger.error(e, "There was a problem with the NPTG uploader");
         }
-
-        return {
-            statusCode: 500,
-            body: JSON.stringify({
-                error: "There was a problem with the nptg uploader",
-            }),
-        };
+        throw e;
     }
 };

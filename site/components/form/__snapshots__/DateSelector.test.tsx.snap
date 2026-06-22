@@ -38,10 +38,10 @@ exports[`DateSelector > should render correctly when disabled 1`] = `
                 class="govuk-input govuk-date-input__input govuk-input--width-6 "
                 disabled=""
                 id="field-1-input"
+                inputmode="text"
                 name="field1"
                 placeholder="N/A"
-                type="tel"
-                value="01/01/2024"
+                type="text"
               />
             </div>
           </div>
@@ -116,10 +116,10 @@ exports[`DateSelector > should render correctly with an input 1`] = `
               <input
                 class="govuk-input govuk-date-input__input govuk-input--width-6 "
                 id="field-1-input"
+                inputmode="text"
                 name="field1"
                 placeholder="DD/MM/YYYY"
-                type="tel"
-                value="01/01/2024"
+                type="text"
               />
             </div>
           </div>
@@ -208,10 +208,10 @@ exports[`DateSelector > should render correctly with errors 1`] = `
                 aria-describedby="field1-error"
                 class="govuk-input govuk-date-input__input govuk-input--width-6  govuk-input--error"
                 id="field-1-input"
+                inputmode="text"
                 name="field1"
                 placeholder="DD/MM/YYYY"
-                type="tel"
-                value=""
+                type="text"
               />
             </div>
           </div>
@@ -288,10 +288,10 @@ exports[`DateSelector > should render correctly with hint hidden 1`] = `
               <input
                 class="govuk-input govuk-date-input__input govuk-input--width-6 "
                 id="field-1-input"
+                inputmode="text"
                 name="field1"
                 placeholder="DD/MM/YYYY"
-                type="tel"
-                value=""
+                type="text"
               />
             </div>
           </div>
@@ -368,10 +368,10 @@ exports[`DateSelector > should render correctly with no input 1`] = `
               <input
                 class="govuk-input govuk-date-input__input govuk-input--width-6 "
                 id="field-1-input"
+                inputmode="text"
                 name="field1"
                 placeholder="DD/MM/YYYY"
-                type="tel"
-                value=""
+                type="text"
               />
             </div>
           </div>

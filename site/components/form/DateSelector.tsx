@@ -5,10 +5,10 @@ import { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import { DatePicker, PickersDay, PickersDayProps } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { Dayjs } from "dayjs";
 import kebabCase from "lodash/kebabCase";
 import React, { ReactElement, useEffect, useState } from "react";
 import { ErrorInfo, FormBase } from "../../interfaces";
-import { convertDateTimeToFormat } from "../../utils/dates";
 import FormElementWrapper, { FormGroupWrapper } from "./FormElementWrapper";
 
 interface DateSelectorProps<T> extends FormBase<T> {
@@ -26,17 +26,42 @@ interface DateSelectorProps<T> extends FormBase<T> {
     errorAlign?: boolean;
 }
 
-const inputBox = <T extends object>(
-    inputRef: React.Ref<HTMLInputElement> | undefined,
-    inputProps: InputBaseComponentProps | undefined,
-    InputProps: Partial<FilledInputProps> | Partial<OutlinedInputProps> | undefined,
-    inputId: string,
-    inputName: Extract<keyof T, string>,
-    errors: ErrorInfo[],
-    disabled: boolean,
-    minWidth?: string,
-    inputDivWidth?: string,
-) => (
+// Stable component for customised day cells in the calendar popup (v7 slots.day)
+const CustomPickersDay = (props: PickersDayProps<Dayjs>) => (
+    <PickersDay
+        {...props}
+        classes={{
+            selected: "!bg-govBlue",
+            dayWithMargin:
+                "focus:!border focus:!border-solid hover:!border hover:!border-solid hover:!border-govBlue focus:!border-govYellow",
+        }}
+    />
+);
+
+interface DatePickerTextFieldProps {
+    inputRef?: React.Ref<HTMLInputElement>;
+    inputProps?: InputBaseComponentProps;
+    InputProps?: Partial<FilledInputProps> | Partial<OutlinedInputProps>;
+    inputId: string;
+    inputName: string;
+    errors: ErrorInfo[];
+    disabled: boolean;
+    minWidth?: string;
+    inputDivWidth?: string;
+}
+
+// Stable component for the govuk-styled date input (v7 slots.textField, replaces v5 renderInput)
+const DatePickerTextField = ({
+    inputRef,
+    inputProps,
+    InputProps,
+    inputId,
+    inputName,
+    errors,
+    disabled,
+    minWidth,
+    inputDivWidth,
+}: DatePickerTextFieldProps) => (
     <div className="govuk-date-input flex flex-row [&_.MuiSvgIcon-root]:fill-govBlue">
         <div className={`govuk-date-input__item govuk-!-margin-right-0 ${inputDivWidth ? inputDivWidth : ""}`}>
             <FormElementWrapper errors={errors} errorId={inputName} errorClass="govuk-input--error">
@@ -56,21 +81,6 @@ const inputBox = <T extends object>(
     </div>
 );
 
-const renderWeekPickerDay = (
-    _date: Date,
-    _selectedDates: Array<Date | null>,
-    pickersDayProps: PickersDayProps<Date>,
-) => (
-    <PickersDay
-        {...pickersDayProps}
-        classes={{
-            selected: "!bg-govBlue",
-            dayWithMargin:
-                "focus:!border focus:!border-solid hover:!border hover:!border-solid hover:!border-govBlue focus:!border-govYellow",
-        }}
-    />
-);
-
 const DateSelector = <T extends object>({
     value,
     display,
@@ -88,8 +98,8 @@ const DateSelector = <T extends object>({
     inputDivWidth,
     errorAlign = false,
 }: DateSelectorProps<T>): ReactElement<any> => {
-    const [dateValue, setDateValue] = useState<Date | null>(
-        !!disabled || !value ? null : getFormattedDate(value).toDate(),
+    const [dateValue, setDateValue] = useState<Dayjs | null>(
+        !!disabled || !value ? null : getFormattedDate(value),
     );
     const [errors, setErrors] = useState<ErrorInfo[]>(initialErrors);
     const inputId = suffixId ? `${kebabCase(inputName + suffixId)}` : kebabCase(inputName);
@@ -108,7 +118,7 @@ const DateSelector = <T extends object>({
     }, [resetError]);
 
     useEffect(() => {
-        setDateValue(value ? getFormattedDate(value).toDate() : null);
+        setDateValue(value ? getFormattedDate(value) : null);
     }, [value]);
 
     useEffect(() => {
@@ -132,32 +142,32 @@ const DateSelector = <T extends object>({
                 <div className="flex flex-col mt-auto">
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DatePicker
-                            renderDay={renderWeekPickerDay}
+                            slots={{
+                                day: CustomPickersDay,
+                                textField: DatePickerTextField as React.ElementType,
+                            }}
+                            slotProps={{
+                                textField: {
+                                    inputId,
+                                    inputName: inputName as string,
+                                    errors,
+                                    disabled,
+                                    minWidth,
+                                    inputDivWidth,
+                                } as any,
+                            }}
                             value={dateValue}
-                            onChange={(newValue) => {
+                            onChange={(newValue: Dayjs | null) => {
                                 setDateValue(newValue);
                                 if (newValue) {
-                                    stateUpdater(convertDateTimeToFormat(newValue, "DD/MM/YYYY"), inputName);
+                                    stateUpdater(newValue.format("DD/MM/YYYY"), inputName);
                                 } else {
                                     stateUpdater("", inputName);
                                 }
                             }}
                             onAccept={() => setErrors([])}
-                            renderInput={({ inputRef, inputProps, InputProps }) => {
-                                return inputBox(
-                                    inputRef,
-                                    inputProps,
-                                    InputProps,
-                                    inputId,
-                                    inputName,
-                                    errors,
-                                    disabled,
-                                    minWidth,
-                                    inputDivWidth,
-                                );
-                            }}
+                            format="DD/MM/YYYY"
                             disablePast={disablePast}
-                            inputFormat="DD/MM/YYYY"
                             disabled={disabled}
                             aria-describedby={hint ? `${inputName}-hint` : undefined}
                         />

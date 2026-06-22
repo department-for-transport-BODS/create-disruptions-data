@@ -820,7 +820,6 @@ exports[`pages > CreateConsequenceServices > should render correctly when global
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -1923,12 +1922,10 @@ exports[`pages > CreateConsequenceServices > should render correctly with errors
           <input
             name="disruptionId"
             type="hidden"
-            value=""
           />
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -2971,7 +2968,6 @@ exports[`pages > CreateConsequenceServices > should render correctly with inputs
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -4019,7 +4015,6 @@ exports[`pages > CreateConsequenceServices > should render correctly with inputs
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -5067,7 +5062,6 @@ exports[`pages > CreateConsequenceServices > should render correctly with inputs
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -5822,7 +5816,6 @@ exports[`pages > CreateConsequenceServices > should render correctly with no inp
                       name="disruptionDelay"
                       placeholder=""
                       type="text"
-                      value=""
                     />
                   </div>
                 </div>
@@ -5981,12 +5974,10 @@ exports[`pages > CreateConsequenceServices > should render correctly with no inp
           <input
             name="disruptionId"
             type="hidden"
-            value=""
           />
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -7029,7 +7020,6 @@ exports[`pages > CreateConsequenceServices > should render correctly with query 
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"

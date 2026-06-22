@@ -611,12 +611,10 @@ exports[`pages > CreateConsequenceStops > should render correctly with errors an
           <input
             name="disruptionId"
             type="hidden"
-            value=""
           />
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -1415,7 +1413,6 @@ exports[`pages > CreateConsequenceStops > should render correctly with inputs 1`
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -2219,7 +2216,6 @@ exports[`pages > CreateConsequenceStops > should render correctly with inputs an
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -2866,7 +2862,6 @@ exports[`pages > CreateConsequenceStops > should render correctly with no inputs
                       name="disruptionDelay"
                       placeholder=""
                       type="text"
-                      value=""
                     />
                   </div>
                 </div>
@@ -2943,12 +2938,10 @@ exports[`pages > CreateConsequenceStops > should render correctly with no inputs
           <input
             name="disruptionId"
             type="hidden"
-            value=""
           />
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -3747,7 +3740,6 @@ exports[`pages > CreateConsequenceStops > should render correctly with query par
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"

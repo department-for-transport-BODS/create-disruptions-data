@@ -486,12 +486,10 @@ exports[`pages > CreateDisruption > should render correctly with inputs 1`] = `
           <input
             name="validity1"
             type="hidden"
-            value=""
           />
           <input
             name="validity1"
             type="hidden"
-            value=""
           />
           <div
             class="flex pb-8 items-end"
@@ -1356,12 +1354,10 @@ exports[`pages > CreateDisruption > should render correctly with inputs 1`] = `
         <input
           name="displayId"
           type="hidden"
-          value=""
         />
         <input
           name="consequenceIndex"
           type="hidden"
-          value=""
         />
         <button
           class="govuk-button"
@@ -1765,7 +1761,6 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
                   maxlength="100"
                   name="summary"
                   type="text"
-                  value=""
                 />
               </div>
             </div>
@@ -1818,7 +1813,6 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
                   maxlength="250"
                   name="associatedLink"
                   type="text"
-                  value=""
                 />
               </div>
             </div>
@@ -2887,17 +2881,14 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
         <input
           name="id"
           type="hidden"
-          value=""
         />
         <input
           name="displayId"
           type="hidden"
-          value=""
         />
         <input
           name="consequenceIndex"
           type="hidden"
-          value=""
         />
         <button
           class="govuk-button"
@@ -3624,12 +3615,10 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
           <input
             name="validity1"
             type="hidden"
-            value=""
           />
           <input
             name="validity1"
             type="hidden"
-            value=""
           />
           <div
             class="flex pb-8 items-end"
@@ -4494,12 +4483,10 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
         <input
           name="displayId"
           type="hidden"
-          value=""
         />
         <input
           name="consequenceIndex"
           type="hidden"
-          value=""
         />
         <button
           class="govuk-button"

@@ -82,7 +82,6 @@ exports[`Login > should render correctly when there are no inputs 1`] = `
                     maxlength="100"
                     name="email"
                     type="text"
-                    value=""
                   />
                 </div>
               </div>
@@ -109,7 +108,6 @@ exports[`Login > should render correctly when there are no inputs 1`] = `
                     maxlength="100"
                     name="password"
                     type="password"
-                    value=""
                   />
                 </div>
               </div>

@@ -83,7 +83,6 @@ exports[`AddOperator > should render correctly when there are no inputs 1`] = `
                     maxlength="100"
                     name="operatorName"
                     type="text"
-                    value=""
                   />
                 </div>
               </div>

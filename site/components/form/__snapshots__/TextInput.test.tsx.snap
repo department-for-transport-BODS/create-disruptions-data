@@ -55,7 +55,6 @@ exports[`TextInput > should render correctly if input is disabled 1`] = `
           maxlength="50"
           name="field1"
           type="text"
-          value=""
         />
       </div>
     </div>
@@ -87,7 +86,6 @@ exports[`TextInput > should render correctly with errors 1`] = `
           maxlength="50"
           name="field1"
           type="text"
-          value=""
         />
       </div>
     </div>
@@ -119,7 +117,6 @@ exports[`TextInput > should render correctly with no errors 1`] = `
           maxlength="50"
           name="field1"
           type="text"
-          value=""
         />
       </div>
     </div>

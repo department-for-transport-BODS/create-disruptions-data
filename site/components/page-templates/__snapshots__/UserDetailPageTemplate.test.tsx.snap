@@ -83,7 +83,6 @@ exports[`UserDetailPageTemplate > should render the add-user page correctly 1`] 
                     maxlength="100"
                     name="givenName"
                     type="text"
-                    value=""
                   />
                 </div>
               </div>
@@ -110,7 +109,6 @@ exports[`UserDetailPageTemplate > should render the add-user page correctly 1`] 
                     maxlength="100"
                     name="familyName"
                     type="text"
-                    value=""
                   />
                 </div>
               </div>
@@ -137,7 +135,6 @@ exports[`UserDetailPageTemplate > should render the add-user page correctly 1`] 
                     maxlength="100"
                     name="email"
                     type="text"
-                    value=""
                   />
                 </div>
               </div>
@@ -795,12 +792,10 @@ exports[`UserDetailPageTemplate > should render the edit-user page correctly 1`]
             <input
               name="username"
               type="hidden"
-              value=""
             />
             <input
               name="initialGroup"
               type="hidden"
-              value=""
             />
             <button
               class="govuk-button mt-8 mr-5"

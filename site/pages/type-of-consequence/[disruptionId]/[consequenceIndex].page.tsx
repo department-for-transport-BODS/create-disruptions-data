@@ -30,7 +30,7 @@ export interface ConsequenceTypePageProps extends PageState<Partial<ConsequenceT
     enableCancellationsFeatureFlag?: boolean;
 }
 
-const TypeOfConsequence = (props: ConsequenceTypePageProps): ReactElement => {
+const TypeOfConsequence = (props: ConsequenceTypePageProps): ReactElement<any> => {
     const [pageState, setPageState] = useState(props);
 
     const stateUpdater = getStateUpdater(setPageState, pageState);

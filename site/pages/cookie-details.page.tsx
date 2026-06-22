@@ -5,7 +5,7 @@ import { TwoThirdsLayout } from "../components/layout/Layout";
 const title = "Cookie details - Create Transport Disruption Data Service";
 const description = "Cookie details page for the Create Transport Disruption Data Service";
 
-const Contact = (): ReactElement => {
+const Contact = (): ReactElement<any> => {
     return (
         <TwoThirdsLayout title={title} description={description}>
             <h1 className="govuk-heading-xl">Details about cookies on the Create Transport Disruption Data Service</h1>

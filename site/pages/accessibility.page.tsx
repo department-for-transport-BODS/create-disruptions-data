@@ -4,7 +4,7 @@ import { BaseLayout } from "../components/layout/Layout";
 const title = "Accessibility - Create Transport Disruption Data Service";
 const description = "Accessibility page for the Create Transport Disruption Data Service";
 
-const Accessibility = (): ReactElement => {
+const Accessibility = (): ReactElement<any> => {
     return (
         <BaseLayout title={title} description={description}>
             <h1 className="govuk-heading-l">

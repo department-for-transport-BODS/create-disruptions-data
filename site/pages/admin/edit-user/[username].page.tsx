@@ -20,7 +20,7 @@ export interface EditUserPageProps extends PageState<Partial<EditUserSchema>> {
     operatorsForOrg?: OperatorOrgSchema[];
 }
 
-const EditUser = (props: EditUserPageProps): ReactElement => {
+const EditUser = (props: EditUserPageProps): ReactElement<any> => {
     const [pageState, setPageState] = useState(props);
 
     return (

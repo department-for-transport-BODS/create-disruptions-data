@@ -5,7 +5,7 @@ import { TwoThirdsLayout } from "../components/layout/Layout";
 const title = "Error - Create Transport Disruption Data Service";
 const description = "404 page for the Create Transport Disruption Data Service";
 
-const Error = (): ReactElement => (
+const Error = (): ReactElement<any> => (
     <TwoThirdsLayout title={title} description={description}>
         <div>
             <h1 className="govuk-heading-l">Page not found</h1>

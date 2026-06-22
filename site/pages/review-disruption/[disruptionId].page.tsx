@@ -58,7 +58,7 @@ const ReviewDisruption = ({
     operatorOrgId,
     isOperatorUser,
     enableCancellationsFeatureFlag = false,
-}: ReviewDisruptionProps): ReactElement => {
+}: ReviewDisruptionProps): ReactElement<any> => {
     const hasInitialised = useRef(false);
     const [popUpState, setPopUpState] = useState<{ name: string; hiddenInputs: { name: string; value: string }[] }>();
     const [socialMediaPostPopUpState, setSocialMediaPostPopUpState] = useState<{

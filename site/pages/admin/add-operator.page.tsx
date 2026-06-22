@@ -27,7 +27,7 @@ export interface AddOperatorPageProps extends PageState<Partial<AddOperatorSchem
     allOperatorsData?: Pick<Operator, "id" | "operatorPublicName" | "nocCode">[];
 }
 
-const AddOperator = (props: AddOperatorPageProps): ReactElement => {
+const AddOperator = (props: AddOperatorPageProps): ReactElement<any> => {
     const [pageState, setPageState] = useState(props);
     const [selectedOperator, setSelectedOperator] = useState<SingleValue<Operator>>(null);
     const [operatorSearchInput, setOperatorsSearchInput] = useState<string>("");

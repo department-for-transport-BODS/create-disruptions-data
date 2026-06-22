@@ -17,7 +17,7 @@ export interface AddUserPageProps extends PageState<Partial<AddUserSchema>> {
     operatorsForOrg?: OperatorOrgSchema[];
 }
 
-const AddUser = (props: AddUserPageProps): ReactElement => {
+const AddUser = (props: AddUserPageProps): ReactElement<any> => {
     const [pageState, setPageState] = useState(props);
 
     return (

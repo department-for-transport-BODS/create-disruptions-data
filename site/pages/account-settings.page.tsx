@@ -33,7 +33,7 @@ const AccountSettings = ({
     streetManagerPreference,
     operator,
     showCoach = false,
-}: AccountSettingsProps): ReactElement => {
+}: AccountSettingsProps): ReactElement<any> => {
     const [mode, setMode] = useState<ModeType>(sessionWithOrg.mode);
     const [errors, setErrors] = useState<ErrorInfo[]>([]);
     const [disruptionApprovalEmailPreference, setDisruptionApprovalEmailPreference] =

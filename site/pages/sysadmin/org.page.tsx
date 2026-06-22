@@ -25,7 +25,7 @@ export interface ManageOrgProps extends Organisation {
     orgAdminAreas: AdminArea[];
 }
 
-const ManageOrgs = (props: PageState<Partial<ManageOrgProps>>): ReactElement => {
+const ManageOrgs = (props: PageState<Partial<ManageOrgProps>>): ReactElement<any> => {
     const [pageState, setPageState] = useState<PageState<Partial<ManageOrgProps>>>(props);
     const stateUpdater = getStateUpdater(setPageState, pageState);
     const [searchInput, setSearchInput] = useState("");

@@ -28,7 +28,7 @@ const DeleteDisruptionButton = ({
     buttonClasses,
     isTemplate,
     returnPath = "",
-}: DeleteDisruptionButtonProps): ReactElement | null => {
+}: DeleteDisruptionButtonProps): ReactElement<any> | null => {
     const [showDeleteModal, setShowDeleteModal] = useState<boolean | undefined>(false);
 
     if (!csrfToken || !disruptionId) {

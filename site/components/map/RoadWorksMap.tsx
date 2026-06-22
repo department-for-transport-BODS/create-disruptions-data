@@ -60,7 +60,7 @@ const roadworkLayer: SymbolLayer = {
     },
 };
 
-const Map = ({ initialViewState, style, mapStyle, roadworks }: MapProps): ReactElement | null => {
+const Map = ({ initialViewState, style, mapStyle, roadworks }: MapProps): ReactElement<any> | null => {
     const mapboxAccessToken = process.env.MAP_BOX_ACCESS_TOKEN;
 
     const mapRef = useRef<MapRef>(null);

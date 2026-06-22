@@ -264,7 +264,7 @@ const createPageNumbers = (
     return pageNumbers;
 };
 
-const PageNumbers = ({ currentPage, numberOfPages, setCurrentPage }: PageNumbersProps): ReactElement =>
+const PageNumbers = ({ currentPage, numberOfPages, setCurrentPage }: PageNumbersProps): ReactElement<any> =>
     numberOfPages <= 1 ? (
         <></>
     ) : (

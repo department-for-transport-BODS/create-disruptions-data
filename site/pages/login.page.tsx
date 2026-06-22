@@ -17,7 +17,7 @@ const description = "Login page for the Create Transport Disruptions Service";
 
 export interface LoginPageProps extends PageState<Partial<LoginSchema>> {}
 
-const Login = (props: LoginPageProps): ReactElement => {
+const Login = (props: LoginPageProps): ReactElement<any> => {
     const [pageState, setPageState] = useState(props);
 
     const stateUpdater = getStateUpdater(setPageState, pageState);

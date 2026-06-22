@@ -8,7 +8,7 @@ import { getSession } from "../utils/apiUtils/auth";
 const title = "Disruption Not Found - Create Transport Disruption Data Service";
 const description = "Disruption Not Found page for the Create Transport Disruption Data Service";
 
-const DisruptionNotFound = ({ isTemplate }: { isTemplate: boolean }): ReactElement => (
+const DisruptionNotFound = ({ isTemplate }: { isTemplate: boolean }): ReactElement<any> => (
     <TwoThirdsLayout title={title} description={description}>
         <div>
             <h1 className="govuk-heading-l">{`${isTemplate ? "Template" : "Disruption"} not found`}</h1>

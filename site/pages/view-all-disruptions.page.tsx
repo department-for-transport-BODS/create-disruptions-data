@@ -18,7 +18,7 @@ const ViewAllDisruptions = ({
     orgId,
     showUnderground = false,
     showCoach = false,
-}: ViewAllContentProps): ReactElement => {
+}: ViewAllContentProps): ReactElement<any> => {
     return (
         <BaseLayout title={title} description={description}>
             <ViewAllContents

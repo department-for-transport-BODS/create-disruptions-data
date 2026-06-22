@@ -4,7 +4,7 @@ import { TwoThirdsLayout } from "../components/layout/Layout";
 const title = "Changelog - Create Transport Disruption Data Service";
 const description = "Changelog page for the Create Transport Disruption Data Service";
 
-const Changelog = (): ReactElement => {
+const Changelog = (): ReactElement<any> => {
     return (
         <TwoThirdsLayout title={title} description={description}>
             <h1 className="govuk-heading-xl">Service Changelog</h1>

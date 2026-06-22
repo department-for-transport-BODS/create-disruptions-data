@@ -48,7 +48,7 @@ const arrayDateFields = ["disruptionStartDate", "disruptionEndDate", "publishSta
 const arrayTimeFields = ["disruptionStartTime", "publishStartTime"];
 const arrayEndTimeFields = ["disruptionEndTime", "publishEndTime"];
 
-const CreateDisruption = (props: DisruptionPageProps): ReactElement => {
+const CreateDisruption = (props: DisruptionPageProps): ReactElement<any> => {
     const initialValidity: Validity = {
         disruptionStartDate: props.inputs.disruptionStartDate || "",
         disruptionEndDate: props.inputs.disruptionEndDate || "",

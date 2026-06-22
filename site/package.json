@@ -22,7 +22,6 @@
     "@aws-sdk/client-ssm": "^3.974.0",
     "@aws-sdk/s3-request-presigner": "^3.974.0",
     "@create-disruptions-data/shared-ts": "workspace:^",
-    "@edge-csrf/nextjs": "^2.2.2",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -51,13 +50,13 @@
     "lodash": "^4.17.21",
     "mapbox-gl": "^2.13.0",
     "microdiff": "^1.4.0",
-    "next": "^15.1.0",
+    "next": "16.0.0",
     "nookies": "^2.5.2",
     "papaparse": "^5.4.1",
     "proj4": "^2.10.0",
-    "react": "^19.0.0",
+    "react": "19.2.7",
     "react-accessible-dropdown-menu-hook": "^4.0.0",
-    "react-dom": "^19.0.0",
+    "react-dom": "19.2.7",
     "react-map-gl": "^7.0.21",
     "react-select": "^5.8.0",
     "twitter-api-v2": "^1.15.1",
@@ -87,8 +86,8 @@
     "@types/nodemailer": "^7.0.4",
     "@types/papaparse": "^5.3.7",
     "@types/proj4": "^2.5.5",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
     "@types/uuid": "^9.0.0",
     "@types/wellknown": "^0.5.8",
     "@vitejs/plugin-react": "^4.3.3",
@@ -106,5 +105,10 @@
     "vitest": "^3.0.9",
     "winston": "^3.9.0"
   },
-  "pnpm": {}
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.2.17",
+      "@types/react-dom": "19.2.3"
+    }
+  }
 }

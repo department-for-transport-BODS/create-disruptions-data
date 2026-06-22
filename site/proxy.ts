@@ -7,7 +7,7 @@ import {
     CognitoIdentityProviderClient,
 } from "@aws-sdk/client-cognito-identity-provider";
 import { UserGroups } from "@create-disruptions-data/shared-ts/enums";
-import { CsrfError, createCsrfProtect } from "@edge-csrf/nextjs";
+import { CSRF_COOKIE_NAME, CSRF_HEADER, CsrfError, createCsrfToken, validateCsrfRequest } from "./utils/csrf";
 import * as jose from "jose";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
@@ -100,23 +100,6 @@ const globalSignOut = async (username: string): Promise<void> => {
     }
 };
 
-const csrfProtect = createCsrfProtect({
-    cookie: {
-        secure: process.env.NODE_ENV === "production",
-        name: "_csrf",
-        sameSite: "lax",
-    },
-    token: {
-        value: async (req) => {
-            const queryCsrf = req.url.match(/_csrf=(.[^&]*)/)?.[1];
-
-            return queryCsrf
-                ? decodeURIComponent(queryCsrf)
-                : (await req.formData()).get("csrf_token")?.toString() ?? "";
-        },
-    },
-});
-
 const unauthenticatedRoutes = [
     "/login",
     "/api/login",
@@ -159,21 +142,30 @@ const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.COGNITO_ISSUER ?? ""
     timeoutDuration: 10000,
 });
 
-export async function middleware(request: NextRequest) {
-    const response = NextResponse.next();
-
+export async function proxy(request: NextRequest) {
     const domain = process.env.DOMAIN_NAME;
 
-    // csrf protection
+    // CSRF: validate mutating requests before doing anything else
     try {
-        await csrfProtect(request, response);
+        await validateCsrfRequest(request);
     } catch (err) {
         if (err instanceof CsrfError) {
             return new NextResponse("invalid csrf token", { status: 403 });
         }
-
         throw err;
     }
+
+    // CSRF: generate a fresh signed token and forward it to getServerSideProps via request headers
+    const csrf = await createCsrfToken(request);
+    const forwardedHeaders = new Headers(request.headers);
+    forwardedHeaders.set(CSRF_HEADER, csrf.token);
+    const response = NextResponse.next({ request: { headers: forwardedHeaders } });
+    response.cookies.set(CSRF_COOKIE_NAME, csrf.cookieValue, {
+        httpOnly: true,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        path: "/",
+    });
 
     if (
         request.nextUrl.pathname &&

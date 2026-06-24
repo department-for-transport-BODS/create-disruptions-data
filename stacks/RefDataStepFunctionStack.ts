@@ -50,6 +50,19 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
         value: process.env.NPTG_ROLE_ARN ?? process.env.NAPTAN_ROLE_ARN ?? "",
     });
 
+    const nocBucketName = new Config.Parameter(stack, "NOC_BUCKET_NAME", {
+        value: process.env.NOC_BUCKET_NAME ?? "",
+    });
+    const nocBucketRegion = new Config.Parameter(stack, "NOC_BUCKET_REGION", {
+        value: process.env.NOC_BUCKET_REGION ?? "",
+    });
+    const nocBucketKey = new Config.Parameter(stack, "NOC_BUCKET_KEY", {
+        value: process.env.NOC_BUCKET_KEY ?? "",
+    });
+    const nocRoleArn = new Config.Parameter(stack, "NOC_ROLE_ARN", {
+        value: process.env.NOC_ROLE_ARN ?? "",
+    });
+
     const csvBucket = createBucket(stack, "cdd-ref-csv-data", false);
     const txcBucket = createBucket(stack, "cdd-ref-txc-data", false, [{ enabled: true, expiration: Duration.days(5) }]);
     const txcZippedBucket = createBucket(stack, "cdd-ref-txc-zipped-data", false, [

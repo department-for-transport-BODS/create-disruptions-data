@@ -105,7 +105,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
           })
         : undefined;
 
-    const nocRetrieverTask = new LambdaInvoke(stack, "cdd-noc-retriever-task", {
+    const _nocRetrieverTask = new LambdaInvoke(stack, "cdd-noc-retriever-task", {
         stateName: "Retrieve NOC Data",
         lambdaFunction: new Function(stack, "cdd-noc-retriever-function", {
             functionName: `cdd-noc-retriever-${stack.stage}`,
@@ -346,6 +346,10 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
                 naptanBucketRegion,
                 naptanBucketKey,
                 naptanRoleArn,
+                nocBucketName,
+                nocBucketRegion,
+                nocBucketKey,
+                nocRoleArn,
             ],
             vpc,
             vpcSubnets: {
@@ -365,6 +369,9 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
                 NAPTAN_BUCKET_NAME: naptanBucketName.value,
                 NAPTAN_BUCKET_REGION: naptanBucketRegion.value,
                 NAPTAN_BUCKET_KEY: naptanBucketKey.value,
+                NOC_BUCKET_NAME: nocBucketName.value,
+                NOC_BUCKET_REGION: nocBucketRegion.value,
+                NOC_BUCKET_KEY: nocBucketKey.value,
             },
             permissions: [
                 new PolicyStatement({
@@ -374,6 +381,10 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
                 new PolicyStatement({
                     actions: ["s3:GetObject"],
                     resources: [`arn:aws:s3:::${naptanBucketName.value}/*`],
+                }),
+                new PolicyStatement({
+                    actions: ["s3:GetObject"],
+                    resources: [`arn:aws:s3:::${nocBucketName.value}/*`],
                 }),
                 new PolicyStatement({
                     actions: ["cloudwatch:PutMetricData"],
@@ -570,7 +581,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
     })
         .branch(tndsTxcRetrieverTask)
         .branch(bodsTxcRetrieverTask)
-        .branch(nocRetrieverTask)
+        //.branch(nocRetrieverTask)
         //.branch(naptanRetrieverTask)
         .branch(nptgRetrieverTask)
         .branch(bankHolidaysRetrieverTask);

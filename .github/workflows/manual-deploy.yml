@@ -81,5 +81,9 @@ jobs:
           NPTG_BUCKET_NAME: ${{ vars.NAPTAN_BUCKET_NAME }}
           NPTG_ROLE_ARN: ${{ vars.NAPTAN_ROLE_ARN }}
           NPTG_BUCKET_KEY: ${{ vars.NPTG_BUCKET_KEY }}
+          NOC_BUCKET_NAME: ${{ vars.NOC_BUCKET_NAME }}
+          NOC_BUCKET_REGION: ${{ vars.NOC_BUCKET_REGION }}
+          NOC_BUCKET_KEY: ${{ vars.NOC_BUCKET_KEY }}
+          NOC_ROLE_ARN: ${{ vars.NOC_ROLE_ARN }}
         run: |
           pnpm run deploy --stage ${{ inputs.stage }}

@@ -7,7 +7,6 @@ import {
     CognitoIdentityProviderClient,
 } from "@aws-sdk/client-cognito-identity-provider";
 import { UserGroups } from "@create-disruptions-data/shared-ts/enums";
-import { CsrfError, createCsrfProtect } from "@edge-csrf/nextjs";
 import * as jose from "jose";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
@@ -16,11 +15,14 @@ import {
     COOKIES_ID_TOKEN,
     COOKIES_LOGIN_REDIRECT,
     COOKIES_REFRESH_TOKEN,
+    COOKIE_CSRF,
     DASHBOARD_PAGE_PATH,
+    ERROR_PATH,
     LOGIN_PAGE_PATH,
     SOCIAL_MEDIA_ACCOUNTS_PAGE_PATH,
     SYSADMIN_MANAGE_ORGANISATIONS_PAGE_PATH,
 } from "./constants";
+import { CsrfError, createCsrfProtect } from "./utils/csrf";
 
 const {
     COGNITO_CLIENT_ID: cognitoClientId,
@@ -169,7 +171,12 @@ export async function middleware(request: NextRequest) {
         await csrfProtect(request, response);
     } catch (err) {
         if (err instanceof CsrfError) {
-            return new NextResponse("invalid csrf token", { status: 403 });
+            console.error("CSRF validation failed: ", err.stack);
+            const csrfErrorResponse = NextResponse.redirect(new URL(ERROR_PATH, domain), { status: 303 });
+            // Clear the CSRF cookie to force a new one to be issued on the next request
+            csrfErrorResponse.cookies.delete(COOKIE_CSRF);
+
+            return csrfErrorResponse;
         }
 
         throw err;

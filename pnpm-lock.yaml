@@ -803,9 +803,6 @@ importers:
       '@create-disruptions-data/shared-ts':
         specifier: workspace:^
         version: link:../shared-ts
-      '@edge-csrf/nextjs':
-        specifier: ^2.2.2
-        version: 2.5.2(next@14.2.32(@babel/core@7.27.1)(@playwright/test@1.52.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.87.0))
       '@emotion/react':
         specifier: ^11.10.6
         version: 11.14.0(@types/react@18.3.1)(react@18.3.1)
@@ -2755,12 +2752,6 @@ packages:
     peerDependenciesMeta:
       moment:
         optional: true
-
-  '@edge-csrf/nextjs@2.5.2':
-    resolution: {integrity: sha512-/LiV9jNp5WShOPG1B+Y4PJa5yCJSPCu/LjZ43Kqc+sNsPDaOSSMWF2GUI2JumII89+PEzzyF3V3aJzt8w6+CwQ==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-    peerDependencies:
-      next: ^13.0.0 || ^14.0.0 || ^15.0.0
 
   '@emotion/babel-plugin@11.13.5':
     resolution: {integrity: sha512-pxHCpT2ex+0q+HH91/zsdHkw/lXd468DIN2zvfvLtPKLLMo6gQj7oLObq8PhkrxOZb/gGCq03S3Z7PDhS8pduQ==}
@@ -14500,10 +14491,6 @@ snapshots:
   '@date-io/moment@2.17.0':
     dependencies:
       '@date-io/core': 2.17.0
-
-  '@edge-csrf/nextjs@2.5.2(next@14.2.32(@babel/core@7.27.1)(@playwright/test@1.52.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.87.0))':
-    dependencies:
-      next: 14.2.32(@babel/core@7.27.1)(@playwright/test@1.52.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.87.0)
 
   '@emotion/babel-plugin@11.13.5':
     dependencies:

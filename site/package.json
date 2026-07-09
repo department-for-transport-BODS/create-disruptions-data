@@ -22,7 +22,6 @@
         "@aws-sdk/client-ssm": "^3.974.0",
         "@aws-sdk/s3-request-presigner": "^3.974.0",
         "@create-disruptions-data/shared-ts": "workspace:^",
-        "@edge-csrf/nextjs": "^2.2.2",
         "@emotion/react": "^11.10.6",
         "@emotion/styled": "^11.10.6",
         "@fortawesome/fontawesome-svg-core": "^6.4.0",

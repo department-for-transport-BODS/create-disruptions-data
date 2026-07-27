@@ -2487,16 +2487,6 @@ exports[`pages > ReviewDisruption > should render correctly with banner when dis
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -5042,16 +5032,6 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -6709,16 +6689,6 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -8380,16 +8350,6 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -10047,16 +10007,6 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -12595,16 +12545,6 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -15450,16 +15390,6 @@ exports[`pages > should render correctly with inputs and no errors when cancella
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>

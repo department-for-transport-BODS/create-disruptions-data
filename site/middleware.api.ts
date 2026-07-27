@@ -145,7 +145,6 @@ const unauthenticatedRoutes = [
     "/favicon.ico",
     "/500",
     "/404",
-    "/changelog",
 ];
 
 const allowedRoutesForSysadmin = [

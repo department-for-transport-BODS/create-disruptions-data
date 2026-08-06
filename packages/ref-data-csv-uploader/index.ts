@@ -1,7 +1,8 @@
+import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { fromTemporaryCredentials } from "@aws-sdk/credential-providers";
 import { Database } from "@create-disruptions-data/shared-ts/db/types";
 import { getDbClient } from "@create-disruptions-data/shared-ts/utils/db";
 import { logger, withLambdaRequestTracker } from "@create-disruptions-data/shared-ts/utils/logger";
-import { getObject } from "@create-disruptions-data/shared-ts/utils/s3";
 import { Handler } from "aws-lambda";
 import { Promise as BluebirdPromise } from "bluebird";
 import snakeCase from "lodash/snakeCase";
@@ -10,11 +11,72 @@ import { parse } from "papaparse";
 
 const dbClient = getDbClient();
 const fileNames = ["Stops.csv", "NOCLines.csv", "NOCTable.csv", "PublicName.csv"];
+const region = process.env.AWS_REGION;
+const nocKeyByFileName: Partial<Record<(typeof fileNames)[number], string>> = {
+    "NOCLines.csv": "table_noclines_latest_csv.csv",
+    "NOCTable.csv": "table_noc_table_latest_csv.csv",
+    "PublicName.csv": "table_public_name_latest_csv.csv",
+};
 
-export const processFile = async (fileName: string, csvBucketName: string) => {
+const getNocObjectKey = (fileName: string, nocBucketKeyPrefix?: string) => {
+    const nocFileKey = nocKeyByFileName[fileName as (typeof fileNames)[number]];
+
+    if (!nocFileKey) {
+        return undefined;
+    }
+
+    if (!nocBucketKeyPrefix) {
+        return nocFileKey;
+    }
+
+    const normalisedPrefix = nocBucketKeyPrefix.endsWith("/") ? nocBucketKeyPrefix.slice(0, -1) : nocBucketKeyPrefix;
+
+    return `${normalisedPrefix}/${nocFileKey}`;
+};
+
+const getSourceS3Client = (roleArn?: string) => {
+    if (!roleArn) {
+        return new S3Client({ region });
+    }
+
+    return new S3Client({
+        region,
+        credentials: fromTemporaryCredentials({
+            clientConfig: { region },
+            params: {
+                RoleArn: roleArn,
+                RoleSessionName: "cdd-csv-ref-data-uploader",
+            },
+        }),
+    });
+};
+
+const getSourceObject = async (bucket: string, key: string, roleArn?: string) => {
+    logger.info("Getting item from S3");
+
+    try {
+        const sourceClient = getSourceS3Client(roleArn);
+
+        return await sourceClient.send(
+            new GetObjectCommand({
+                Bucket: bucket,
+                Key: decodeURIComponent(key),
+            }),
+        );
+    } catch (error) {
+        if (error instanceof Error) {
+            throw new Error(`Failed to get item from s3: ${error.stack || ""}`);
+        }
+
+        throw error;
+    }
+};
+
+export const processFile = async (fileName: string, csvBucketName: string, s3Key?: string, sourceRoleArn?: string) => {
     logger.info(`Starting CSV Uploader for ${fileName}`);
 
-    const file = await getObject(csvBucketName, fileName, logger);
+    const fileKey = s3Key || fileName;
+    const file = await getSourceObject(csvBucketName, fileKey, sourceRoleArn);
 
     const body = (await file.Body?.transformToString()) || "";
 
@@ -117,14 +179,67 @@ export const main: Handler = async (event, context) => {
     withLambdaRequestTracker(event ?? {}, context ?? {});
 
     try {
-        const { CSV_BUCKET_NAME: csvBucketName } = process.env;
+        const {
+            CSV_BUCKET_NAME: csvBucketName,
+            SOURCE_ROLE_ARN: sourceRoleArn,
+            SST_Parameter_value_SOURCE_ROLE_ARN: sstSourceRoleArn,
+            NAPTAN_ROLE_ARN: legacyNaptanRoleArn,
+            SST_Parameter_value_NAPTAN_ROLE_ARN: sstLegacyNaptanRoleArn,
+            NAPTAN_BUCKET_NAME: naptanBucketName,
+            NAPTAN_BUCKET_KEY: naptanBucketKey,
+            NOC_ROLE_ARN: legacyNOCRoleArn,
+            SST_Parameter_value_NOC_ROLE_ARN: sstLegacyNOCRoleArn,
+            NOC_BUCKET_NAME: nocBucketName,
+            NOC_BUCKET_KEY: nocBucketKey,
+        } = process.env;
 
         if (!csvBucketName) {
             throw new Error("Missing env vars - CSV_BUCKET_NAME must be set");
         }
 
+        // NAPTAN bucket and key must be paired - cannot have one without the other
+        if (naptanBucketName && !naptanBucketKey) {
+            throw new Error("Missing env vars - NAPTAN_BUCKET_KEY must be set when NAPTAN_BUCKET_NAME is provided");
+        }
+
+        if (naptanBucketKey && !naptanBucketName) {
+            throw new Error("Missing env vars - NAPTAN_BUCKET_NAME must be set when NAPTAN_BUCKET_KEY is provided");
+        }
+
+        // NOC key prefix can optionally be provided, but cannot exist without the bucket name
+        if (nocBucketKey && !nocBucketName) {
+            throw new Error("Missing env vars - NOC_BUCKET_NAME must be set when NOC_BUCKET_KEY is provided");
+        }
+        
+        const roleArn = sourceRoleArn ?? sstSourceRoleArn ?? legacyNaptanRoleArn ?? sstLegacyNaptanRoleArn ?? legacyNOCRoleArn ?? sstLegacyNOCRoleArn;
+
+        // cross-account role assumption is mandatory for external source buckets
+        if ((naptanBucketName || nocBucketName) && !roleArn) {
+            throw new Error(
+                "Missing env vars - SOURCE_ROLE_ARN, NAPTAN_ROLE_ARN or NOC_ROLE_ARN must be set when using NAPTAN_BUCKET_NAME or NOC_BUCKET_NAME",
+            );
+        }
+
         for (const fileName of fileNames) {
-            await processFile(fileName, csvBucketName);
+            if (fileName === "Stops.csv" && naptanBucketName && naptanBucketKey) {
+                logger.info(`Using external NaPTAN bucket: ${naptanBucketName}/${naptanBucketKey}`);
+                await processFile("Stops.csv", naptanBucketName, naptanBucketKey, roleArn);
+            } else if (
+                ["NOCLines.csv", "NOCTable.csv", "PublicName.csv"].includes(fileName) &&
+                nocBucketName
+            ) {
+                const nocObjectKey = getNocObjectKey(fileName, nocBucketKey);
+
+                if (!nocObjectKey) {
+                    await processFile(fileName, csvBucketName);
+                    continue;
+                }
+
+                logger.info(`Using external NOC bucket: ${nocBucketName}/${nocObjectKey} for ${fileName}`);
+                await processFile(fileName, nocBucketName, nocObjectKey, roleArn);
+            } else {
+                await processFile(fileName, csvBucketName);
+            }
         }
     } catch (e) {
         if (e instanceof Error) {

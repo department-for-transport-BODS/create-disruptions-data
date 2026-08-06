@@ -1,12 +1,42 @@
+import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { fromTemporaryCredentials } from "@aws-sdk/credential-providers";
 import { getDbClient } from "@create-disruptions-data/shared-ts/utils/db";
 import { logger, withLambdaRequestTracker } from "@create-disruptions-data/shared-ts/utils/logger";
-import { getObject } from "@create-disruptions-data/shared-ts/utils/s3";
 import { Handler } from "aws-lambda";
 import { Promise as BluebirdPromise } from "bluebird";
 import { parseStringPromise } from "xml2js";
 import { Nptg, nptgSchema } from "./zod";
 
 const dbClient = getDbClient(false);
+const region = process.env.AWS_REGION;
+
+const getSourceS3Client = (roleArn?: string) => {
+    if (!roleArn) {
+        return new S3Client({ region });
+    }
+
+    return new S3Client({
+        region,
+        credentials: fromTemporaryCredentials({
+            clientConfig: { region },
+            params: {
+                RoleArn: roleArn,
+                RoleSessionName: "cdd-nptg-uploader",
+            },
+        }),
+    });
+};
+
+const getSourceObject = async (bucket: string, key: string, roleArn?: string) => {
+    const sourceClient = getSourceS3Client(roleArn);
+
+    return await sourceClient.send(
+        new GetObjectCommand({
+            Bucket: bucket,
+            Key: key,
+        }),
+    );
+};
 
 export const writeToAdminAreasTable = async (adminAreas: Nptg["adminAreas"]) => {
     await dbClient.insertInto("nptgAdminAreasNew").values(adminAreas).execute();
@@ -71,16 +101,24 @@ export const parseNptgAndUpload = async (nptgString: string) => {
 export const main: Handler = async (event, context) => {
     withLambdaRequestTracker(event ?? {}, context ?? {});
 
-    const { NPTG_BUCKET_NAME: nptgBucketName } = process.env;
+    const { NPTG_BUCKET_NAME: nptgBucketName, NPTG_ROLE_ARN: nptgRoleArn, NPTG_BUCKET_KEY: nptgS3Key } = process.env;
 
     if (!nptgBucketName) {
-        throw new Error("Missing env vars - NPTG_BUCKET_NAME must be set");
+        throw new Error("NPTG_BUCKET_NAME must be set");
+    }
+
+    if (!nptgRoleArn) {
+        throw new Error("NPTG_ROLE_ARN must be set");
+    }
+
+    if (!nptgS3Key) {
+        throw new Error("NPTG_BUCKET_KEY must be set");
     }
 
     try {
         logger.info("Starting NPTG Uploader");
 
-        const file = await getObject(nptgBucketName, "nptg.xml", logger);
+        const file = await getSourceObject(nptgBucketName, nptgS3Key, nptgRoleArn);
 
         const body = (await file.Body?.transformToString()) || "";
 

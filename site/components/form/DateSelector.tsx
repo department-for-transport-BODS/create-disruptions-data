@@ -87,7 +87,7 @@ const DateSelector = <T extends object>({
     minWidth,
     inputDivWidth,
     errorAlign = false,
-}: DateSelectorProps<T>): ReactElement => {
+}: DateSelectorProps<T>): ReactElement<any> => {
     const [dateValue, setDateValue] = useState<Date | null>(
         !!disabled || !value ? null : getFormattedDate(value).toDate(),
     );

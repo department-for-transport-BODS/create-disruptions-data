@@ -18,7 +18,7 @@ const description = "Register page for the Create Transport Disruptions Service"
 
 export interface RegisterPageProps extends PageState<Partial<RegisterSchema>> {}
 
-const Register = (props: RegisterPageProps): ReactElement => {
+const Register = (props: RegisterPageProps): ReactElement<any> => {
     const [pageState, setPageState] = useState(props);
 
     const stateUpdater = getStateUpdater(setPageState, pageState);

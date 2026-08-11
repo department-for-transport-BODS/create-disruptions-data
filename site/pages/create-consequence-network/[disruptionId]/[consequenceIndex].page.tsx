@@ -41,7 +41,7 @@ const description = "Create Consequence Network page for the Create Transport Di
 
 export interface CreateConsequenceNetworkProps extends PageState<Partial<NetworkConsequence>>, CreateConsequenceProps {}
 
-const CreateConsequenceNetwork = (props: CreateConsequenceNetworkProps): ReactElement => {
+const CreateConsequenceNetwork = (props: CreateConsequenceNetworkProps): ReactElement<any> => {
     const [pageState, setConsequenceNetworkPageState] = useState<PageState<Partial<NetworkConsequence>>>(props);
 
     const stateUpdater = getStateUpdater(setConsequenceNetworkPageState, pageState);

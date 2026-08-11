@@ -67,7 +67,7 @@ const getStatusToDisplay = (status: PublishStatus, nextStatus: PublishStatus | n
     return null;
 };
 
-const DisruptionHistory = ({ history, disruptionId }: DisruptionHistoryPageProps): ReactElement => (
+const DisruptionHistory = ({ history, disruptionId }: DisruptionHistoryPageProps): ReactElement<any> => (
     <BaseLayout title={title} description={description}>
         <h1 className="govuk-heading-xl">{title}</h1>
         {history.length > 0 ? (

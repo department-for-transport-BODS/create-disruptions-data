@@ -5,7 +5,7 @@ interface FormElementWrapperProps {
     errors: ErrorInfo[];
     errorId: string;
     errorClass: string;
-    children: ReactElement;
+    children: ReactElement<any>;
     addFormGroupError?: boolean;
     hideText?: boolean;
 }
@@ -13,7 +13,7 @@ interface FormElementWrapperProps {
 interface FormGroupWrapperProps {
     errors: ErrorInfo[];
     errorIds: string[];
-    children: ReactElement;
+    children: ReactElement<any>;
     hideErrorBar?: boolean;
     errorAlign?: boolean;
 }
@@ -23,13 +23,13 @@ interface FormErrorBlockProps {
     errorIds: string[];
 }
 
-const addErrorClasses = (child: ReactElement, errorClass: string, errorId: string): ReactElement =>
+const addErrorClasses = (child: ReactElement<any>, errorClass: string, errorId: string): ReactElement<any> =>
     React.cloneElement(child, {
         className: child.props.className ? `${child.props.className} ${errorClass}` : errorClass,
         "aria-describedby": `${errorId}-error`,
     });
 
-export const FormErrorBlock = ({ errors, errorIds }: FormErrorBlockProps): ReactElement => (
+export const FormErrorBlock = ({ errors, errorIds }: FormErrorBlockProps): ReactElement<any> => (
     <div>
         {errors
             .filter((error) => errorIds.includes(error.id.toString()))
@@ -48,7 +48,7 @@ export const FormGroupWrapper = ({
     children,
     hideErrorBar = false,
     errorAlign = false,
-}: FormGroupWrapperProps): ReactElement => {
+}: FormGroupWrapperProps): ReactElement<any> => {
     const errorForElement = errors.find((err) => errorIds.includes(err.id.toString()));
 
     return (
@@ -69,7 +69,7 @@ const FormElementWrapper = ({
     children,
     addFormGroupError,
     hideText,
-}: FormElementWrapperProps): ReactElement => {
+}: FormElementWrapperProps): ReactElement<any> => {
     const errorForElement = errors.find((err) => err.id === errorId);
 
     return (
@@ -82,7 +82,7 @@ const FormElementWrapper = ({
             )}
 
             {errorForElement
-                ? React.Children.map(children, (child: ReactElement) => addErrorClasses(child, errorClass, errorId))
+                ? React.Children.map(children, (child: ReactElement<any>) => addErrorClasses(child, errorClass, errorId))
                 : children}
         </div>
     );

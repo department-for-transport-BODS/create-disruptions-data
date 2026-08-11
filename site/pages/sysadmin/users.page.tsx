@@ -28,7 +28,7 @@ export interface SysAdminUserManagementProps extends PageState<Partial<AddUserSc
     users?: UserManagementSchema;
     orgName?: string;
 }
-const SysAdminUserManagement = (props: SysAdminUserManagementProps): ReactElement => {
+const SysAdminUserManagement = (props: SysAdminUserManagementProps): ReactElement<any> => {
     const [pageState, setPageState] = useState(props);
     const [userToDelete, setUserToDelete] = useState<string>();
     const [userToResendInvite, setUserToResendInvite] = useState<{

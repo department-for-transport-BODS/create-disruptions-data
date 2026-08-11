@@ -22,7 +22,7 @@ const Checkbox = <T extends object>({
     stateUpdater,
     hint = "",
     multiple = false,
-}: CheckboxProps<T>): ReactElement => {
+}: CheckboxProps<T>): ReactElement<any> => {
     const [errors, setErrors] = useState<ErrorInfo[]>(initialErrors);
     const ref = useRef<HTMLInputElement>(null);
     const inputId = kebabCase(inputName);

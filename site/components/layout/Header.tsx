@@ -12,7 +12,7 @@ interface HeaderProps {
     csrfToken: string;
 }
 
-const Header = ({ session, csrfToken }: HeaderProps): ReactElement => {
+const Header = ({ session, csrfToken }: HeaderProps): ReactElement<any> => {
     const { buttonProps, itemProps, isOpen, setIsOpen } = useDropdownMenu(session?.isOrgAdmin ? 4 : 2);
 
     return (

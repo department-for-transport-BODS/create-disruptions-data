@@ -6,7 +6,7 @@ import { SUPPORT_EMAIL_ADDRESS, SUPPORT_PHONE_NUMBER } from "../constants";
 const title = "Contact - Create Transport Disruption Data Service";
 const description = "Contact page for the Create Transport Disruption Data Service";
 
-const Contact = (): ReactElement => {
+const Contact = (): ReactElement<any> => {
     return (
         <BaseLayout title={title} description={description} hideHelp>
             <div className="govuk-grid-row">

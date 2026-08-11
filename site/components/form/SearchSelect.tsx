@@ -1,4 +1,4 @@
-import { Dispatch, Fragment, ReactElement, SetStateAction } from "react";
+import { Dispatch, Fragment, ReactElement, SetStateAction, type JSX } from "react";
 import Select, {
     ControlProps,
     GroupBase,
@@ -69,7 +69,7 @@ const SearchSelect = <T extends object>({
     closeMenuOnSelect = true,
     className = "",
     disabled = false,
-}: SearchSelectProps<T>): ReactElement => {
+}: SearchSelectProps<T>): ReactElement<any> => {
     const handleInputChange = (value: string, { action }: InputActionMeta) => {
         if (action === "menu-close" || action === "input-blur" || action === "set-value") {
             return;

@@ -36,7 +36,7 @@ const SocialMediaAccounts = ({
     csrfToken,
     errors,
     isOperator,
-}: SocialMediaAccountsPageProps): ReactElement => {
+}: SocialMediaAccountsPageProps): ReactElement<any> => {
     const [socialAccountToDelete, setSocialAccountToDelete] = useState<SocialMediaAccount>();
     const getLink = (type: string, id: string) => {
         switch (type.toLocaleUpperCase()) {

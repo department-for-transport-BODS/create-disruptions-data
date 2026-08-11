@@ -56,7 +56,7 @@ export default class RootDocument extends Document<DocumentProps> {
         };
     }
 
-    render(): ReactElement {
+    render(): ReactElement<any> {
         const { nonce } = this.props;
 
         return (

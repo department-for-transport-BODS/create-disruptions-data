@@ -52,7 +52,7 @@ export interface CreateConsequenceOperatorProps
     operators: Operator[];
 }
 
-const CreateConsequenceOperator = (props: CreateConsequenceOperatorProps): ReactElement => {
+const CreateConsequenceOperator = (props: CreateConsequenceOperatorProps): ReactElement<any> => {
     const [pageState, setConsequenceOperatorPageState] = useState<PageState<Partial<OperatorConsequence>>>(props);
 
     const stateUpdater = getStateUpdater(setConsequenceOperatorPageState, pageState);

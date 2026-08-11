@@ -121,7 +121,7 @@ export interface CreateConsequenceJourneysProps
     selectedService: SingleValue<Service> | null;
 }
 
-const CreateConsequenceJourneys = (props: CreateConsequenceJourneysProps): ReactElement => {
+const CreateConsequenceJourneys = (props: CreateConsequenceJourneysProps): ReactElement<any> => {
     const [pageState, setPageState] = useState<PageState<Partial<JourneysConsequence>>>(props);
     const stateUpdater = getStateUpdater(setPageState, pageState);
     const [selected, setSelected] = useState<SingleValue<Journey>>(null);

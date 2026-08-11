@@ -133,7 +133,7 @@ export interface CreateConsequenceServicesProps
     initialStops: Stop[];
 }
 
-const CreateConsequenceServices = (props: CreateConsequenceServicesProps): ReactElement => {
+const CreateConsequenceServices = (props: CreateConsequenceServicesProps): ReactElement<any> => {
     const [pageState, setPageState] = useState<PageState<Partial<ServicesConsequence>>>(props);
     const stateUpdater = getStateUpdater(setPageState, pageState);
     const [selected, setSelected] = useState<SingleValue<Stop>>(null);

@@ -23,7 +23,7 @@ const Markers = ({
     handleMouseEnter,
     setPopupInfo,
     pastStops,
-}: MarkersProps): ReactElement | null => {
+}: MarkersProps): ReactElement<any> | null => {
     const dataFromPolygon =
         selectedStops && selectedStops.length > 0
             ? markerData.filter((sToFilter: Stop) => !selectedStops.some((s) => s.atcoCode === sToFilter.atcoCode))

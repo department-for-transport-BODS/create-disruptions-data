@@ -33,7 +33,7 @@ const SortableTable = <T extends object>({
     setSortedField,
     sortOrder,
     setSortOrder,
-}: SortableTableProps<T>): ReactElement => {
+}: SortableTableProps<T>): ReactElement<any> => {
     const [displayRows, setDisplayRows] = useState<T[]>(rows);
 
     const sortData = (field: keyof T) => {

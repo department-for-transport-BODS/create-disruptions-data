@@ -8,7 +8,15 @@ import saveAs from "file-saver";
 import autoTable from "jspdf-autotable";
 import Link from "next/link";
 import Papa from "papaparse";
-import { Dispatch, ReactElement, SetStateAction, memo, useEffect, useState } from "react";
+import {
+    Dispatch,
+    ReactElement,
+    SetStateAction,
+    memo,
+    useEffect,
+    useState,
+    type JSX,
+} from "react";
 import writeXlsxFile, { Schema } from "write-excel-file";
 import { z } from "zod";
 import {
@@ -386,7 +394,7 @@ const ViewAllContents = ({
     orgId,
     showUnderground = false,
     showCoach = false,
-}: ViewAllContentProps): ReactElement => {
+}: ViewAllContentProps): ReactElement<any> => {
     const [selectedServices, setSelectedServices] = useState<Service[]>([]);
     const [selectedOperators, setSelectedOperators] = useState<ConsequenceOperators[]>([]);
     const [servicesDataSource, setServicesDataSource] = useState<Datasource | "all">("all");

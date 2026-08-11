@@ -365,7 +365,7 @@ const ReviewConsequenceTable = ({
     isTemplate,
     isEditingAllowed,
     enableCancellationsFeatureFlag = false,
-}: ReviewConsequenceTableProps): ReactElement => {
+}: ReviewConsequenceTableProps): ReactElement<any> => {
     const hiddenInputs = [
         {
             name: "id",

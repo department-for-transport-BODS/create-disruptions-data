@@ -1,15 +1,22 @@
 import { getFormattedDate } from "@create-disruptions-data/shared-ts/utils/dates";
-import { FilledInputProps } from "@mui/material/FilledInput";
-import { InputBaseComponentProps } from "@mui/material/InputBase";
-import { OutlinedInputProps } from "@mui/material/OutlinedInput";
-import { DatePicker, PickersDay, PickersDayProps } from "@mui/x-date-pickers";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { CalendarIcon } from "@mui/x-date-pickers/icons";
+import type { Dayjs } from "dayjs";
 import kebabCase from "lodash/kebabCase";
-import React, { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { ErrorInfo, FormBase } from "../../interfaces";
 import { convertDateTimeToFormat } from "../../utils/dates";
 import FormElementWrapper, { FormGroupWrapper } from "./FormElementWrapper";
+
+const gdsTransportTheme = createTheme({
+    typography: {
+        fontFamily: '"GDS Transport", arial, sans-serif',
+        fontSize: 16,
+    },
+});
 
 interface DateSelectorProps<T> extends FormBase<T> {
     disabled?: boolean;
@@ -26,51 +33,6 @@ interface DateSelectorProps<T> extends FormBase<T> {
     errorAlign?: boolean;
 }
 
-const inputBox = <T extends object>(
-    inputRef: React.Ref<HTMLInputElement> | undefined,
-    inputProps: InputBaseComponentProps | undefined,
-    InputProps: Partial<FilledInputProps> | Partial<OutlinedInputProps> | undefined,
-    inputId: string,
-    inputName: Extract<keyof T, string>,
-    errors: ErrorInfo[],
-    disabled: boolean,
-    minWidth?: string,
-    inputDivWidth?: string,
-) => (
-    <div className="govuk-date-input flex flex-row [&_.MuiSvgIcon-root]:fill-govBlue">
-        <div className={`govuk-date-input__item govuk-!-margin-right-0 ${inputDivWidth ? inputDivWidth : ""}`}>
-            <FormElementWrapper errors={errors} errorId={inputName} errorClass="govuk-input--error">
-                <input
-                    className={`govuk-input govuk-date-input__input govuk-input--width-6 ${minWidth ? minWidth : ""}`}
-                    name={inputName}
-                    id={`${inputId}-input`}
-                    type="text"
-                    ref={inputRef}
-                    {...inputProps}
-                    disabled={disabled}
-                    placeholder={disabled ? "N/A" : "DD/MM/YYYY"}
-                />
-            </FormElementWrapper>
-        </div>
-        <div className="flex items-end pb-5">{InputProps?.endAdornment}</div>
-    </div>
-);
-
-const renderWeekPickerDay = (
-    _date: Date,
-    _selectedDates: Array<Date | null>,
-    pickersDayProps: PickersDayProps<Date>,
-) => (
-    <PickersDay
-        {...pickersDayProps}
-        classes={{
-            selected: "!bg-govBlue",
-            dayWithMargin:
-                "focus:!border focus:!border-solid hover:!border hover:!border-solid hover:!border-govBlue focus:!border-govYellow",
-        }}
-    />
-);
-
 const DateSelector = <T extends object>({
     value,
     display,
@@ -84,15 +46,13 @@ const DateSelector = <T extends object>({
     reset = false,
     suffixId,
     resetError = false,
-    minWidth,
     inputDivWidth,
     errorAlign = false,
-}: DateSelectorProps<T>): ReactElement<any> => {
-    const [dateValue, setDateValue] = useState<Date | null>(
-        !!disabled || !value ? null : getFormattedDate(value).toDate(),
-    );
+}: DateSelectorProps<T>): ReactElement => {
+    const [dateValue, setDateValue] = useState<Dayjs | null>(disabled || !value ? null : getFormattedDate(value));
     const [errors, setErrors] = useState<ErrorInfo[]>(initialErrors);
-    const inputId = suffixId ? `${kebabCase(inputName + suffixId)}` : kebabCase(inputName);
+    const [pickerOpen, setPickerOpen] = useState(false);
+    const inputId = suffixId ? kebabCase(inputName + suffixId) : kebabCase(inputName);
 
     useEffect(() => {
         if (disabled || reset) {
@@ -108,7 +68,12 @@ const DateSelector = <T extends object>({
     }, [resetError]);
 
     useEffect(() => {
-        setDateValue(value ? getFormattedDate(value).toDate() : null);
+        if (value) {
+            const formatted = getFormattedDate(value);
+            if (formatted.isValid()) {
+                setDateValue(formatted);
+            }
+        }
     }, [value]);
 
     useEffect(() => {
@@ -127,41 +92,93 @@ const DateSelector = <T extends object>({
                     </label>
                 </div>
                 {hint ? (
-                    <div className={`govuk-hint${hint.hidden ? " govuk-visually-hidden" : ""}`}>{hint.text}</div>
+                    <div
+                        id={`${inputName}-hint`}
+                        className={`govuk-hint${hint.hidden ? " govuk-visually-hidden" : ""}`}
+                    >
+                        {hint.text}
+                    </div>
                 ) : null}
                 <div className="flex flex-col mt-auto">
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker
-                            renderDay={renderWeekPickerDay}
-                            value={dateValue}
-                            onChange={(newValue) => {
-                                setDateValue(newValue);
-                                if (newValue) {
-                                    stateUpdater(convertDateTimeToFormat(newValue, "DD/MM/YYYY"), inputName);
-                                } else {
-                                    stateUpdater("", inputName);
-                                }
-                            }}
-                            onAccept={() => setErrors([])}
-                            renderInput={({ inputRef, inputProps, InputProps }) => {
-                                return inputBox(
-                                    inputRef,
-                                    inputProps,
-                                    InputProps,
-                                    inputId,
-                                    inputName,
-                                    errors,
-                                    disabled,
-                                    minWidth,
-                                    inputDivWidth,
-                                );
-                            }}
-                            disablePast={disablePast}
-                            inputFormat="DD/MM/YYYY"
-                            disabled={disabled}
-                            aria-describedby={hint ? `${inputName}-hint` : undefined}
-                        />
-                    </LocalizationProvider>
+                    <FormElementWrapper errors={errors} errorId={inputName} errorClass="govuk-input--error">
+                        <div className="govuk-date-input flex flex-row items-start gap-2 [&_.MuiSvgIcon-root]:fill-govBlue">
+                            <div
+                                className={`govuk-date-input__item govuk-!-margin-right-0 ${inputDivWidth ? inputDivWidth : ""}`}
+                            >
+                                <ThemeProvider theme={gdsTransportTheme}>
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DatePicker
+                                            value={dateValue}
+                                            open={pickerOpen}
+                                            onOpen={() => setPickerOpen(true)}
+                                            onClose={() => setPickerOpen(false)}
+                                            onChange={(newValue) => {
+                                                setDateValue(newValue);
+                                                if (newValue) {
+                                                    stateUpdater(
+                                                        convertDateTimeToFormat(newValue.toDate(), "DD/MM/YYYY"),
+                                                        inputName,
+                                                    );
+                                                } else {
+                                                    stateUpdater("", inputName);
+                                                }
+                                            }}
+                                            onAccept={() => setErrors([])}
+                                            disablePast={disablePast}
+                                            format="DD/MM/YYYY"
+                                            disabled={disabled}
+                                            slots={{
+                                                openPickerButton: () => null,
+                                            }}
+                                            slotProps={{
+                                                textField: {
+                                                    id: `${inputId}-input`,
+                                                    error: errors.length > 0,
+                                                    disabled,
+                                                    slotProps: {
+                                                        input: {
+                                                            id: `${inputId}-input`,
+                                                            className:
+                                                                "govuk-input govuk-date-input__input govuk-input--width-6",
+                                                        },
+                                                    },
+                                                    sx: {
+                                                        fontFamily: '"GDS Transport", arial, sans-serif',
+                                                        "& .MuiPickersOutlinedInput-root": {
+                                                            borderRadius: 0,
+                                                            backgroundColor: "transparent",
+                                                            height: "2.5rem",
+                                                            boxSizing: "border-box",
+                                                            fontFamily: "inherit",
+                                                        },
+                                                        "& .MuiPickersOutlinedInput-root.Mui-focused": {
+                                                            outline: "3px solid #ffdd00",
+                                                            outlineOffset: 0,
+                                                            boxShadow: "inset 0 0 0 2px",
+                                                            zIndex: 1,
+                                                        },
+                                                        "& .MuiPickersOutlinedInput-root.Mui-focused .MuiPickersOutlinedInput-notchedOutline":
+                                                            {
+                                                                border: "none",
+                                                            },
+                                                    },
+                                                },
+                                            }}
+                                        />
+                                    </LocalizationProvider>
+                                </ThemeProvider>
+                            </div>
+                            <button
+                                type="button"
+                                aria-label={`Choose ${display} date`}
+                                disabled={disabled}
+                                onClick={() => setPickerOpen(true)}
+                                className="flex h-10 w-10 shrink-0 items-center justify-center bg-white outline-none focus:outline-none hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed [&_.MuiSvgIcon-root]:fill-govBlue"
+                            >
+                                <CalendarIcon />
+                            </button>
+                        </div>
+                    </FormElementWrapper>
                 </div>
             </div>
         </FormGroupWrapper>

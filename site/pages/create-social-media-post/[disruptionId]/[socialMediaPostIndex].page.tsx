@@ -43,7 +43,7 @@ export interface CreateSocialMediaPostPageProps extends PageState<Partial<Create
     agencyBoundaries: { boundaries: NextdoorAgencyBoundaries; nextdoorUserId: string }[];
 }
 
-const CreateSocialMediaPost = (props: CreateSocialMediaPostPageProps): ReactElement<any> => {
+const CreateSocialMediaPost = (props: CreateSocialMediaPostPageProps): ReactElement => {
     const [pageState, setPageState] = useState<PageState<Partial<CreateSocialMediaPostPage>>>(props);
     const [errorsMessageContent, setErrorsMessageContent] = useState<ErrorInfo[]>(pageState.errors);
     const [searchInput, setSearchInput] = useState("");

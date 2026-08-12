@@ -48,7 +48,7 @@ const arrayDateFields = ["disruptionStartDate", "disruptionEndDate", "publishSta
 const arrayTimeFields = ["disruptionStartTime", "publishStartTime"];
 const arrayEndTimeFields = ["disruptionEndTime", "publishEndTime"];
 
-const CreateDisruption = (props: DisruptionPageProps): ReactElement<any> => {
+const CreateDisruption = (props: DisruptionPageProps): ReactElement => {
     const initialValidity: Validity = {
         disruptionStartDate: props.inputs.disruptionStartDate || "",
         disruptionEndDate: props.inputs.disruptionEndDate || "",
@@ -393,9 +393,6 @@ const CreateDisruption = (props: DisruptionPageProps): ReactElement<any> => {
                                     stateUpdater={validityStateUpdater}
                                     initialErrors={pageState.errors}
                                     reset={addValidityClicked}
-                                    minWidth={`w-[203px] ${
-                                        dateColumnError ? "lg:w-[50%] sm:w-[80%] @screen xs:w-[80%]" : ""
-                                    }`}
                                     inputDivWidth={
                                         dateColumnError ? "w-[400px] lg:w-[80%] sm:w-[100%] @screen xs:w-[100%]" : ""
                                     }
@@ -443,9 +440,6 @@ const CreateDisruption = (props: DisruptionPageProps): ReactElement<any> => {
                                     stateUpdater={validityStateUpdater}
                                     initialErrors={pageState.errors}
                                     reset={addValidityClicked}
-                                    minWidth={`w-[203px] ${
-                                        dateColumnError ? "lg:w-[50%] sm:w-[80%] @screen xs:w-[80%]" : ""
-                                    }`}
                                     inputDivWidth={
                                         dateColumnError ? "w-[400px] lg:w-[80%] sm:w-[100%] @screen xs:w-[100%]" : ""
                                     }

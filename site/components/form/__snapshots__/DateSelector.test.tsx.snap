@@ -19,6 +19,7 @@ exports[`DateSelector > should render correctly when disabled 1`] = `
       </div>
       <div
         class="govuk-hint"
+        id="field1-hint"
       >
         Enter in format DD/MM/YYYY
       </div>
@@ -26,51 +27,158 @@ exports[`DateSelector > should render correctly when disabled 1`] = `
         class="flex flex-col mt-auto"
       >
         <div
-          class="govuk-date-input flex flex-row [&_.MuiSvgIcon-root]:fill-govBlue"
+          class=""
         >
           <div
-            class="govuk-date-input__item govuk-!-margin-right-0 "
+            class="govuk-date-input flex flex-row items-start gap-2 [&_.MuiSvgIcon-root]:fill-govBlue"
           >
             <div
-              class=""
+              class="govuk-date-input__item govuk-!-margin-right-0 "
             >
-              <input
-                class="govuk-input govuk-date-input__input govuk-input--width-6 "
-                disabled=""
-                id="field-1-input"
-                name="field1"
-                placeholder="N/A"
-                type="tel"
-                value="01/01/2024"
-              />
-            </div>
-          </div>
-          <div
-            class="flex items-end pb-5"
-          >
-            <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1laqsz7-MuiInputAdornment-root"
-            >
-              <button
-                aria-label="Choose date, selected date is Jan 1, 2024"
-                class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
-                disabled=""
-                tabindex="-1"
-                type="button"
+              <div
+                class="MuiFormControl-root MuiPickersTextField-root Mui-disabled css-rejvhe-MuiFormControl-root-MuiPickersTextField-root"
               >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="CalendarIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
+                <div
+                  aria-invalid="false"
+                  class="MuiPickersInputBase-root MuiPickersOutlinedInput-root Mui-disabled MuiPickersInputBase-colorPrimary MuiPickersInputBase-adornedEnd govuk-input govuk-date-input__input govuk-input--width-6 css-1y1yoo4-MuiPickersInputBase-root-MuiPickersOutlinedInput-root"
+                  role="group"
                 >
-                  <path
-                    d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                  <div
+                    class="MuiPickersSectionList-root MuiPickersInputBase-sectionsContainer css-133j97h-MuiPickersSectionList-root-MuiPickersInputBase-sectionsContainer-MuiPickersOutlinedInput-sectionsContainer"
+                    contenteditable="false"
+                    tabindex="-1"
+                  >
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="0"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="true"
+                        aria-label="Day"
+                        aria-readonly="false"
+                        aria-valuemax="31"
+                        aria-valuemin="1"
+                        aria-valuenow="1"
+                        aria-valuetext="1"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="false"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        tabindex="-1"
+                      >
+                        01
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      >
+                        /
+                      </span>
+                    </span>
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="1"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="true"
+                        aria-label="Month"
+                        aria-readonly="false"
+                        aria-valuemax="12"
+                        aria-valuemin="1"
+                        aria-valuenow="1"
+                        aria-valuetext="January"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="false"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        tabindex="-1"
+                      >
+                        01
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      >
+                        /
+                      </span>
+                    </span>
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="2"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="true"
+                        aria-label="Year"
+                        aria-readonly="false"
+                        aria-valuemax="9999"
+                        aria-valuemin="0"
+                        aria-valuenow="2024"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="false"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        tabindex="-1"
+                      >
+                        2024
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                    </span>
+                  </div>
+                  <div
+                    class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-elo8k2-MuiInputAdornment-root"
                   />
-                </svg>
-              </button>
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiPickersOutlinedInput-notchedOutline css-lqwr9g-MuiPickersOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-gpjuor"
+                    >
+                      <span
+                        class="notranslate css-djyycv"
+                      >
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                  <input
+                    aria-hidden="true"
+                    class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
+                    disabled=""
+                    id="field-1-input"
+                    tabindex="-1"
+                    value="01/01/2024"
+                  />
+                </div>
+              </div>
             </div>
+            <button
+              aria-label="Choose Start date date"
+              class="flex h-10 w-10 shrink-0 items-center justify-center bg-white outline-none focus:outline-none hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed [&_.MuiSvgIcon-root]:fill-govBlue"
+              disabled=""
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+                data-testid="CalendarIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -98,6 +206,7 @@ exports[`DateSelector > should render correctly with an input 1`] = `
       </div>
       <div
         class="govuk-hint"
+        id="field1-hint"
       >
         Enter in format DD/MM/YYYY
       </div>
@@ -105,52 +214,165 @@ exports[`DateSelector > should render correctly with an input 1`] = `
         class="flex flex-col mt-auto"
       >
         <div
-          class="govuk-date-input flex flex-row [&_.MuiSvgIcon-root]:fill-govBlue"
+          class=""
         >
           <div
-            class="govuk-date-input__item govuk-!-margin-right-0 "
+            class="govuk-date-input flex flex-row items-start gap-2 [&_.MuiSvgIcon-root]:fill-govBlue"
           >
             <div
-              class=""
+              class="govuk-date-input__item govuk-!-margin-right-0 "
             >
-              <input
-                class="govuk-input govuk-date-input__input govuk-input--width-6 "
-                id="field-1-input"
-                name="field1"
-                placeholder="DD/MM/YYYY"
-                type="tel"
-                value="01/01/2024"
-              />
-            </div>
-          </div>
-          <div
-            class="flex items-end pb-5"
-          >
-            <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1laqsz7-MuiInputAdornment-root"
-            >
-              <button
-                aria-label="Choose date, selected date is Jan 1, 2024"
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
-                tabindex="0"
-                type="button"
+              <div
+                class="MuiFormControl-root MuiPickersTextField-root css-rejvhe-MuiFormControl-root-MuiPickersTextField-root"
               >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="CalendarIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
+                <div
+                  aria-invalid="false"
+                  class="MuiPickersInputBase-root MuiPickersOutlinedInput-root MuiPickersInputBase-colorPrimary MuiPickersInputBase-adornedEnd govuk-input govuk-date-input__input govuk-input--width-6 css-1y1yoo4-MuiPickersInputBase-root-MuiPickersOutlinedInput-root"
+                  role="group"
                 >
-                  <path
-                    d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                  <div
+                    class="MuiPickersSectionList-root MuiPickersInputBase-sectionsContainer css-133j97h-MuiPickersSectionList-root-MuiPickersInputBase-sectionsContainer-MuiPickersOutlinedInput-sectionsContainer"
+                    contenteditable="false"
+                    tabindex="0"
+                  >
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="0"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Day"
+                        aria-readonly="false"
+                        aria-valuemax="31"
+                        aria-valuemin="1"
+                        aria-valuenow="1"
+                        aria-valuetext="1"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="0"
+                      >
+                        01
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      >
+                        /
+                      </span>
+                    </span>
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="1"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Month"
+                        aria-readonly="false"
+                        aria-valuemax="12"
+                        aria-valuemin="1"
+                        aria-valuenow="1"
+                        aria-valuetext="January"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="-1"
+                      >
+                        01
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      >
+                        /
+                      </span>
+                    </span>
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="2"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Year"
+                        aria-readonly="false"
+                        aria-valuemax="9999"
+                        aria-valuemin="0"
+                        aria-valuenow="2024"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="-1"
+                      >
+                        2024
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                    </span>
+                  </div>
+                  <div
+                    class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-elo8k2-MuiInputAdornment-root"
                   />
-                </svg>
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiPickersOutlinedInput-notchedOutline css-lqwr9g-MuiPickersOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-gpjuor"
+                    >
+                      <span
+                        class="notranslate css-djyycv"
+                      >
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                  <input
+                    aria-hidden="true"
+                    class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
+                    id="field-1-input"
+                    tabindex="-1"
+                    value="01/01/2024"
+                  />
+                </div>
+              </div>
             </div>
+            <button
+              aria-label="Choose Start date date"
+              class="flex h-10 w-10 shrink-0 items-center justify-center bg-white outline-none focus:outline-none hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed [&_.MuiSvgIcon-root]:fill-govBlue"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+                data-testid="CalendarIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -178,6 +400,7 @@ exports[`DateSelector > should render correctly with errors 1`] = `
       </div>
       <div
         class="govuk-hint"
+        id="field1-hint"
       >
         Enter in format DD/MM/YYYY
       </div>
@@ -185,64 +408,175 @@ exports[`DateSelector > should render correctly with errors 1`] = `
         class="flex flex-col mt-auto"
       >
         <div
-          class="govuk-date-input flex flex-row [&_.MuiSvgIcon-root]:fill-govBlue"
+          class=""
         >
+          <span
+            class="govuk-error-message"
+            id="field1-error"
+          >
+            <span
+              class="govuk-visually-hidden"
+            >
+              Error: 
+            </span>
+            There was an error
+          </span>
           <div
-            class="govuk-date-input__item govuk-!-margin-right-0 "
+            aria-describedby="field1-error"
+            class="govuk-date-input flex flex-row items-start gap-2 [&_.MuiSvgIcon-root]:fill-govBlue govuk-input--error"
           >
             <div
-              class=""
+              class="govuk-date-input__item govuk-!-margin-right-0 "
             >
-              <span
-                class="govuk-error-message"
-                id="field1-error"
+              <div
+                class="MuiFormControl-root MuiPickersTextField-root css-rejvhe-MuiFormControl-root-MuiPickersTextField-root"
               >
-                <span
-                  class="govuk-visually-hidden"
+                <div
+                  aria-invalid="true"
+                  class="MuiPickersInputBase-root MuiPickersOutlinedInput-root Mui-error MuiPickersInputBase-colorPrimary MuiPickersInputBase-adornedEnd govuk-input govuk-date-input__input govuk-input--width-6 css-1y1yoo4-MuiPickersInputBase-root-MuiPickersOutlinedInput-root"
+                  role="group"
                 >
-                  Error: 
-                </span>
-                There was an error
-              </span>
-              <input
-                aria-describedby="field1-error"
-                class="govuk-input govuk-date-input__input govuk-input--width-6  govuk-input--error"
-                id="field-1-input"
-                name="field1"
-                placeholder="DD/MM/YYYY"
-                type="tel"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="flex items-end pb-5"
-          >
-            <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1laqsz7-MuiInputAdornment-root"
-            >
-              <button
-                aria-label="Choose date"
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
-                tabindex="0"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="CalendarIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                  <div
+                    class="MuiPickersSectionList-root MuiPickersInputBase-sectionsContainer css-7jzkh4-MuiPickersSectionList-root-MuiPickersInputBase-sectionsContainer-MuiPickersOutlinedInput-sectionsContainer"
+                    contenteditable="false"
+                    tabindex="0"
+                  >
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="0"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Day"
+                        aria-readonly="false"
+                        aria-valuemax="31"
+                        aria-valuemin="1"
+                        aria-valuetext="Empty"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="0"
+                      >
+                        DD
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      >
+                        /
+                      </span>
+                    </span>
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="1"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Month"
+                        aria-readonly="false"
+                        aria-valuemax="12"
+                        aria-valuemin="1"
+                        aria-valuetext="Empty"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="-1"
+                      >
+                        MM
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      >
+                        /
+                      </span>
+                    </span>
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="2"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Year"
+                        aria-readonly="false"
+                        aria-valuemax="9999"
+                        aria-valuemin="0"
+                        aria-valuetext="Empty"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="-1"
+                      >
+                        YYYY
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                    </span>
+                  </div>
+                  <div
+                    class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-elo8k2-MuiInputAdornment-root"
                   />
-                </svg>
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiPickersOutlinedInput-notchedOutline css-lqwr9g-MuiPickersOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-gpjuor"
+                    >
+                      <span
+                        class="notranslate css-djyycv"
+                      >
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                  <input
+                    aria-hidden="true"
+                    class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
+                    id="field-1-input"
+                    tabindex="-1"
+                    value=""
+                  />
+                </div>
+              </div>
             </div>
+            <button
+              aria-label="Choose Start date date"
+              class="flex h-10 w-10 shrink-0 items-center justify-center bg-white outline-none focus:outline-none hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed [&_.MuiSvgIcon-root]:fill-govBlue"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+                data-testid="CalendarIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -270,6 +604,7 @@ exports[`DateSelector > should render correctly with hint hidden 1`] = `
       </div>
       <div
         class="govuk-hint govuk-visually-hidden"
+        id="field1-hint"
       >
         Enter in format DD/MM/YYYY
       </div>
@@ -277,52 +612,163 @@ exports[`DateSelector > should render correctly with hint hidden 1`] = `
         class="flex flex-col mt-auto"
       >
         <div
-          class="govuk-date-input flex flex-row [&_.MuiSvgIcon-root]:fill-govBlue"
+          class=""
         >
           <div
-            class="govuk-date-input__item govuk-!-margin-right-0 "
+            class="govuk-date-input flex flex-row items-start gap-2 [&_.MuiSvgIcon-root]:fill-govBlue"
           >
             <div
-              class=""
+              class="govuk-date-input__item govuk-!-margin-right-0 "
             >
-              <input
-                class="govuk-input govuk-date-input__input govuk-input--width-6 "
-                id="field-1-input"
-                name="field1"
-                placeholder="DD/MM/YYYY"
-                type="tel"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="flex items-end pb-5"
-          >
-            <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1laqsz7-MuiInputAdornment-root"
-            >
-              <button
-                aria-label="Choose date"
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
-                tabindex="0"
-                type="button"
+              <div
+                class="MuiFormControl-root MuiPickersTextField-root css-rejvhe-MuiFormControl-root-MuiPickersTextField-root"
               >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="CalendarIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
+                <div
+                  aria-invalid="false"
+                  class="MuiPickersInputBase-root MuiPickersOutlinedInput-root MuiPickersInputBase-colorPrimary MuiPickersInputBase-adornedEnd govuk-input govuk-date-input__input govuk-input--width-6 css-1y1yoo4-MuiPickersInputBase-root-MuiPickersOutlinedInput-root"
+                  role="group"
                 >
-                  <path
-                    d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                  <div
+                    class="MuiPickersSectionList-root MuiPickersInputBase-sectionsContainer css-7jzkh4-MuiPickersSectionList-root-MuiPickersInputBase-sectionsContainer-MuiPickersOutlinedInput-sectionsContainer"
+                    contenteditable="false"
+                    tabindex="0"
+                  >
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="0"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Day"
+                        aria-readonly="false"
+                        aria-valuemax="31"
+                        aria-valuemin="1"
+                        aria-valuetext="Empty"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="0"
+                      >
+                        DD
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      >
+                        /
+                      </span>
+                    </span>
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="1"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Month"
+                        aria-readonly="false"
+                        aria-valuemax="12"
+                        aria-valuemin="1"
+                        aria-valuetext="Empty"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="-1"
+                      >
+                        MM
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      >
+                        /
+                      </span>
+                    </span>
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="2"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Year"
+                        aria-readonly="false"
+                        aria-valuemax="9999"
+                        aria-valuemin="0"
+                        aria-valuetext="Empty"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="-1"
+                      >
+                        YYYY
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                    </span>
+                  </div>
+                  <div
+                    class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-elo8k2-MuiInputAdornment-root"
                   />
-                </svg>
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiPickersOutlinedInput-notchedOutline css-lqwr9g-MuiPickersOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-gpjuor"
+                    >
+                      <span
+                        class="notranslate css-djyycv"
+                      >
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                  <input
+                    aria-hidden="true"
+                    class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
+                    id="field-1-input"
+                    tabindex="-1"
+                    value=""
+                  />
+                </div>
+              </div>
             </div>
+            <button
+              aria-label="Choose Start date date"
+              class="flex h-10 w-10 shrink-0 items-center justify-center bg-white outline-none focus:outline-none hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed [&_.MuiSvgIcon-root]:fill-govBlue"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+                data-testid="CalendarIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -350,6 +796,7 @@ exports[`DateSelector > should render correctly with no input 1`] = `
       </div>
       <div
         class="govuk-hint"
+        id="field1-hint"
       >
         Enter in format DD/MM/YYYY
       </div>
@@ -357,52 +804,163 @@ exports[`DateSelector > should render correctly with no input 1`] = `
         class="flex flex-col mt-auto"
       >
         <div
-          class="govuk-date-input flex flex-row [&_.MuiSvgIcon-root]:fill-govBlue"
+          class=""
         >
           <div
-            class="govuk-date-input__item govuk-!-margin-right-0 "
+            class="govuk-date-input flex flex-row items-start gap-2 [&_.MuiSvgIcon-root]:fill-govBlue"
           >
             <div
-              class=""
+              class="govuk-date-input__item govuk-!-margin-right-0 "
             >
-              <input
-                class="govuk-input govuk-date-input__input govuk-input--width-6 "
-                id="field-1-input"
-                name="field1"
-                placeholder="DD/MM/YYYY"
-                type="tel"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="flex items-end pb-5"
-          >
-            <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionEnd css-1laqsz7-MuiInputAdornment-root"
-            >
-              <button
-                aria-label="Choose date"
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root"
-                tabindex="0"
-                type="button"
+              <div
+                class="MuiFormControl-root MuiPickersTextField-root css-rejvhe-MuiFormControl-root-MuiPickersTextField-root"
               >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="CalendarIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
+                <div
+                  aria-invalid="false"
+                  class="MuiPickersInputBase-root MuiPickersOutlinedInput-root MuiPickersInputBase-colorPrimary MuiPickersInputBase-adornedEnd govuk-input govuk-date-input__input govuk-input--width-6 css-1y1yoo4-MuiPickersInputBase-root-MuiPickersOutlinedInput-root"
+                  role="group"
                 >
-                  <path
-                    d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                  <div
+                    class="MuiPickersSectionList-root MuiPickersInputBase-sectionsContainer css-7jzkh4-MuiPickersSectionList-root-MuiPickersInputBase-sectionsContainer-MuiPickersOutlinedInput-sectionsContainer"
+                    contenteditable="false"
+                    tabindex="0"
+                  >
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="0"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Day"
+                        aria-readonly="false"
+                        aria-valuemax="31"
+                        aria-valuemin="1"
+                        aria-valuetext="Empty"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="0"
+                      >
+                        DD
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      >
+                        /
+                      </span>
+                    </span>
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="1"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Month"
+                        aria-readonly="false"
+                        aria-valuemax="12"
+                        aria-valuemin="1"
+                        aria-valuetext="Empty"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="-1"
+                      >
+                        MM
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      >
+                        /
+                      </span>
+                    </span>
+                    <span
+                      class="MuiPickersSectionList-section css-hbf96w-MuiPickersSectionList-section-MuiPickersInputBase-section"
+                      data-sectionindex="2"
+                    >
+                      <span
+                        class="MuiPickersInputBase-sectionBefore css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                      <span
+                        aria-disabled="false"
+                        aria-label="Year"
+                        aria-readonly="false"
+                        aria-valuemax="9999"
+                        aria-valuemin="0"
+                        aria-valuetext="Empty"
+                        autocapitalize="none"
+                        autocorrect="off"
+                        class="MuiPickersSectionList-sectionContent MuiPickersInputBase-sectionContent css-7g9tpi-MuiPickersSectionList-sectionContent-MuiPickersInputBase-sectionContent"
+                        contenteditable="true"
+                        inputmode="numeric"
+                        role="spinbutton"
+                        spellcheck="false"
+                        tabindex="-1"
+                      >
+                        YYYY
+                      </span>
+                      <span
+                        class="MuiPickersInputBase-sectionAfter css-w1q93y-MuiPickersSectionList-sectionSeparator-MuiPickersInputBase-separator"
+                      />
+                    </span>
+                  </div>
+                  <div
+                    class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-elo8k2-MuiInputAdornment-root"
                   />
-                </svg>
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiPickersOutlinedInput-notchedOutline css-lqwr9g-MuiPickersOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-gpjuor"
+                    >
+                      <span
+                        class="notranslate css-djyycv"
+                      >
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                  <input
+                    aria-hidden="true"
+                    class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
+                    id="field-1-input"
+                    tabindex="-1"
+                    value=""
+                  />
+                </div>
+              </div>
             </div>
+            <button
+              aria-label="Choose Start date date"
+              class="flex h-10 w-10 shrink-0 items-center justify-center bg-white outline-none focus:outline-none hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed [&_.MuiSvgIcon-root]:fill-govBlue"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+                data-testid="CalendarIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

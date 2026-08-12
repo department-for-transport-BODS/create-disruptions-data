@@ -1,5 +1,5 @@
 import kebabCase from "lodash/kebabCase";
-import { ReactElement, useState, type JSX } from "react";
+import { type JSX, ReactElement, useState } from "react";
 import { DisplayValuePair, ErrorInfo, FormBase } from "../../interfaces";
 import FormElementWrapper, { FormGroupWrapper } from "./FormElementWrapper";
 
@@ -23,7 +23,7 @@ const Select = <T extends object>({
     width = "3/4",
     useDefaultValue = true,
     hint,
-}: SelectProps<T>): ReactElement<any> => {
+}: SelectProps<T>): ReactElement => {
     const [errors] = useState<ErrorInfo[]>(initialErrors);
     const inputId = kebabCase(inputName);
 

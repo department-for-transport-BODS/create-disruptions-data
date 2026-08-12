@@ -20,7 +20,7 @@ const description = "Reset Password page for the Create Transport Disruptions Se
 export interface ResetPasswordPageProps extends PageState<Partial<ResetPasswordSchema>> {
     successMessage?: string;
 }
-const ResetPassword = (props: ResetPasswordPageProps): ReactElement<any> => {
+const ResetPassword = (props: ResetPasswordPageProps): ReactElement => {
     const [pageState, setPageState] = useState(props);
 
     const stateUpdater = getStateUpdater(setPageState, pageState);

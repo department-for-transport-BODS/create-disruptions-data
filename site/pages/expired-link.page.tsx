@@ -5,7 +5,7 @@ import { SUPPORT_EMAIL_ADDRESS } from "../constants";
 const title = "Register link timeout - Create Transport Disruption Data Service";
 const description = "Register link timeout page for the Create Transport Disruption Data Service";
 
-const ExpiredLink = (): ReactElement<any> => (
+const ExpiredLink = (): ReactElement => (
     <TwoThirdsLayout title={title} description={description}>
         <div
             className="govuk-notification-banner"

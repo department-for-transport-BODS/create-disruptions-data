@@ -15,7 +15,7 @@ const title = "Reset password - Create Transport Disruptions Service";
 const description = "Password reset page for the Create Transport Disruptions Service";
 
 export interface ForgotPasswordPageProps extends PageState<Partial<ForgotPasswordSchema>> {}
-const ForgotPassword = (props: ForgotPasswordPageProps): ReactElement<any> => {
+const ForgotPassword = (props: ForgotPasswordPageProps): ReactElement => {
     const [pageState, setPageState] = useState(props);
     const stateUpdater = getStateUpdater(setPageState, pageState);
     return (

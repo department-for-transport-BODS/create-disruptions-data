@@ -13,7 +13,7 @@ interface ExportPopUpProps {
     isExporting: boolean;
 }
 
-const ExportPopUp = ({ confirmHandler, closePopUp, isOpen, isExporting }: ExportPopUpProps): ReactElement<any> => {
+const ExportPopUp = ({ confirmHandler, closePopUp, isOpen, isExporting }: ExportPopUpProps): ReactElement => {
     const [fileType, setFileType] = useState("");
     const [errors, setErrors] = useState<ErrorInfo[]>([]);
 

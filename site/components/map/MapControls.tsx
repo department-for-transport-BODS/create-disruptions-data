@@ -17,7 +17,7 @@ const MapControls = ({
     trash = true,
     polygon = true,
     showDrawControl = true,
-}: MapControlsProps): ReactElement<any> | null => {
+}: MapControlsProps): ReactElement | null => {
     const mapboxAccessToken = process.env.MAP_BOX_ACCESS_TOKEN;
 
     return mapboxAccessToken ? (

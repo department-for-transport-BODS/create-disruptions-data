@@ -58,7 +58,7 @@ const ReviewDisruption = ({
     operatorOrgId,
     isOperatorUser,
     enableCancellationsFeatureFlag = false,
-}: ReviewDisruptionProps): ReactElement<any> => {
+}: ReviewDisruptionProps): ReactElement => {
     const hasInitialised = useRef(false);
     const [popUpState, setPopUpState] = useState<{ name: string; hiddenInputs: { name: string; value: string }[] }>();
     const [socialMediaPostPopUpState, setSocialMediaPostPopUpState] = useState<{
@@ -604,9 +604,9 @@ const ReviewDisruption = ({
                                     ...(disruption.template ? { template: disruption.template?.toString() } : {}),
                                 },
                             }}
-                            className={`govuk-button mt-2 govuk-button--secondary ${
+                            className={`govuk-button mt-2 govuk-button--secondary${
                                 disruption.consequences && disruption.consequences.length >= MAX_CONSEQUENCES
-                                    ? "pointer-events-none govuk-button--disabled"
+                                    ? " pointer-events-none govuk-button--disabled"
                                     : ""
                             }`}
                         >
@@ -659,9 +659,9 @@ const ReviewDisruption = ({
                         </div>
 
                         <Link
-                            className={`govuk-button mt-2 govuk-button--secondary ${
+                            className={`govuk-button mt-2 govuk-button--secondary${
                                 disruption.socialMediaPosts && disruption.socialMediaPosts.length >= 5
-                                    ? "pointer-events-none govuk-button--disabled"
+                                    ? " pointer-events-none govuk-button--disabled"
                                     : ""
                             }`}
                             href={{

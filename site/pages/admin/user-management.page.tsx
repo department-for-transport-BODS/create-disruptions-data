@@ -21,7 +21,7 @@ export interface UserManagementPageProps {
     csrfToken?: string;
 }
 
-const UserManagement = ({ userList, csrfToken }: UserManagementPageProps): ReactElement<any> => {
+const UserManagement = ({ userList, csrfToken }: UserManagementPageProps): ReactElement => {
     const numberOfUserPages = Math.ceil(userList.length / 10);
     const [currentPage, setCurrentPage] = useState(1);
     const [userToDelete, setUserToDelete] = useState<string>();

@@ -23,7 +23,7 @@ const ServiceSearch = ({
     dataSource,
     handleDataSourceUpdate,
     className = "",
-}: ServiceSearchProps): ReactElement<any> => {
+}: ServiceSearchProps): ReactElement => {
     const [searchText, setSearchText] = useState("");
 
     useEffect(() => {

@@ -22,7 +22,7 @@ const isCellProps = (cell: string | ReactNode | CellProps): cell is CellProps =>
     return false;
 };
 
-const Table = ({ caption, columns = [], rows }: TableProps): ReactElement<any> => {
+const Table = ({ caption, columns = [], rows }: TableProps): ReactElement => {
     return (
         <table className="govuk-table">
             {caption ? (

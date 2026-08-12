@@ -15,7 +15,7 @@ const ViewAllTemplates = ({
     filterStatus,
     enableLoadingSpinnerOnPageLoad = true,
     orgId,
-}: ViewAllContentProps): ReactElement<any> => {
+}: ViewAllContentProps): ReactElement => {
     return (
         <BaseLayout title={title} description={description}>
             <ViewAllContents

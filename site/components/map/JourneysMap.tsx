@@ -63,7 +63,7 @@ const Map = ({
     stopOptions = [],
     searchedRoutes = [],
     serviceOptionsForDropdown = [],
-}: JourneysMapProps): ReactElement<any> | null => {
+}: JourneysMapProps): ReactElement | null => {
     const mapboxAccessToken = process.env.MAP_BOX_ACCESS_TOKEN;
     const [markerData, setMarkerData] = useState<Stop[]>([]);
 

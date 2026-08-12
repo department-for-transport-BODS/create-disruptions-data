@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ReactElement } from "react";
 
-const Footer = (): ReactElement<any> => (
+const Footer = (): ReactElement => (
     <footer className="govuk-footer" role="contentinfo">
         <div className="govuk-width-container">
             <svg

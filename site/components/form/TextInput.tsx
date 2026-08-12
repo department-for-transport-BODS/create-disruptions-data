@@ -29,7 +29,7 @@ const TextInput = <T extends object>({
     isPassword,
     resetError = false,
     isDisabled = false,
-}: TextInputProps<T>): ReactElement<any> => {
+}: TextInputProps<T>): ReactElement => {
     const [errors, setErrors] = useState<ErrorInfo[]>(initialErrors);
     const inputId = kebabCase(inputName);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);

@@ -8,7 +8,7 @@ interface CookieBannerMessageProps {
     handleClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-export const CookieBannerMessage = ({ handleClick }: CookieBannerMessageProps): ReactElement<any> => (
+export const CookieBannerMessage = ({ handleClick }: CookieBannerMessageProps): ReactElement => (
     <div id="global-cookie-message" className="govuk-cookie-banner" role="region" aria-label="cookie banner">
         <div className="govuk-width-container relative">
             <div className="govuk-grid-row">
@@ -54,7 +54,7 @@ export const CookieBannerMessage = ({ handleClick }: CookieBannerMessageProps): 
     </div>
 );
 
-const CookieBanner = (): ReactElement<any> | null => {
+const CookieBanner = (): ReactElement | null => {
     const [cookiesAccepted, setCookiesAccepted] = useState(false);
     const [hideBanner, setHideBanner] = useState(true);
 

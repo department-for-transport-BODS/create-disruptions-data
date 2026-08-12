@@ -1,8 +1,8 @@
 import react from "@vitejs/plugin-react";
-import { UserConfig, defineConfig } from "vitest/config";
+import { ViteUserConfig, defineConfig } from "vitest/config";
 
 export default defineConfig({
-    plugins: [react()] as UserConfig["plugins"],
+    plugins: [react()] as ViteUserConfig["plugins"],
     test: {
         include: ["**/*.{test,spec}.{js,ts,tsx}"],
         environment: "jsdom",

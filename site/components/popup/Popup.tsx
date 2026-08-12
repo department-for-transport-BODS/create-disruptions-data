@@ -26,7 +26,7 @@ const Popup = ({
     questionText,
     isWarning,
     isOpen,
-}: PopUpProps): ReactElement<any> | null => {
+}: PopUpProps): ReactElement | null => {
     return (
         <div className="modal-overlay bg-black/[.2] fixed justify-center items-center top-0 left-0 flex w-full h-screen z-50">
             <Trap active={isOpen}>

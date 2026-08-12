@@ -15,7 +15,7 @@ export interface CookiePreferencesProps {
     csrfToken?: string;
 }
 
-const Cookies = ({ settingsSaved, trackingDefaultValue, csrfToken }: CookiePreferencesProps): ReactElement<any> => (
+const Cookies = ({ settingsSaved, trackingDefaultValue, csrfToken }: CookiePreferencesProps): ReactElement => (
     <TwoThirdsLayout title={title} description={description} hideCookieBanner>
         {settingsSaved ? (
             <div className="information_box__success block p-5 mb-12.5 border-4 border-govGreen">

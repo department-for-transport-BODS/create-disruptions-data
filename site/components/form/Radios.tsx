@@ -10,7 +10,7 @@ interface RadiosProps<T> extends FormBase<T> {
 }
 
 interface RadioValuePair<T = string> extends DisplayValuePair<T> {
-    conditionalElement?: ReactElement<any>;
+    conditionalElement?: ReactElement;
     ref?: RefObject<HTMLInputElement | null>;
     disabled?: boolean;
 }
@@ -25,7 +25,7 @@ const Radios = <T extends object>({
     stateUpdater,
     paddingTop,
     hint,
-}: RadiosProps<T>): ReactElement<any> => {
+}: RadiosProps<T>): ReactElement => {
     const [errors] = useState<ErrorInfo[]>(initialErrors);
     const inputId = kebabCase(inputName);
 

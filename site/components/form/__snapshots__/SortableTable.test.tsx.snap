@@ -12,19 +12,19 @@ exports[`SortableTable > should render correctly 1`] = `
         class="govuk-table__row"
       >
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           ID
         </th>
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           Name
         </th>
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           <div
@@ -46,7 +46,7 @@ exports[`SortableTable > should render correctly 1`] = `
           </div>
         </th>
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           <div
@@ -224,19 +224,19 @@ exports[`SortableTable > should render correctly with pagination 1`] = `
         class="govuk-table__row"
       >
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           ID
         </th>
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           Name
         </th>
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           <div
@@ -258,7 +258,7 @@ exports[`SortableTable > should render correctly with pagination 1`] = `
           </div>
         </th>
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           <div
@@ -515,19 +515,19 @@ exports[`SortableTable > should render correctly with sorted field 1`] = `
         class="govuk-table__row"
       >
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           ID
         </th>
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           Name
         </th>
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           <div
@@ -542,7 +542,7 @@ exports[`SortableTable > should render correctly with sorted field 1`] = `
           </div>
         </th>
         <th
-          class="govuk-table__header align-middle px-2 "
+          class="govuk-table__header align-middle px-2"
           scope="col"
         >
           <div

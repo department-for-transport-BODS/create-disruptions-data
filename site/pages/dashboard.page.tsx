@@ -69,7 +69,7 @@ const Dashboard = ({
     pendingApprovalCount,
     isOperatorUser = false,
     enableLoadingSpinnerOnPageLoad = true,
-}: DashboardProps): ReactElement<any> => {
+}: DashboardProps): ReactElement => {
     const hasInitialised = useRef(false);
     const [currentLivePage, setCurrentLivePage] = useState(1);
     const [currentUpcomingPage, setCurrentUpcomingPage] = useState(1);

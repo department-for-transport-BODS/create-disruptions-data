@@ -17,7 +17,7 @@ export interface ManageOrganisationsProps {
 const title = "Manage organisations";
 const description = "Manage organisations page for the Create Transport Disruptions Service";
 
-const ManageOrganisations = ({ orgList, csrfToken }: ManageOrganisationsProps): ReactElement<any> => {
+const ManageOrganisations = ({ orgList, csrfToken }: ManageOrganisationsProps): ReactElement => {
     const [orgToDelete, setOrgToDelete] = useState<string>();
 
     const removeOrg = (orgId: string) => {

@@ -1,11 +1,16 @@
 import React, { ReactElement } from "react";
 import { ErrorInfo } from "../../interfaces";
 
+interface ElementWithClassNameProps {
+    className?: string;
+    "aria-describedby"?: string;
+}
+
 interface FormElementWrapperProps {
     errors: ErrorInfo[];
     errorId: string;
     errorClass: string;
-    children: ReactElement<any>;
+    children: ReactElement<ElementWithClassNameProps>;
     addFormGroupError?: boolean;
     hideText?: boolean;
 }
@@ -13,7 +18,7 @@ interface FormElementWrapperProps {
 interface FormGroupWrapperProps {
     errors: ErrorInfo[];
     errorIds: string[];
-    children: ReactElement<any>;
+    children: ReactElement;
     hideErrorBar?: boolean;
     errorAlign?: boolean;
 }
@@ -23,13 +28,17 @@ interface FormErrorBlockProps {
     errorIds: string[];
 }
 
-const addErrorClasses = (child: ReactElement<any>, errorClass: string, errorId: string): ReactElement<any> =>
+const addErrorClasses = (
+    child: ReactElement<ElementWithClassNameProps>,
+    errorClass: string,
+    errorId: string,
+): ReactElement =>
     React.cloneElement(child, {
         className: child.props.className ? `${child.props.className} ${errorClass}` : errorClass,
         "aria-describedby": `${errorId}-error`,
     });
 
-export const FormErrorBlock = ({ errors, errorIds }: FormErrorBlockProps): ReactElement<any> => (
+export const FormErrorBlock = ({ errors, errorIds }: FormErrorBlockProps): ReactElement => (
     <div>
         {errors
             .filter((error) => errorIds.includes(error.id.toString()))
@@ -48,7 +57,7 @@ export const FormGroupWrapper = ({
     children,
     hideErrorBar = false,
     errorAlign = false,
-}: FormGroupWrapperProps): ReactElement<any> => {
+}: FormGroupWrapperProps): ReactElement => {
     const errorForElement = errors.find((err) => errorIds.includes(err.id.toString()));
 
     return (
@@ -69,7 +78,7 @@ const FormElementWrapper = ({
     children,
     addFormGroupError,
     hideText,
-}: FormElementWrapperProps): ReactElement<any> => {
+}: FormElementWrapperProps): ReactElement => {
     const errorForElement = errors.find((err) => err.id === errorId);
 
     return (
@@ -82,7 +91,7 @@ const FormElementWrapper = ({
             )}
 
             {errorForElement
-                ? React.Children.map(children, (child: ReactElement<any>) => addErrorClasses(child, errorClass, errorId))
+                ? React.Children.map(children, (child) => addErrorClasses(child, errorClass, errorId))
                 : children}
         </div>
     );

@@ -29,7 +29,7 @@ const TimeSelector = <T extends object>({
     showNowButton,
     inputDivWidth,
     errorAlign = false,
-}: TimeSelectorProps<T>): ReactElement<any> => {
+}: TimeSelectorProps<T>): ReactElement => {
     const [errors, setErrors] = useState<ErrorInfo[]>(initialErrors);
     const ref = useRef<HTMLInputElement>(null);
     const inputId = kebabCase(inputName);

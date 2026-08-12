@@ -9,11 +9,11 @@ interface TabsProps {
 
 interface Tab {
     tabHeader: string;
-    content: ReactElement<any>;
+    content: ReactElement;
     handleTabClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-const Tabs = ({ tabsTitle, tabs, activeTabHeader }: TabsProps): ReactElement<any> => (
+const Tabs = ({ tabsTitle, tabs, activeTabHeader }: TabsProps): ReactElement => (
     <div className="govuk-tabs" data-module="govuk-tabs">
         <h2 className="govuk-tabs__title">{tabsTitle}</h2>
         <ul className="govuk-tabs__list">

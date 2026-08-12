@@ -7,7 +7,7 @@ interface WarningProps {
     children?: ReactNode;
 }
 
-const Warning = ({ text, symbol = "!", title = "Warning", children }: WarningProps): ReactElement<any> => (
+const Warning = ({ text, symbol = "!", title = "Warning", children }: WarningProps): ReactElement => (
     <div className="govuk-warning-text">
         <span className="govuk-warning-text__icon" aria-hidden="true">
             {symbol}

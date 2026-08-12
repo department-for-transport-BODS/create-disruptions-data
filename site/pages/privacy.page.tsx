@@ -4,7 +4,7 @@ import { BaseLayout } from "../components/layout/Layout";
 const title = "Privacy - Create Transport Disruption Data Service";
 const description = "Privacy policy page for the Create Transport Disruption Data Service";
 
-const Privacy = (): ReactElement<any> => {
+const Privacy = (): ReactElement => {
     return (
         <BaseLayout title={title} description={description}>
             <h1 className="govuk-heading-l">Privacy policy for the Create Transport Disruption Data Service</h1>

@@ -20,7 +20,7 @@ const description = "Change Password page for the Create Transport Disruptions S
 
 export interface ChangePasswordPageProps extends PageState<Partial<ChangePasswordSchema>> {}
 
-const ChangePassword = (props: ChangePasswordPageProps): ReactElement<any> => {
+const ChangePassword = (props: ChangePasswordPageProps): ReactElement => {
     const [pageState, setPageState] = useState(props);
 
     const stateUpdater = getStateUpdater(setPageState, pageState);

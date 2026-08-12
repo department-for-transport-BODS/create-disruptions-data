@@ -18,7 +18,7 @@ interface LayoutProps {
     disableBackButton?: boolean;
 }
 
-const Help = (): ReactElement<any> => (
+const Help = (): ReactElement => (
     <div>
         <h2 className="govuk-heading-s">Help and Support</h2>
         <p className="govuk-body">
@@ -38,7 +38,7 @@ export const BaseLayout = ({
     children,
     hideHelp,
     disableBackButton = false,
-}: PropsWithChildren<LayoutProps>): ReactElement<any> => {
+}: PropsWithChildren<LayoutProps>): ReactElement => {
     const [showBanner, setShowBanner] = useState(false);
 
     useEffect(() => {
@@ -88,7 +88,7 @@ export const FullColumnLayout = ({
     hideCookieBanner = false,
     hideHelp = false,
     disableBackButton = false,
-}: PropsWithChildren<LayoutProps>): ReactElement<any> => (
+}: PropsWithChildren<LayoutProps>): ReactElement => (
     <BaseLayout
         title={title}
         description={description}
@@ -111,7 +111,7 @@ export const TwoThirdsLayout = ({
     hideCookieBanner = false,
     hideHelp = false,
     disableBackButton = false,
-}: PropsWithChildren<LayoutProps>): ReactElement<any> => (
+}: PropsWithChildren<LayoutProps>): ReactElement => (
     <BaseLayout
         title={title}
         description={description}

@@ -6,7 +6,7 @@ exports[`TimeSelector > should render correctly when disabled 1`] = `
     class="govuk-form-group"
   >
     <div
-      class="govuk-form-group "
+      class="govuk-form-group"
       id="field-1"
     >
       <div>
@@ -50,7 +50,7 @@ exports[`TimeSelector > should render correctly with errors 1`] = `
     class="govuk-form-group"
   >
     <div
-      class="govuk-form-group "
+      class="govuk-form-group"
       id="field-1"
     >
       <div>
@@ -99,7 +99,7 @@ exports[`TimeSelector > should render correctly with inputs 1`] = `
     class="govuk-form-group"
   >
     <div
-      class="govuk-form-group "
+      class="govuk-form-group"
       id="field-1"
     >
       <div>
@@ -142,7 +142,7 @@ exports[`TimeSelector > should render correctly with no inputs 1`] = `
     class="govuk-form-group"
   >
     <div
-      class="govuk-form-group "
+      class="govuk-form-group"
       id="field-1"
     >
       <div>

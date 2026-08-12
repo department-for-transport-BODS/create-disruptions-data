@@ -21,7 +21,7 @@ const DeleteConfirmationPopup = ({
     hiddenInputs,
     isWarning,
     isOpen,
-}: PopUpProps): ReactElement<any> | null => {
+}: PopUpProps): ReactElement | null => {
     return (
         <Popup
             isOpen={isOpen}

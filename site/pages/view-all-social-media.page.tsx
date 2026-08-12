@@ -16,7 +16,7 @@ interface ViewAllSocialMediaProps {
     socialMediaPosts: SocialMediaPost[];
 }
 
-const ViewAllSocialMedia = ({ socialMediaPosts }: ViewAllSocialMediaProps): ReactElement<any> => {
+const ViewAllSocialMedia = ({ socialMediaPosts }: ViewAllSocialMediaProps): ReactElement => {
     const hasInitialised = useRef(false);
     useEffect(() => {
         if (window.GOVUKFrontend && !hasInitialised.current) {

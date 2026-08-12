@@ -48,7 +48,7 @@ const Map = ({
     stateUpdater = () => "",
     state,
     showUnderground = false,
-}: MapProps): ReactElement<any> | null => {
+}: MapProps): ReactElement | null => {
     const mapboxAccessToken = process.env.MAP_BOX_ACCESS_TOKEN;
     const [features, setFeatures] = useState<{ [key: string]: PolygonFeature }>({});
     const [markerData, setMarkerData] = useState<Stop[]>([]);

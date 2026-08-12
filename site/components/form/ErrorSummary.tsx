@@ -6,7 +6,7 @@ interface ErrorSummary {
     errors: ErrorInfo[];
 }
 
-const ErrorSummary = ({ errors, children }: PropsWithChildren<ErrorSummary>): null | ReactElement<any> => {
+const ErrorSummary = ({ errors, children }: PropsWithChildren<ErrorSummary>): null | ReactElement => {
     if (!errors || errors.length === 0) {
         return null;
     }

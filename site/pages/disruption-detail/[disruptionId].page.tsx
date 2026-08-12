@@ -57,7 +57,7 @@ const DisruptionDetail = ({
     operatorOrgId,
     isOperatorUser,
     enableCancellationsFeatureFlag = false,
-}: DisruptionDetailProps): ReactElement<any> => {
+}: DisruptionDetailProps): ReactElement => {
     const [socialMediaPostPopUpState, setSocialMediaPostPopUpState] = useState<{
         name: string;
         hiddenInputs: { name: string; value: string }[];

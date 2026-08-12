@@ -40,7 +40,7 @@ const OperatorSearch = <T extends object>({
     initialErrors = [],
     inputName,
     className = "",
-}: OperatorSearchProps<T>): ReactElement<any> => {
+}: OperatorSearchProps<T>): ReactElement => {
     const [searchText, setSearchText] = useState("");
 
     useEffect(() => {

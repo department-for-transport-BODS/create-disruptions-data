@@ -18,7 +18,7 @@ interface FeedbackProps {
     feedbackSubmitted: "submitted" | "not submitted" | "false";
 }
 
-const createFeedbackBox = (option: "submitted" | "not submitted"): ReactElement<any> => (
+const createFeedbackBox = (option: "submitted" | "not submitted"): ReactElement => (
     <div
         className={
             option === "submitted"
@@ -40,7 +40,7 @@ const createFeedbackBox = (option: "submitted" | "not submitted"): ReactElement<
     </div>
 );
 
-const Feedback = ({ csrfToken, feedbackSubmitted }: FeedbackProps): ReactElement<any> => (
+const Feedback = ({ csrfToken, feedbackSubmitted }: FeedbackProps): ReactElement => (
     <TwoThirdsLayout title={title} description={description} errors={[]}>
         <CsrfForm action="/api/feedback" method="post" csrfToken={csrfToken}>
             <>

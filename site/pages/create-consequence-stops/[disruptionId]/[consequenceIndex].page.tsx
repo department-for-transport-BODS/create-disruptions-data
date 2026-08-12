@@ -59,7 +59,7 @@ const description = "Create Consequence Stops page for the Create Transport Disr
 
 export interface CreateConsequenceStopsProps extends PageState<Partial<StopsConsequence>>, CreateConsequenceProps {}
 
-const CreateConsequenceStops = (props: CreateConsequenceStopsProps): ReactElement<any> => {
+const CreateConsequenceStops = (props: CreateConsequenceStopsProps): ReactElement => {
     const [pageState, setPageState] = useState<PageState<Partial<StopsConsequence>>>(props);
     const stateUpdater = getStateUpdater(setPageState, pageState);
     const [selected, setSelected] = useState<SingleValue<Stop>>(null);

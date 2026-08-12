@@ -43,7 +43,7 @@ exports[`Table > should render correctly 1`] = `
           test row 1
         </th>
         <td
-          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
         >
           1
         </td>
@@ -58,7 +58,7 @@ exports[`Table > should render correctly 1`] = `
           test row 2
         </th>
         <td
-          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
         >
           2
         </td>
@@ -111,7 +111,7 @@ exports[`Table > should render correctly with jsx element 1`] = `
           test row 1
         </th>
         <td
-          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
         >
           <p>
             test 1
@@ -128,7 +128,7 @@ exports[`Table > should render correctly with jsx element 1`] = `
           test row 2
         </th>
         <td
-          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
         >
           2
         </td>
@@ -175,7 +175,7 @@ exports[`Table > should render correctly without a header 1`] = `
         class="govuk-table__row"
       >
         <td
-          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
         >
           1
         </td>
@@ -184,7 +184,7 @@ exports[`Table > should render correctly without a header 1`] = `
         class="govuk-table__row"
       >
         <td
-          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+          class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
         >
           2
         </td>

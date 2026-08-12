@@ -165,10 +165,10 @@ exports[`UserDetailPageTemplate > should render the add-user page correctly 1`] 
                     Organisation
                   </th>
                   <td
-                    class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+                    class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
                   />
                   <td
-                    class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+                    class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
                   />
                 </tr>
               </tbody>
@@ -669,10 +669,10 @@ exports[`UserDetailPageTemplate > should render the edit-user page correctly 1`]
                     Organisation
                   </th>
                   <td
-                    class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+                    class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
                   />
                   <td
-                    class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+                    class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
                   />
                 </tr>
               </tbody>

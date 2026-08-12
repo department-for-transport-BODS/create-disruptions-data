@@ -397,7 +397,7 @@ exports[`pages > CreateConsequenceOperator > should render correctly with inputs
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -1153,7 +1153,7 @@ exports[`pages > CreateConsequenceOperator > should render correctly with inputs
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -1909,7 +1909,7 @@ exports[`pages > CreateConsequenceOperator > should render correctly with inputs
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -2631,7 +2631,7 @@ exports[`pages > CreateConsequenceOperator > should render correctly with no inp
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -3382,7 +3382,7 @@ exports[`pages > CreateConsequenceOperator > should render correctly with query 
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>

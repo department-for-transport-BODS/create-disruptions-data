@@ -30,33 +30,33 @@ exports[`SearchSelect > should render correctly with errors 1`] = `
           There was an error
         </span>
         <div
-          class="text-lg text-black govuk-input--error css-xxxxxxx-container"
+          class="text-lg text-black govuk-input--error css-b62m3t-container"
           id="test-id"
         >
           <span
-            class="css-xxxxxxx-a11yText-A11yText"
+            class="css-1f43avz-a11yText-A11yText"
             id="react-select-dropdown-test-id-live-region"
           />
           <span
             aria-atomic="false"
             aria-live="polite"
             aria-relevant="additions text"
-            class="css-xxxxxxx-a11yText-A11yText"
+            class="css-1f43avz-a11yText-A11yText"
             role="log"
           />
           <div
-            class="css-xxxxxxx-control"
+            class="css-1kxfjwu-control"
           >
             <div
-              class="css-xxxxxxx"
+              class="css-hlgwow"
             >
               <div
-                class="css-xxxxxxx-singleValue"
+                class="css-1dimb5e-singleValue"
               >
                 Ocean
               </div>
               <div
-                class="css-xxxxxxx"
+                class="css-19bb58m"
                 data-value=""
               >
                 <input
@@ -80,18 +80,18 @@ exports[`SearchSelect > should render correctly with errors 1`] = `
               </div>
             </div>
             <div
-              class="css-xxxxxxx"
+              class="css-1wy0on6"
             >
               <span
-                class="css-xxxxxxx-indicatorSeparator"
+                class="css-1u9des2-indicatorSeparator"
               />
               <div
                 aria-hidden="true"
-                class="css-xxxxxxx-indicatorContainer"
+                class="css-1xc3v61-indicatorContainer"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-xxxxxxx-Svg"
+                  class="css-tj5bde-Svg"
                   focusable="false"
                   height="20"
                   viewBox="0 0 20 20"
@@ -129,7 +129,7 @@ exports[`SearchSelect > should render correctly with errors 1`] = `
               test row 1
             </th>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               1
             </td>
@@ -144,7 +144,7 @@ exports[`SearchSelect > should render correctly with errors 1`] = `
               test row 2
             </th>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               2
             </td>
@@ -175,33 +175,33 @@ exports[`SearchSelect > should render correctly with no errors 1`] = `
         class=""
       >
         <div
-          class="text-lg text-black css-xxxxxxx-container"
+          class="text-lg text-black css-b62m3t-container"
           id="test-id"
         >
           <span
-            class="css-xxxxxxx-a11yText-A11yText"
+            class="css-1f43avz-a11yText-A11yText"
             id="react-select-dropdown-test-id-live-region"
           />
           <span
             aria-atomic="false"
             aria-live="polite"
             aria-relevant="additions text"
-            class="css-xxxxxxx-a11yText-A11yText"
+            class="css-1f43avz-a11yText-A11yText"
             role="log"
           />
           <div
-            class="css-xxxxxxx-control"
+            class="css-1kxfjwu-control"
           >
             <div
-              class="css-xxxxxxx"
+              class="css-hlgwow"
             >
               <div
-                class="css-xxxxxxx-singleValue"
+                class="css-1dimb5e-singleValue"
               >
                 Ocean
               </div>
               <div
-                class="css-xxxxxxx"
+                class="css-19bb58m"
                 data-value=""
               >
                 <input
@@ -225,18 +225,18 @@ exports[`SearchSelect > should render correctly with no errors 1`] = `
               </div>
             </div>
             <div
-              class="css-xxxxxxx"
+              class="css-1wy0on6"
             >
               <span
-                class="css-xxxxxxx-indicatorSeparator"
+                class="css-1u9des2-indicatorSeparator"
               />
               <div
                 aria-hidden="true"
-                class="css-xxxxxxx-indicatorContainer"
+                class="css-1xc3v61-indicatorContainer"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-xxxxxxx-Svg"
+                  class="css-tj5bde-Svg"
                   focusable="false"
                   height="20"
                   viewBox="0 0 20 20"
@@ -274,7 +274,7 @@ exports[`SearchSelect > should render correctly with no errors 1`] = `
               test row 1
             </th>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               1
             </td>
@@ -289,7 +289,7 @@ exports[`SearchSelect > should render correctly with no errors 1`] = `
               test row 2
             </th>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               2
             </td>

@@ -31,7 +31,7 @@ exports[`DeleteConfirmationPopup > should render correctly 1`] = `
             value="acde070d-8c4c-4f0d-9d8a-162843c10333"
           />
           <button
-            class="govuk-button mr-6 mt-4 mb-0"
+            class="govuk-button mr-6 mt-4 mb-0 "
             data-module="govuk-button"
             id="popup-continue-button"
           >

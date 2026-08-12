@@ -1340,7 +1340,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/2/3?return=%2Fdisruption-detail"
           >
             Add another consequence
@@ -2003,7 +2003,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and no e
             value="2"
           />
           <a
-            class="govuk-button mt-8 "
+            class="govuk-button mt-8"
             href="/dashboard"
             role="button"
           >
@@ -3571,7 +3571,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/2/3?return=%2Fdisruption-detail&template=true"
           >
             Add another consequence
@@ -5698,7 +5698,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and no e
             value="2"
           />
           <a
-            class="govuk-button mt-8 "
+            class="govuk-button mt-8"
             href="/dashboard"
             role="button"
           >
@@ -7150,7 +7150,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and no e
             value="2"
           />
           <a
-            class="govuk-button mt-8 "
+            class="govuk-button mt-8"
             href="/dashboard"
             role="button"
           >
@@ -8602,7 +8602,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and no e
             value="2"
           />
           <a
-            class="govuk-button mt-8 "
+            class="govuk-button mt-8"
             href="/dashboard"
             role="button"
           >
@@ -10465,7 +10465,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/2/3?return=%2Fdisruption-detail"
           >
             Add another consequence
@@ -11128,7 +11128,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and no e
             value="2"
           />
           <a
-            class="govuk-button mt-8 "
+            class="govuk-button mt-8"
             href="/dashboard"
             role="button"
           >
@@ -12703,7 +12703,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/2/3?return=%2Fdisruption-detail&template=true"
           >
             Add another consequence
@@ -13366,7 +13366,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and no e
             value="2"
           />
           <a
-            class="govuk-button mt-8 "
+            class="govuk-button mt-8"
             href="/dashboard"
             role="button"
           >
@@ -14935,7 +14935,7 @@ exports[`pages > DisruptionDetail > should render correctly with inputs and stat
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/2/3?return=%2Fdisruption-detail"
           >
             Add another consequence

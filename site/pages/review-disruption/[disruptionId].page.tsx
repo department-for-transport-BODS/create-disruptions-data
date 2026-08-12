@@ -710,9 +710,9 @@ const ReviewDisruption = ({
                             <Link
                                 role="button"
                                 href={DASHBOARD_PAGE_PATH}
-                                className={`govuk-button mt-8 ${
+                                className={`govuk-button mt-8${
                                     canPublish && disruption.publishStatus !== PublishStatus.published
-                                        ? "govuk-button--secondary mr-5"
+                                        ? " govuk-button--secondary mr-5"
                                         : ""
                                 }`}
                             >

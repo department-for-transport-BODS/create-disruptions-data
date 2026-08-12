@@ -91,12 +91,12 @@ exports[`Tabs > should render correctly when given a table as the content 1`] = 
               </a>
             </th>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               Test summary
             </td>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               01/01/2023 onwards
             </td>
@@ -116,12 +116,12 @@ exports[`Tabs > should render correctly when given a table as the content 1`] = 
               </a>
             </th>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               Test summary
             </td>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               02/01/2023 - 02/02-2024
             </td>
@@ -185,12 +185,12 @@ exports[`Tabs > should render correctly when given a table as the content 1`] = 
               </a>
             </th>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               Test summary
             </td>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               01/01/2023 onwards
             </td>
@@ -210,12 +210,12 @@ exports[`Tabs > should render correctly when given a table as the content 1`] = 
               </a>
             </th>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               Test summary
             </td>
             <td
-              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl"
+              class="govuk-table__cell align-middle overflow-hidden px-2 max-w-2xl "
             >
               02/01/2023 - 02/02-2024
             </td>

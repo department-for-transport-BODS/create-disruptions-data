@@ -62,7 +62,8 @@ const TimeSelector = <T extends object>({
 
     return (
         <FormGroupWrapper errorIds={[inputName]} errors={errors} errorAlign={errorAlign}>
-            <div className={`govuk-form-group ${errorAlign ? "h-full flex flex-col" : ""}`} id={inputId}>
+            q{" "}
+            <div className={`govuk-form-group${errorAlign ? " h-full flex flex-col" : ""}`} id={inputId}>
                 <div>
                     <label className={`govuk-label govuk-label--${displaySize}`} htmlFor={`${inputId}-input`}>
                         {display}

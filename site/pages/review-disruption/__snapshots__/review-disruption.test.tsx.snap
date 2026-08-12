@@ -1332,7 +1332,7 @@ exports[`pages > ReviewDisruption > should render correctly with banner when dis
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/acde070d-8c4c-4f0d-9d8a-162843c10333/3?return=%2Freview-disruption"
           >
             Add another consequence
@@ -2297,7 +2297,7 @@ exports[`pages > ReviewDisruption > should render correctly with banner when dis
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/create-social-media-post/acde070d-8c4c-4f0d-9d8a-162843c10333/2?return=%2Freview-disruption"
           >
             Add another social media post
@@ -3877,7 +3877,7 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/acde070d-8c4c-4f0d-9d8a-162843c10333/3?return=%2Freview-disruption"
           >
             Add another consequence
@@ -4842,7 +4842,7 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/create-social-media-post/acde070d-8c4c-4f0d-9d8a-162843c10333/2?return=%2Freview-disruption"
           >
             Add another social media post
@@ -5903,7 +5903,7 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/acde070d-8c4c-4f0d-9d8a-162843c10333/3?return=%2Freview-disruption"
           >
             Add another consequence
@@ -6514,7 +6514,7 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/create-social-media-post/acde070d-8c4c-4f0d-9d8a-162843c10333/2?return=%2Freview-disruption"
           >
             Add another social media post
@@ -7562,7 +7562,7 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/acde070d-8c4c-4f0d-9d8a-162843c10333/3?return=%2Freview-disruption"
           >
             Add another consequence
@@ -8173,7 +8173,7 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/create-social-media-post/acde070d-8c4c-4f0d-9d8a-162843c10333/2?return=%2Freview-disruption"
           >
             Add another social media post
@@ -9221,7 +9221,7 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/acde070d-8c4c-4f0d-9d8a-162843c10333/3?return=%2Freview-disruption"
           >
             Add another consequence
@@ -9832,7 +9832,7 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/create-social-media-post/acde070d-8c4c-4f0d-9d8a-162843c10333/2?return=%2Freview-disruption"
           >
             Add another social media post
@@ -11399,7 +11399,7 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/acde070d-8c4c-4f0d-9d8a-162843c10333/3?return=%2Freview-disruption&template=true"
           >
             Add another consequence
@@ -12364,7 +12364,7 @@ exports[`pages > ReviewDisruption > should render correctly with inputs and no e
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/create-social-media-post/acde070d-8c4c-4f0d-9d8a-162843c10333/2?return=%2Freview-disruption&template=true"
           >
             Add another social media post
@@ -14237,7 +14237,7 @@ exports[`pages > should render correctly with inputs and no errors when cancella
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/type-of-consequence/acde070d-8c4c-4f0d-9d8a-162843c10333/3?return=%2Freview-disruption"
           >
             Add another consequence
@@ -15202,7 +15202,7 @@ exports[`pages > should render correctly with inputs and no errors when cancella
             </div>
           </div>
           <a
-            class="govuk-button mt-2 govuk-button--secondary "
+            class="govuk-button mt-2 govuk-button--secondary"
             href="/create-social-media-post/acde070d-8c4c-4f0d-9d8a-162843c10333/2?return=%2Freview-disruption"
           >
             Add another social media post

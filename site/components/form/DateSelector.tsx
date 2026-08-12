@@ -83,7 +83,7 @@ const DateSelector = <T extends object>({
     return (
         <FormGroupWrapper errorIds={[inputName]} errors={errors} errorAlign={errorAlign}>
             <div
-                className={`govuk-form-group govuk-!-margin-bottom-0 ${errorAlign ? "h-full flex flex-col" : ""}`}
+                className={`govuk-form-group govuk-!-margin-bottom-0${errorAlign ? " h-full flex flex-col" : ""}`}
                 id={inputId}
             >
                 <div>

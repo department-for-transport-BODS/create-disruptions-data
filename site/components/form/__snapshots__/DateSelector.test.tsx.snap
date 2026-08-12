@@ -6,7 +6,7 @@ exports[`DateSelector > should render correctly when disabled 1`] = `
     class="govuk-form-group"
   >
     <div
-      class="govuk-form-group govuk-!-margin-bottom-0 "
+      class="govuk-form-group govuk-!-margin-bottom-0"
       id="field-1"
     >
       <div>
@@ -193,7 +193,7 @@ exports[`DateSelector > should render correctly with an input 1`] = `
     class="govuk-form-group"
   >
     <div
-      class="govuk-form-group govuk-!-margin-bottom-0 "
+      class="govuk-form-group govuk-!-margin-bottom-0"
       id="field-1"
     >
       <div>
@@ -387,7 +387,7 @@ exports[`DateSelector > should render correctly with errors 1`] = `
     class="govuk-form-group govuk-form-group--error"
   >
     <div
-      class="govuk-form-group govuk-!-margin-bottom-0 "
+      class="govuk-form-group govuk-!-margin-bottom-0"
       id="field-1"
     >
       <div>
@@ -591,7 +591,7 @@ exports[`DateSelector > should render correctly with hint hidden 1`] = `
     class="govuk-form-group"
   >
     <div
-      class="govuk-form-group govuk-!-margin-bottom-0 "
+      class="govuk-form-group govuk-!-margin-bottom-0"
       id="field-1"
     >
       <div>
@@ -783,7 +783,7 @@ exports[`DateSelector > should render correctly with no input 1`] = `
     class="govuk-form-group"
   >
     <div
-      class="govuk-form-group govuk-!-margin-bottom-0 "
+      class="govuk-form-group govuk-!-margin-bottom-0"
       id="field-1"
     >
       <div>

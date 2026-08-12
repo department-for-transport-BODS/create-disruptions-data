@@ -114,7 +114,7 @@ const DateSelector = <T extends object>({
                                             onClose={() => setPickerOpen(false)}
                                             onChange={(newValue) => {
                                                 setDateValue(newValue);
-                                                if (newValue) {
+                                                if (newValue?.isValid()) {
                                                     stateUpdater(
                                                         convertDateTimeToFormat(newValue.toDate(), "DD/MM/YYYY"),
                                                         inputName,
@@ -138,6 +138,7 @@ const DateSelector = <T extends object>({
                                                     slotProps: {
                                                         input: {
                                                             id: `${inputId}-input`,
+                                                            name: inputName,
                                                             className:
                                                                 "govuk-input govuk-date-input__input govuk-input--width-6",
                                                         },

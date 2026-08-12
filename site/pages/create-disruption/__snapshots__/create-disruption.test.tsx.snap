@@ -486,12 +486,10 @@ exports[`pages > CreateDisruption > should render correctly with inputs 1`] = `
           <input
             name="validity1"
             type="hidden"
-            value=""
           />
           <input
             name="validity1"
             type="hidden"
-            value=""
           />
           <div
             class="flex pb-8 items-end"
@@ -660,6 +658,7 @@ exports[`pages > CreateDisruption > should render correctly with inputs 1`] = `
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="disruption-start-date-input"
+                                name="disruptionStartDate"
                                 tabindex="-1"
                                 value="10/03/2023"
                               />
@@ -919,6 +918,7 @@ exports[`pages > CreateDisruption > should render correctly with inputs 1`] = `
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="disruption-end-date-input"
+                                name="disruptionEndDate"
                                 tabindex="-1"
                                 value="13/03/2023"
                               />
@@ -1203,6 +1203,7 @@ exports[`pages > CreateDisruption > should render correctly with inputs 1`] = `
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="publish-start-date-input"
+                                name="publishStartDate"
                                 tabindex="-1"
                                 value="01/03/2023"
                               />
@@ -1462,6 +1463,7 @@ exports[`pages > CreateDisruption > should render correctly with inputs 1`] = `
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="publish-end-date-input"
+                                name="publishEndDate"
                                 tabindex="-1"
                                 value="01/08/2023"
                               />
@@ -1771,6 +1773,7 @@ exports[`pages > CreateDisruption > should render correctly with inputs 1`] = `
                                         aria-hidden="true"
                                         class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                         id="disruption-repeats-end-datedaily-input"
+                                        name="disruptionRepeatsEndDate"
                                         tabindex="-1"
                                         value="30/03/2023"
                                       />
@@ -1988,6 +1991,7 @@ exports[`pages > CreateDisruption > should render correctly with inputs 1`] = `
                                         aria-hidden="true"
                                         class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                         id="disruption-repeats-end-date-input"
+                                        name="disruptionRepeatsEndDate"
                                         tabindex="-1"
                                         value="30/03/2023"
                                       />
@@ -2040,12 +2044,10 @@ exports[`pages > CreateDisruption > should render correctly with inputs 1`] = `
         <input
           name="displayId"
           type="hidden"
-          value=""
         />
         <input
           name="consequenceIndex"
           type="hidden"
-          value=""
         />
         <button
           class="govuk-button"
@@ -2439,7 +2441,6 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
                   maxlength="100"
                   name="summary"
                   type="text"
-                  value=""
                 />
               </div>
             </div>
@@ -2492,7 +2493,6 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
                   maxlength="250"
                   name="associatedLink"
                   type="text"
-                  value=""
                 />
               </div>
             </div>
@@ -2870,6 +2870,7 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="disruption-start-date-input"
+                                name="disruptionStartDate"
                                 tabindex="-1"
                                 value=""
                               />
@@ -3127,6 +3128,7 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="disruption-end-date-input"
+                                name="disruptionEndDate"
                                 tabindex="-1"
                                 value=""
                               />
@@ -3409,6 +3411,7 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="publish-start-date-input"
+                                name="publishStartDate"
                                 tabindex="-1"
                                 value=""
                               />
@@ -3666,6 +3669,7 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="publish-end-date-input"
+                                name="publishEndDate"
                                 tabindex="-1"
                                 value=""
                               />
@@ -3974,6 +3978,7 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
                                         aria-hidden="true"
                                         class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                         id="disruption-repeats-end-datedaily-input"
+                                        name="disruptionRepeatsEndDate"
                                         tabindex="-1"
                                         value=""
                                       />
@@ -4188,6 +4193,7 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
                                         aria-hidden="true"
                                         class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                         id="disruption-repeats-end-date-input"
+                                        name="disruptionRepeatsEndDate"
                                         tabindex="-1"
                                         value=""
                                       />
@@ -4233,17 +4239,14 @@ exports[`pages > CreateDisruption > should render correctly with no inputs 1`] =
         <input
           name="id"
           type="hidden"
-          value=""
         />
         <input
           name="displayId"
           type="hidden"
-          value=""
         />
         <input
           name="consequenceIndex"
           type="hidden"
-          value=""
         />
         <button
           class="govuk-button"
@@ -4960,12 +4963,10 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
           <input
             name="validity1"
             type="hidden"
-            value=""
           />
           <input
             name="validity1"
             type="hidden"
-            value=""
           />
           <div
             class="flex pb-8 items-end"
@@ -5134,6 +5135,7 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="disruption-start-date-input"
+                                name="disruptionStartDate"
                                 tabindex="-1"
                                 value="10/03/2023"
                               />
@@ -5393,6 +5395,7 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="disruption-end-date-input"
+                                name="disruptionEndDate"
                                 tabindex="-1"
                                 value="13/03/2023"
                               />
@@ -5677,6 +5680,7 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="publish-start-date-input"
+                                name="publishStartDate"
                                 tabindex="-1"
                                 value="01/03/2023"
                               />
@@ -5936,6 +5940,7 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
                                 aria-hidden="true"
                                 class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                 id="publish-end-date-input"
+                                name="publishEndDate"
                                 tabindex="-1"
                                 value="01/08/2023"
                               />
@@ -6245,6 +6250,7 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
                                         aria-hidden="true"
                                         class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                         id="disruption-repeats-end-datedaily-input"
+                                        name="disruptionRepeatsEndDate"
                                         tabindex="-1"
                                         value="30/03/2023"
                                       />
@@ -6462,6 +6468,7 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
                                         aria-hidden="true"
                                         class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                                         id="disruption-repeats-end-date-input"
+                                        name="disruptionRepeatsEndDate"
                                         tabindex="-1"
                                         value="30/03/2023"
                                       />
@@ -6514,12 +6521,10 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
         <input
           name="displayId"
           type="hidden"
-          value=""
         />
         <input
           name="consequenceIndex"
           type="hidden"
-          value=""
         />
         <button
           class="govuk-button"

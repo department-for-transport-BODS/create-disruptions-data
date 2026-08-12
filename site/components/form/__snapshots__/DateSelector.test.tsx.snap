@@ -155,6 +155,7 @@ exports[`DateSelector > should render correctly when disabled 1`] = `
                     class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                     disabled=""
                     id="field-1-input"
+                    name="field1"
                     tabindex="-1"
                     value="01/01/2024"
                   />
@@ -350,6 +351,7 @@ exports[`DateSelector > should render correctly with an input 1`] = `
                     aria-hidden="true"
                     class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                     id="field-1-input"
+                    name="field1"
                     tabindex="-1"
                     value="01/01/2024"
                   />
@@ -554,6 +556,7 @@ exports[`DateSelector > should render correctly with errors 1`] = `
                     aria-hidden="true"
                     class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                     id="field-1-input"
+                    name="field1"
                     tabindex="-1"
                     value=""
                   />
@@ -746,6 +749,7 @@ exports[`DateSelector > should render correctly with hint hidden 1`] = `
                     aria-hidden="true"
                     class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                     id="field-1-input"
+                    name="field1"
                     tabindex="-1"
                     value=""
                   />
@@ -938,6 +942,7 @@ exports[`DateSelector > should render correctly with no input 1`] = `
                     aria-hidden="true"
                     class="MuiPickersInputBase-input MuiPickersOutlinedInput-input css-31lcvl-MuiPickersInputBase-input"
                     id="field-1-input"
+                    name="field1"
                     tabindex="-1"
                     value=""
                   />

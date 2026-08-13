@@ -7,8 +7,8 @@ import Select, {
     InputActionMeta,
     ActionMeta,
     CSSObjectWithLabel,
+    type FilterOptionOption,
 } from "react-select";
-import type { FilterOptionOption } from "react-select/dist/declarations/src/filters";
 import { ErrorInfo } from "../../interfaces";
 import FormElementWrapper, { FormGroupWrapper } from "./FormElementWrapper";
 import Table from "./Table";

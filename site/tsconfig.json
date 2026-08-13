@@ -1,42 +1,56 @@
 {
-    "compilerOptions": {
-        "target": "ES2020",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "allowJs": false,
-        "skipLibCheck": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "outDir": ".build",
-        "rootDir": "./",
-        "jsx": "preserve",
-        "sourceMap": true,
-        "incremental": true,
-        "useUnknownInCatchVariables": false,
-        "baseUrl": ".",
-        "paths": {
-            "@/*": ["./src/*"]
-        }
-    },
-    "include": [
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        "./next.config.js",
-        "./tailwind.config.js",
-        "./postcss.config.js",
-        "./babel.config.js",
-        "./public/scripts/all.js",
-        "./declaration.d.ts"
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-    "exclude": ["node_modules"]
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "outDir": ".build",
+    "rootDir": "./",
+    "jsx": "react-jsx",
+    "sourceMap": true,
+    "incremental": true,
+    "useUnknownInCatchVariables": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@turf/center": [
+        "./node_modules/@turf/center/dist/js/index.d.ts"
+      ],
+      "@turf/invariant": [
+        "./node_modules/@turf/invariant/dist/js/index.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "./next.config.js",
+    "./tailwind.config.js",
+    "./postcss.config.js",
+    "./babel.config.js",
+    "./public/scripts/all.js",
+    "./declaration.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -160,7 +160,7 @@ const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.COGNITO_ISSUER ?? ""
     timeoutDuration: 10000,
 });
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     const response = NextResponse.next();
 
     const domain = process.env.DOMAIN_NAME;

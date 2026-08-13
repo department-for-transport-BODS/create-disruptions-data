@@ -11,7 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
 import { ReactElement, SyntheticEvent, useEffect, useState } from "react";
-import { ActionMeta, SingleValue, createFilter, type FilterOptionOption } from "react-select";
+import { ActionMeta, type FilterOptionOption, SingleValue, createFilter } from "react-select";
 import { createChangeLink } from "../../../components/ReviewConsequenceTable";
 import DeleteDisruptionButton from "../../../components/buttons/DeleteDisruptionButton";
 import CsrfForm from "../../../components/form/CsrfForm";

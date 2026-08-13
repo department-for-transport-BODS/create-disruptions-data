@@ -61,6 +61,7 @@ export const SiteStack = ({ stack }: StackContext) => {
 
     const site = new NextjsSite(stack, "Site", {
         path: "site/",
+        openNextVersion: "4.1.0",
         runtime: "nodejs20.x",
         warm: stack.stage === "prod" || stack.stage === "preprod" ? 50 : 10,
         memorySize: stack.stage === "prod" ? "3072 MB" : "1024 MB",

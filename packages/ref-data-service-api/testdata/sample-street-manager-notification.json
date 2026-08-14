@@ -1,0 +1,31 @@
+{
+    "event_reference": 529770,
+    "event_type": "work-start",
+    "object_data": {
+        "permit_reference_number": "TSR0000000000000-01",
+        "highway_authority": "CITY OF WESTMINSTER",
+        "highway_authority_swa_code": "5990",
+        "works_location_coordinates": "LINESTRING(501251.53 222574.64,501305.92 222506.65)",
+        "street_name": "HIGH STREET NORTH",
+        "area_name": "LONDON",
+        "work_category": "Standard",
+        "traffic_management_type": "Road closure",
+        "proposed_start_date": "2024-01-10T00:00:00.000Z",
+        "proposed_end_date": "2024-01-12T00:00:00.000Z",
+        "actual_start_date_time": "2024-01-10T09:00:00.000Z",
+        "actual_end_date_time": null,
+        "work_status": "Works in progress",
+        "usrn": "8401426",
+        "activity_type": "Remedial works",
+        "works_location_type": "Cycleway, Footpath",
+        "is_traffic_sensitive": "Yes",
+        "permit_status": "granted",
+        "town": "LONDON",
+        "current_traffic_management_type": "Multi-way signals",
+        "current_traffic_manage_type_update_date": "2024-01-10T10:00:00.000Z"
+    },
+    "event_time": "2024-01-10T08:00:00.000Z",
+    "object_type": "PERMIT",
+    "object_reference": "TSR0000000000000-01",
+    "version": 1
+}

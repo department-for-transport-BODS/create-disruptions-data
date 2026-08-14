@@ -130,7 +130,9 @@ describe("post-street-manager", () => {
                 "x-amz-sns-message-type": undefined,
             },
         };
-        await main(mockSnsEventNoHeader, {} as Context, () => {});
+        await expect(main(mockSnsEventNoHeader, {} as Context, () => {})).rejects.toThrow(
+            "Invalid headers on request",
+        );
         expect(sqsMock.send.calledOnce).toBeFalsy();
     });
 
@@ -143,7 +145,9 @@ describe("post-street-manager", () => {
             }),
         };
 
-        await main(mockSnsEventInvalidBody as unknown as APIGatewayEvent, {} as Context, () => {});
+        await expect(
+            main(mockSnsEventInvalidBody as unknown as APIGatewayEvent, {} as Context, () => {}),
+        ).rejects.toThrow();
         expect(sqsMock.send.calledOnce).toBeFalsy();
     });
 
@@ -151,7 +155,9 @@ describe("post-street-manager", () => {
         const isValidSignatureMock = vi.mocked(snsMessageValidator.isValidSignature);
         isValidSignatureMock.mockResolvedValue(false);
 
-        await main(mockStreetManagerNotification, {} as Context, () => {});
+        await expect(main(mockStreetManagerNotification, {} as Context, () => {})).rejects.toThrow(
+            "Invalid signature provided",
+        );
 
         expect(sqsMock.commandCalls(SendMessageCommand).length).toBe(0);
     });
@@ -164,10 +170,16 @@ describe("post-street-manager", () => {
                 MessageId: "1234",
                 TopicArn: "wrong arn",
                 Message: "{}",
+                Timestamp: "2023-10-02T14:22:45.889Z",
+                SignatureVersion: "1",
+                Signature: "test-signature",
+                SigningCertURL: "https://www.testurl.com",
             }),
         };
 
-        await main(mockSnsEventInvalidArn, {} as Context, () => {});
+        await expect(main(mockSnsEventInvalidArn, {} as Context, () => {})).rejects.toThrow(
+            "Invalid topic ARN provided in SNS Message",
+        );
         expect(sqsMock.send.calledOnce).toBeFalsy();
     });
 });

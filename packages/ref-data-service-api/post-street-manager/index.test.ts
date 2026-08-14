@@ -130,9 +130,7 @@ describe("post-street-manager", () => {
                 "x-amz-sns-message-type": undefined,
             },
         };
-        await expect(main(mockSnsEventNoHeader, {} as Context, () => {})).rejects.toThrow(
-            "Invalid headers on request",
-        );
+        await expect(main(mockSnsEventNoHeader, {} as Context, () => {})).rejects.toThrow("Invalid headers on request");
         expect(sqsMock.send.calledOnce).toBeFalsy();
     });
 

@@ -195,7 +195,7 @@ export const SiteStack = ({ stack }: StackContext) => {
         handler: "packages/nextdoor-token-refresher/index.main",
         timeout: 60,
         memorySize: 1536,
-        runtime: "nodejs20.x",
+        runtime: "nodejs24.x",
     });
 
     new Cron(stack, "nextdoor-token-refresher-cron", {

@@ -1,5 +1,4 @@
 import crypto from "crypto";
-import url from "url";
 import { logger } from "@create-disruptions-data/shared-ts/utils/logger";
 import axios from "axios";
 import { SnsMessage } from "./snsMessageTypes.zod";
@@ -17,7 +16,7 @@ const verifyMessageSignatureVersion = (version: string) => {
 };
 
 const downloadCertificate = async (signingCertURL: string) => {
-    if (url.parse(signingCertURL).protocol !== "https:") {
+    if (new URL(signingCertURL).protocol !== "https:") {
         throw "SigningCertURL was not using HTTPS";
     }
 

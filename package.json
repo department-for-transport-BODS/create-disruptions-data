@@ -15,7 +15,7 @@
         "typecheck": "tsc --noEmit",
         "lint": "pnpm biome check .",
         "lint:fix": "pnpm biome check --fix --unsafe .",
-        "test:javascript": "pnpm test --filter '@create-disruptions-data/*'",
+        "test:javascript": "pnpm --filter '@create-disruptions-data/*' run test",
         "test:python": "pytest packages/txc-uploader/tests",
         "test": "pnpm test:javascript && pnpm test:python",
         "prepare": "husky install",

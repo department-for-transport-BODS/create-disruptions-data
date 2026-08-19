@@ -654,9 +654,9 @@ const DisruptionDetail = ({
                                         ...(disruption.template ? { template: disruption.template?.toString() } : {}),
                                     },
                                 }}
-                                className={`govuk-button mt-2 govuk-button--secondary ${
+                                className={`govuk-button mt-2 govuk-button--secondary${
                                     disruption.consequences && disruption.consequences.length >= MAX_CONSEQUENCES
-                                        ? "pointer-events-none govuk-button--disabled"
+                                        ? " pointer-events-none govuk-button--disabled"
                                         : ""
                                 }`}
                             >
@@ -741,11 +741,11 @@ const DisruptionDetail = ({
                             <Link
                                 role="button"
                                 href={redirect}
-                                className={`govuk-button mt-8 ${
+                                className={`govuk-button mt-8${
                                     canPublish && disruption.publishStatus !== PublishStatus.published
-                                        ? "govuk-button--secondary mr-5"
+                                        ? " govuk-button--secondary mr-5"
                                         : displaySendToReview
-                                          ? "govuk-button--secondary"
+                                          ? " govuk-button--secondary"
                                           : ""
                                 }`}
                             >

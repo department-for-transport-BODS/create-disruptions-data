@@ -346,7 +346,7 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with inputs 
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -461,7 +461,6 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with inputs 
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -993,7 +992,7 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with inputs 
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -1108,7 +1107,6 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with inputs 
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -1645,7 +1643,7 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with inputs 
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -1760,7 +1758,6 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with inputs 
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -2299,7 +2296,7 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with no inpu
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -2332,7 +2329,6 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with no inpu
                       name="disruptionDelay"
                       placeholder=""
                       type="text"
-                      value=""
                     />
                   </div>
                 </div>
@@ -2409,12 +2405,10 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with no inpu
           <input
             name="disruptionId"
             type="hidden"
-            value=""
           />
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -2946,7 +2940,7 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with query p
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -3061,7 +3055,6 @@ exports[`pages > CreateConsequenceNetwork > should render correctly with query p
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"

@@ -6,7 +6,7 @@ import { Point } from "geojson";
 import { NextPageContext } from "next";
 import Link from "next/link";
 import proj4 from "proj4";
-import { useState } from "react";
+import { type JSX, useState } from "react";
 import { GeoJSONFeature, GeoJSONGeometry, GeoJSONLineString, GeoJSONPolygon, parse } from "wellknown";
 import Table, { CellProps } from "../components/form/Table";
 import Warning from "../components/form/Warning";

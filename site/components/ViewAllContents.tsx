@@ -8,7 +8,7 @@ import saveAs from "file-saver";
 import autoTable from "jspdf-autotable";
 import Link from "next/link";
 import Papa from "papaparse";
-import { Dispatch, ReactElement, SetStateAction, memo, useEffect, useState } from "react";
+import { Dispatch, type JSX, ReactElement, SetStateAction, memo, useEffect, useState } from "react";
 import writeXlsxFile, { Schema } from "write-excel-file";
 import { z } from "zod";
 import {

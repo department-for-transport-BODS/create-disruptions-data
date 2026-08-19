@@ -1,4 +1,4 @@
-import { Dispatch, Fragment, ReactElement, SetStateAction } from "react";
+import { Dispatch, Fragment, type JSX, ReactElement, SetStateAction } from "react";
 import Select, {
     ControlProps,
     GroupBase,

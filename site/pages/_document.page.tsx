@@ -63,6 +63,13 @@ export default class RootDocument extends Document<DocumentProps> {
             <Html lang="en" className="govuk-template--rebranded">
                 <Head nonce={nonce} />
                 <body className="govuk-template__body">
+                    <script
+                        nonce={nonce}
+                        // biome-ignore lint/security/noDangerouslySetInnerHtml: static, hardcoded script (no user input) required by GOV.UK Frontend to detect JS support before hydration
+                        dangerouslySetInnerHTML={{
+                            __html: "document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');",
+                        }}
+                    />
                     <Link href="#main-content" className="govuk-skip-link">
                         Skip to main content
                     </Link>

@@ -1,8 +1,20 @@
 packages:
-- packages/**
-- cli-helpers
-- site
-- .
-- scripts
-- shared-ts
-- stacks
+  - packages/**
+  - cli-helpers
+  - site
+  - .
+  - scripts
+  - shared-ts
+  - stacks
+
+allowBuilds:
+  '@biomejs/biome': true
+  '@parcel/watcher': true
+  aws-crt: true
+  aws-sdk: true
+  core-js: true
+  esbuild: true
+
+overrides:
+  fast-xml-parser@>=4.0.0 <5.0.0: ">=4.5.4"
+  fast-xml-parser@>=5.0.0: ">=5.3.5"

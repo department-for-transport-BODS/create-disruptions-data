@@ -24,13 +24,11 @@ import {
 } from "./constants";
 import { CsrfError, createCsrfProtect } from "./utils/csrf";
 
-const {
-    COGNITO_CLIENT_ID: cognitoClientId,
-    COGNITO_CLIENT_SECRET: cognitoClientSecret,
-    COGNITO_USER_POOL_ID: userPoolId,
-    MIDDLEWARE_AWS_ACCESS_KEY_ID: accessKeyId,
-    MIDDLEWARE_AWS_SECRET_ACCESS_KEY: secretAccessKey,
-} = process.env;
+const cognitoClientId = process.env.COGNITO_CLIENT_ID;
+const cognitoClientSecret = process.env.COGNITO_CLIENT_SECRET;
+const userPoolId = process.env.COGNITO_USER_POOL_ID;
+const accessKeyId = process.env.MIDDLEWARE_AWS_ACCESS_KEY_ID;
+const secretAccessKey = process.env.MIDDLEWARE_AWS_SECRET_ACCESS_KEY;
 
 if (!cognitoClientSecret || !cognitoClientId || !userPoolId || !accessKeyId || !secretAccessKey) {
     throw new Error("Cognito env vars not set");
@@ -160,7 +158,7 @@ const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.COGNITO_ISSUER ?? ""
     timeoutDuration: 10000,
 });
 
-export async function proxy(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
     const response = NextResponse.next();
 
     const domain = process.env.DOMAIN_NAME;

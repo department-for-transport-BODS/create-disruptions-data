@@ -822,7 +822,7 @@ importers:
         specifier: ^0.10.7
         version: 0.10.7(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.1.17(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
       '@mapbox/mapbox-gl-draw':
-        specifier: 1.4.3
+        specifier: ^1.4.2
         version: 1.4.3
       '@mapbox/mapbox-gl-geocoder':
         specifier: ^5.0.1

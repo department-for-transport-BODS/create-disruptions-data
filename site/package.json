@@ -32,8 +32,6 @@
         "@mapbox/mapbox-gl-geocoder": "^5.0.1",
         "@mui/material": "^9.3.1",
         "@mui/x-date-pickers": "^9.11.0",
-        "@turf/center": "^6.5.0",
-        "@turf/invariant": "^6.5.0",
         "cookie": "^0.7.0",
         "crypto-random-string": "^5.0.0",
         "dayjs": "^1.11.7",

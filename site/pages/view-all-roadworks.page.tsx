@@ -1,13 +1,10 @@
 import { Roadwork, RoadworkWithCoordinates } from "@create-disruptions-data/shared-ts/roadwork.zod";
 import { getLiveRoadworks } from "@create-disruptions-data/shared-ts/utils";
-import center from "@turf/center";
-import { getCoords } from "@turf/invariant";
-import { Point } from "geojson";
 import { NextPageContext } from "next";
 import Link from "next/link";
 import proj4 from "proj4";
 import { type JSX, useState } from "react";
-import { GeoJSONFeature, GeoJSONGeometry, GeoJSONLineString, GeoJSONPolygon, parse } from "wellknown";
+import { GeoJSONGeometry, parse } from "wellknown";
 import Table, { CellProps } from "../components/form/Table";
 import Warning from "../components/form/Warning";
 import { BaseLayout } from "../components/layout/Layout";
@@ -25,58 +22,96 @@ export interface ViewAllRoadworksProps {
     liveRoadworks: Roadwork[];
 }
 
-const isPolygon = (geometry: GeoJSONGeometry): geometry is GeoJSONPolygon => geometry && geometry.type === "Polygon";
+/**
+ * Recursively collects every [x, y] position from any GeoJSON geometry
+ * (Point, LineString, Polygon, Multi* and GeometryCollection).
+ */
+export const collectPositions = (geometry: GeoJSONGeometry | null | undefined): [number, number][] => {
+    if (!geometry) {
+        return [];
+    }
 
-const isLineString = (geometry: GeoJSONGeometry): geometry is GeoJSONLineString =>
-    geometry && geometry.type === "LineString";
+    if (geometry.type === "GeometryCollection") {
+        return geometry.geometries.flatMap(collectPositions);
+    }
 
-const roadWorkCoordinates = (roadworks: Roadwork[]): RoadworkWithCoordinates[] => {
-    return roadworks.map((item: Roadwork) => {
-        const worksLocationCoordinates: GeoJSONFeature = {
-            type: "Feature",
-            geometry: {
-                type: "Point",
-                coordinates: [0, 0],
-            },
-        };
-
-        const geometry = parse(item.worksLocationCoordinates || "") || worksLocationCoordinates.geometry;
-        worksLocationCoordinates.geometry = geometry;
-
-        if (isPolygon(geometry) || isLineString(geometry)) {
-            const middle = center(geometry);
-
-            worksLocationCoordinates.geometry = {
-                type: "Point",
-                coordinates: getCoords(middle) as [number, number],
-            };
+    const flatten = (coordinates: unknown): [number, number][] => {
+        if (!Array.isArray(coordinates)) {
+            return [];
         }
 
-        const easting: number = (worksLocationCoordinates.geometry as Point).coordinates[0] || 0;
-        const northing: number = (worksLocationCoordinates.geometry as Point).coordinates[1] || 0;
+        if (typeof coordinates[0] === "number") {
+            return Number.isFinite(coordinates[0]) && Number.isFinite(coordinates[1])
+                ? [[coordinates[0] as number, coordinates[1] as number]]
+                : [];
+        }
 
-        // Define the British National Grid (BNG) coordinate reference system
-        const sourceCRS: string =
-            "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.060,0.1502,0.2470,0.8421,-20.4894 +units=m +no_defs"; // OSGB36
+        return (coordinates as unknown[]).flatMap(flatten);
+    };
 
-        // Define the target coordinate reference system for longitude and latitude
-        const targetCRS: string = "+proj=longlat +datum=WGS84 +no_defs";
+    return flatten((geometry as { coordinates?: unknown }).coordinates);
+};
+
+/**
+ * Returns the centre of a geometry's bounding box.
+ */
+export const getCentreOfGeometry = (geometry: GeoJSONGeometry | null | undefined): [number, number] | null => {
+    const positions = collectPositions(geometry);
+
+    if (positions.length === 0) {
+        return null;
+    }
+
+    let minX = Number.POSITIVE_INFINITY;
+    let minY = Number.POSITIVE_INFINITY;
+    let maxX = Number.NEGATIVE_INFINITY;
+    let maxY = Number.NEGATIVE_INFINITY;
+
+    for (const [x, y] of positions) {
+        minX = Math.min(minX, x);
+        minY = Math.min(minY, y);
+        maxX = Math.max(maxX, x);
+        maxY = Math.max(maxY, y);
+    }
+
+    return [(minX + maxX) / 2, (minY + maxY) / 2];
+};
+
+// Define the British National Grid (BNG) coordinate reference system
+const sourceCRS =
+    "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.060,0.1502,0.2470,0.8421,-20.4894 +units=m +no_defs"; // OSGB36
+
+// Define the target coordinate reference system for longitude and latitude
+const targetCRS = "+proj=longlat +datum=WGS84 +no_defs";
+
+export const roadWorkCoordinates = (roadworks: Roadwork[]): RoadworkWithCoordinates[] =>
+    roadworks.flatMap((item: Roadwork) => {
+        const centre = getCentreOfGeometry(parse(item.worksLocationCoordinates || ""));
+
+        if (!centre) {
+            return [];
+        }
 
         // Perform the coordinate transformation
+        const coordinates = proj4(sourceCRS, targetCRS, centre) as [number, number];
 
-        const coordinates: [number, number] = proj4(sourceCRS, targetCRS, [easting, northing]) as [number, number];
+        if (!Number.isFinite(coordinates[0]) || !Number.isFinite(coordinates[1])) {
+            return [];
+        }
 
-        worksLocationCoordinates.geometry = {
-            type: "Point",
-            coordinates: coordinates as [number, number],
-        };
-
-        return {
-            ...item,
-            worksLocationCoordinates,
-        };
+        return [
+            {
+                ...item,
+                worksLocationCoordinates: {
+                    type: "Feature" as const,
+                    geometry: {
+                        type: "Point" as const,
+                        coordinates,
+                    },
+                },
+            },
+        ];
     }) as RoadworkWithCoordinates[];
-};
 
 export interface RoadworksTable {
     datesAffected: string;

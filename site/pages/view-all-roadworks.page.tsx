@@ -131,8 +131,9 @@ const formatRows = (roadworks: Roadwork[]): { cells: CellProps[] }[] => {
                     value: (
                         <Link
                             className="govuk-link"
-                            href={`roadwork-detail/${encodeURIComponent(roadwork.permitReferenceNumber)}`}
+                            href={`/roadwork-detail/${encodeURIComponent(roadwork.permitReferenceNumber)}`}
                             key={roadwork.permitReferenceNumber}
+                            prefetch={false}
                         >
                             {roadwork.streetName?.toUpperCase()} - {roadwork.activityType}
                         </Link>

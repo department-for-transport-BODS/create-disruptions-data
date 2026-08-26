@@ -6,6 +6,7 @@ We have created the following CLI helpers to make it easier to work with the Cre
 - [create-user](#create-user)
 - [create-operator-org](#create-operator-org)
 - [change-user-group](#change-user-group)
+- [delete-buckets](#delete-buckets)
 
 ## Usage
 
@@ -80,3 +81,20 @@ make command-change-user-group
 - poolId: The ID of the Cognito user pool to change the user group in (there should only be one option to select:
   cdd-user-pool-ENV).
 - group: The new group to add the user to (e.g., system-admin, org-admin, org-publisher, org-staff, operator).
+
+### delete-buckets
+
+This script finds every S3 bucket in the AWS account you are authed against whose name ends with `-<stage>`, empties
+them (including all object versions and delete markers) and then deletes them. The buckets found are listed and
+confirmation is required before anything is deleted.
+
+The `prod`, `preprod`, `test` and `sandbox` stages are blocked to avoid accidental deletion of shared environments.
+
+```bash
+make command-delete-buckets
+```
+
+#### Properties:
+
+- stage: The stage to delete buckets for (e.g., a personal dev stage).
+

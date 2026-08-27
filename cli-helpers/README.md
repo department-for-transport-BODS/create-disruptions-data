@@ -96,5 +96,5 @@ make command-delete-buckets
 
 #### Properties:
 
-- stage: The stage to delete buckets for (e.g., a personal dev stage).
+- stage: The stage to delete buckets for (e.g., a personal dev stage)
 

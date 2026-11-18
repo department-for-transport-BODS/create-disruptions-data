@@ -27,39 +27,40 @@ describe("register", () => {
         vi.resetAllMocks();
     });
 
-    it.each(["test@example.com", "test+alias@example.com"])("should redirect to register page when incorrect inputs are passed for %s", 
+    it.each(["test@example.com", "test+alias@example.com"])(
+        "should redirect to register page when incorrect inputs are passed for %s",
         async (testEmail) => {
-        const testKey = "";
-        const testOrgId = "";
+            const testKey = "";
+            const testOrgId = "";
 
-        const { req, res } = getMockRequestAndResponse({
-            body: {
-                email: testEmail,
-                key: testKey,
-                orgId: testOrgId,
-            },
-            mockWriteHeadFn: writeHeadMock,
-        });
+            const { req, res } = getMockRequestAndResponse({
+                body: {
+                    email: testEmail,
+                    key: testKey,
+                    orgId: testOrgId,
+                },
+                mockWriteHeadFn: writeHeadMock,
+            });
 
-        await register(req, res);
+            await register(req, res);
 
-        const errors: ErrorInfo[] = [
-            { errorMessage: "Enter a password", id: "password" },
-            { errorMessage: "Required", id: "confirmPassword" },
-            { errorMessage: "Invalid register link", id: "key" },
-            { errorMessage: "Invalid organisation ID", id: "orgId" },
-        ];
+            const errors: ErrorInfo[] = [
+                { errorMessage: "Enter a password", id: "password" },
+                { errorMessage: "Required", id: "confirmPassword" },
+                { errorMessage: "Invalid register link", id: "key" },
+                { errorMessage: "Invalid organisation ID", id: "orgId" },
+            ];
 
-        expect(setCookieOnResponseObject).toHaveBeenCalledTimes(1);
-        expect(setCookieOnResponseObject).toHaveBeenCalledWith(
-            COOKIES_REGISTER_ERRORS,
-            JSON.stringify({ inputs: req.body as object, errors }),
-            res,
-        );
-        expect(writeHeadMock).toBeCalledWith(302, {
-            Location: `${REGISTER_PAGE_PATH}?email=${encodeURIComponent(testEmail)}&key=${encodeURIComponent(testKey)}&orgId=${encodeURIComponent(testOrgId)}`,
-        });
-    }, 
+            expect(setCookieOnResponseObject).toHaveBeenCalledTimes(1);
+            expect(setCookieOnResponseObject).toHaveBeenCalledWith(
+                COOKIES_REGISTER_ERRORS,
+                JSON.stringify({ inputs: req.body as object, errors }),
+                res,
+            );
+            expect(writeHeadMock).toBeCalledWith(302, {
+                Location: `${REGISTER_PAGE_PATH}?email=${encodeURIComponent(testEmail)}&key=${encodeURIComponent(testKey)}&orgId=${encodeURIComponent(testOrgId)}`,
+            });
+        },
     );
 
     it("should redirect to /dashboard page when valid inputs are passed", async () => {

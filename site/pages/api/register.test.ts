@@ -27,8 +27,8 @@ describe("register", () => {
         vi.resetAllMocks();
     });
 
-    it("should redirect to register page when incorrect inputs are passed", async () => {
-        const testEmail = "test@example.com";
+    it.each(["test@example.com", "test+alias@example.com"])("should redirect to register page when incorrect inputs are passed for %s", 
+        async (testEmail) => {
         const testKey = "";
         const testOrgId = "";
 
@@ -57,9 +57,10 @@ describe("register", () => {
             res,
         );
         expect(writeHeadMock).toBeCalledWith(302, {
-            Location: `${REGISTER_PAGE_PATH}?email=${testEmail}&key=${testKey}&orgId=${testOrgId}`,
+            Location: `${REGISTER_PAGE_PATH}?email=${encodeURIComponent(testEmail)}&key=${encodeURIComponent(testKey)}&orgId=${encodeURIComponent(testOrgId)}`,
         });
-    });
+    }, 
+    );
 
     it("should redirect to /dashboard page when valid inputs are passed", async () => {
         initiateAuthSpy.mockImplementation(() =>
@@ -164,7 +165,7 @@ describe("register", () => {
                 res,
             );
             expect(writeHeadMock).toBeCalledWith(302, {
-                Location: `${REGISTER_PAGE_PATH}?email=${testEmail}&key=${testKey}&orgId=${testOrgId}`,
+                Location: `${REGISTER_PAGE_PATH}?email=${encodeURIComponent(testEmail)}&key=${encodeURIComponent(testKey)}&orgId=${encodeURIComponent(testOrgId)}`,
             });
         },
     );

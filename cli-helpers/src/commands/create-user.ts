@@ -139,7 +139,7 @@ program
         const url =
             stage === "prod" ? "https://disruption-data.dft.gov.uk" : `https://${stage}.cdd.dft-create-data.com`;
 
-        logger.info(`Registration Link: ${url}/register?key=${key}&email=${email}&orgId=${orgId}`);
+        logger.info(`Registration Link: ${url}/register?key=${encodeURIComponent(key)}&email=${encodeURIComponent(email)}&orgId=${encodeURIComponent(orgId)}`,);
     });
 
 program.parseAsync(process.argv);

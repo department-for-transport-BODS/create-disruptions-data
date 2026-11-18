@@ -1,7 +1,7 @@
 import datetime
 import math
 import os
-
+from urllib.parse import quote
 
 def main(event, context):
     if event['triggerSource'] == "CustomMessage_AdminCreateUser":
@@ -11,7 +11,8 @@ def main(event, context):
             event['request']['usernameParameter'],
             event['request']['codeParameter'],
             event['request']['userAttributes']['custom:orgId'],
-            register_link
+            register_link,
+            event['request']['userAttributes']['email']
         )
     elif event['triggerSource'] == "CustomMessage_ForgotPassword":
         forgotten_password_link = os.getenv('FORGOTTEN_PASSWORD_LINK')
@@ -32,11 +33,11 @@ def main(event, context):
     return event
 
 
-def template_register(username, key, orgId, register_link):
+def template_register(username, key, orgId, register_link, email):
     template = f"""<div style="font-family: Arial, sans-serif; padding-left: 30px">
                        <h1>Create account - Create Transport Disruptions Data service</h1>
                        <p>To create an account to access the Create Transport Disruptions Data service click the link below:</p>
-                       <a href="{register_link}?key={key}&email={username}&orgId={orgId}">Link to registration</a>
+                       <a href="{register_link}?key={key}&email={quote(email, safe='')}&orgId={quote(orgId, safe='')}">Link to registration</a>
                        <p>The link is valid for 72 hours for the following email address {username}.</p>
                    </div>"""
 

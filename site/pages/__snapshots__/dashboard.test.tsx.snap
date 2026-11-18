@@ -428,16 +428,6 @@ exports[`pages > dashboard > should render correctly 1`] = `
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -916,16 +906,6 @@ exports[`pages > dashboard > should render correctly for an operator user 1`] = 
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>

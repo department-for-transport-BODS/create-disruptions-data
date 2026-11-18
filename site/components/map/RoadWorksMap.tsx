@@ -188,7 +188,8 @@ const Map = ({ initialViewState, style, mapStyle, roadworks }: MapProps): ReactE
                             }`}</p>
                             <Link
                                 className="govuk-link font-bold"
-                                href={`roadwork-detail/${encodeURIComponent(popupInfo.permitReferenceNumber || "")}`}
+                                href={`/roadwork-detail/${encodeURIComponent(popupInfo.permitReferenceNumber || "")}`}
+                                prefetch={false}
                             >
                                 See more
                             </Link>

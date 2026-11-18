@@ -413,16 +413,6 @@ exports[`RoadworkDetail > should render correctly (without create disruption but
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -904,16 +894,6 @@ exports[`RoadworkDetail > should render correctly when roadwork data is present 
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -1383,16 +1363,6 @@ exports[`RoadworkDetail > should render correctly when roadwork data is present 
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -1876,16 +1846,6 @@ exports[`RoadworkDetail > should render correctly when roadwork data is present 
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -2367,16 +2327,6 @@ exports[`RoadworkDetail > should render correctly when roadwork data is present 
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -2856,16 +2806,6 @@ exports[`RoadworkDetail > should render correctly when roadworks data is present
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>

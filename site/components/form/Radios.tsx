@@ -11,7 +11,7 @@ interface RadiosProps<T> extends FormBase<T> {
 
 interface RadioValuePair<T = string> extends DisplayValuePair<T> {
     conditionalElement?: ReactElement;
-    ref?: RefObject<HTMLInputElement>;
+    ref?: RefObject<HTMLInputElement | null>;
     disabled?: boolean;
 }
 

@@ -61,7 +61,8 @@ export const SiteStack = ({ stack }: StackContext) => {
 
     const site = new NextjsSite(stack, "Site", {
         path: "site/",
-        runtime: "nodejs20.x",
+        openNextVersion: "4.1.0",
+        runtime: "nodejs24.x",
         warm: stack.stage === "prod" || stack.stage === "preprod" ? 50 : 10,
         memorySize: stack.stage === "prod" ? "3072 MB" : "1024 MB",
         regional: {
@@ -194,7 +195,7 @@ export const SiteStack = ({ stack }: StackContext) => {
         handler: "packages/nextdoor-token-refresher/index.main",
         timeout: 60,
         memorySize: 1536,
-        runtime: "nodejs20.x",
+        runtime: "nodejs24.x",
     });
 
     new Cron(stack, "nextdoor-token-refresher-cron", {

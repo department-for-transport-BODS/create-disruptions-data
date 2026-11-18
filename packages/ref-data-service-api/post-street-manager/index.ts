@@ -33,25 +33,25 @@ export const main: Handler = async (event: APIGatewayEvent, context) => {
     withLambdaRequestTracker(event ?? {}, context ?? {});
     if (!event.headers?.["x-amz-sns-message-type"]) {
         logger.error("Invalid headers on request");
-        return;
+        throw new Error("Invalid headers on request");
     }
 
     const parsedBody = snsMessageSchema.safeParse(JSON.parse(event.body ?? ""));
     if (!parsedBody.success) {
         logger.error(JSON.stringify(parsedBody.error));
-        return;
+        throw new Error(JSON.stringify(parsedBody.error));
     }
 
     const snsMessage = parsedBody.data;
 
     if (!(await isValidSignature(snsMessage))) {
         logger.error("Invalid signature provided");
-        return;
+        throw new Error("Invalid signature provided");
     }
 
     if (!allowedTopicArns.includes(snsMessage.TopicArn)) {
         logger.error("Invalid topic ARN provided in SNS Message");
-        return;
+        throw new Error("Invalid topic ARN provided in SNS Message");
     }
 
     if (snsMessage.Type === "SubscriptionConfirmation") {
@@ -67,10 +67,10 @@ export const main: Handler = async (event: APIGatewayEvent, context) => {
                     body.event_reference
                 }, ${permitMessage.error.toString()}`,
             );
-            return;
+            throw new Error("Failed to parse SNS message");
         }
         try {
-            const dbClient = getDbClient();
+            const dbClient = getDbClient(true);
             const roadwork = await getRoadworkById(dbClient, {
                 permitReferenceNumber: permitMessage.data.permitReferenceNumber,
             });
@@ -88,15 +88,9 @@ export const main: Handler = async (event: APIGatewayEvent, context) => {
             }
         } catch (e) {
             if (e instanceof Error) {
-                logger.error(e);
+                logger.error(e, "There was a problem with with processing street manager data.");
             }
-
-            return {
-                statusCode: 500,
-                body: JSON.stringify({
-                    error: "There was a problem with with processing street manager data",
-                }),
-            };
+            throw e;
         }
     }
 };

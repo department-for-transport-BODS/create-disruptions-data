@@ -130,12 +130,10 @@ exports[`pages > CreateDisruption > should render correctly for operator user wi
               <input
                 name="disruptionId"
                 type="hidden"
-                value=""
               />
               <input
                 name="consequenceIndex"
                 type="hidden"
-                value=""
               />
               <div
                 class="govuk-button-group"
@@ -306,16 +304,6 @@ exports[`pages > CreateDisruption > should render correctly for operator user wi
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -561,12 +549,10 @@ exports[`pages > CreateDisruption > should render correctly if cancellations fea
               <input
                 name="disruptionId"
                 type="hidden"
-                value=""
               />
               <input
                 name="consequenceIndex"
                 type="hidden"
-                value=""
               />
               <div
                 class="govuk-button-group"
@@ -737,16 +723,6 @@ exports[`pages > CreateDisruption > should render correctly if cancellations fea
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -1022,12 +998,10 @@ exports[`pages > CreateDisruption > should render correctly with inputs and with
               <input
                 name="disruptionId"
                 type="hidden"
-                value=""
               />
               <input
                 name="consequenceIndex"
                 type="hidden"
-                value=""
               />
               <div
                 class="govuk-button-group"
@@ -1198,16 +1172,6 @@ exports[`pages > CreateDisruption > should render correctly with inputs and with
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -1435,12 +1399,10 @@ exports[`pages > CreateDisruption > should render correctly with inputs and with
               <input
                 name="disruptionId"
                 type="hidden"
-                value=""
               />
               <input
                 name="consequenceIndex"
                 type="hidden"
-                value=""
               />
               <div
                 class="govuk-button-group"
@@ -1611,16 +1573,6 @@ exports[`pages > CreateDisruption > should render correctly with inputs and with
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -1847,12 +1799,10 @@ exports[`pages > CreateDisruption > should render correctly with no inputs and n
               <input
                 name="disruptionId"
                 type="hidden"
-                value=""
               />
               <input
                 name="consequenceIndex"
                 type="hidden"
-                value=""
               />
               <div
                 class="govuk-button-group"
@@ -2023,16 +1973,6 @@ exports[`pages > CreateDisruption > should render correctly with no inputs and n
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -2260,12 +2200,10 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
               <input
                 name="disruptionId"
                 type="hidden"
-                value=""
               />
               <input
                 name="consequenceIndex"
                 type="hidden"
-                value=""
               />
               <div
                 class="govuk-button-group"
@@ -2436,16 +2374,6 @@ exports[`pages > CreateDisruption > should render correctly with query params 1`
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>

@@ -5,6 +5,8 @@ import { describe, expect, it } from "vitest";
 import { DISRUPTION_DETAIL_PAGE_PATH, VIEW_ALL_DISRUPTIONS_PAGE_PATH } from "../../constants";
 import SortableTable, { TableColumn } from "./SortableTable";
 
+import type { JSX } from "react";
+
 interface RandomTable {
     id: string | JSX.Element;
     name: string;

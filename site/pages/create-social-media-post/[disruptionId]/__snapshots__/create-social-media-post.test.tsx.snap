@@ -188,7 +188,6 @@ exports[`pages > CreateSocialMediaPost > should render correctly with inputs and
         <input
           name="disruptionId"
           type="hidden"
-          value=""
         />
         <input
           name="socialMediaPostIndex"
@@ -198,7 +197,6 @@ exports[`pages > CreateSocialMediaPost > should render correctly with inputs and
         <input
           name="createdByOperatorOrgId"
           type="hidden"
-          value=""
         />
         <button
           class="govuk-button mt-8"
@@ -362,16 +360,6 @@ exports[`pages > CreateSocialMediaPost > should render correctly with inputs and
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -619,7 +607,6 @@ exports[`pages > CreateSocialMediaPost > should render correctly with no inputs 
         <input
           name="disruptionId"
           type="hidden"
-          value=""
         />
         <input
           name="socialMediaPostIndex"
@@ -629,7 +616,6 @@ exports[`pages > CreateSocialMediaPost > should render correctly with no inputs 
         <input
           name="createdByOperatorOrgId"
           type="hidden"
-          value=""
         />
         <button
           class="govuk-button mt-8"
@@ -793,16 +779,6 @@ exports[`pages > CreateSocialMediaPost > should render correctly with no inputs 
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>

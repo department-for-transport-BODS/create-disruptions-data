@@ -9,7 +9,7 @@
         "noEmit": true,
         "esModuleInterop": true,
         "module": "esnext",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noUnusedLocals": true,
@@ -18,13 +18,15 @@
         "noFallthroughCasesInSwitch": true,
         "outDir": ".build",
         "rootDir": "./",
-        "jsx": "preserve",
+        "jsx": "react-jsx",
         "sourceMap": true,
         "incremental": true,
         "useUnknownInCatchVariables": false,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "@turf/center": ["./node_modules/@turf/center/dist/js/index.d.ts"],
+            "@turf/invariant": ["./node_modules/@turf/invariant/dist/js/index.d.ts"]
         }
     },
     "include": [

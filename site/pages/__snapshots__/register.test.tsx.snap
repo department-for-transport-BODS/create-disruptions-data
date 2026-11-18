@@ -112,7 +112,6 @@ exports[`Register > should render correctly when there are no inputs 1`] = `
                     maxlength="100"
                     name="password"
                     type="password"
-                    value=""
                   />
                 </div>
               </div>
@@ -139,7 +138,6 @@ exports[`Register > should render correctly when there are no inputs 1`] = `
                     maxlength="100"
                     name="confirmPassword"
                     type="password"
-                    value=""
                   />
                 </div>
               </div>
@@ -147,17 +145,14 @@ exports[`Register > should render correctly when there are no inputs 1`] = `
             <input
               name="email"
               type="hidden"
-              value=""
             />
             <input
               name="key"
               type="hidden"
-              value=""
             />
             <input
               name="orgId"
               type="hidden"
-              value=""
             />
             <button
               class="govuk-button mt-8"
@@ -322,16 +317,6 @@ exports[`Register > should render correctly when there are no inputs 1`] = `
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -595,7 +580,6 @@ exports[`Register > should render correctly with inputs and errors 1`] = `
             <input
               name="orgId"
               type="hidden"
-              value=""
             />
             <button
               class="govuk-button mt-8"
@@ -760,16 +744,6 @@ exports[`Register > should render correctly with inputs and errors 1`] = `
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -1004,7 +978,6 @@ exports[`Register > should render correctly with inputs and no errors 1`] = `
             <input
               name="orgId"
               type="hidden"
-              value=""
             />
             <button
               class="govuk-button mt-8"
@@ -1169,16 +1142,6 @@ exports[`Register > should render correctly with inputs and no errors 1`] = `
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>

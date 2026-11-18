@@ -483,7 +483,7 @@ export const RefDataStepFunctionStack = ({ stack }: StackContext) => {
             prefix: JsonPath.stringAt("$.prefix"),
         }),
         maxConcurrency: stack.stage === "prod" ? 50 : 30,
-        toleratedFailureCount: 10,
+        toleratedFailureCount: 200,
         outputPath: JsonPath.DISCARD,
     });
 

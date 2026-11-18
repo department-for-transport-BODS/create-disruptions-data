@@ -1,5 +1,5 @@
 import kebabCase from "lodash/kebabCase";
-import { ReactElement, useState } from "react";
+import { type JSX, ReactElement, useState } from "react";
 import { DisplayValuePair, ErrorInfo, FormBase } from "../../interfaces";
 import FormElementWrapper, { FormGroupWrapper } from "./FormElementWrapper";
 

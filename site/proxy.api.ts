@@ -7,7 +7,6 @@ import {
     CognitoIdentityProviderClient,
 } from "@aws-sdk/client-cognito-identity-provider";
 import { UserGroups } from "@create-disruptions-data/shared-ts/enums";
-import { CsrfError, createCsrfProtect } from "@edge-csrf/nextjs";
 import * as jose from "jose";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
@@ -16,19 +15,20 @@ import {
     COOKIES_ID_TOKEN,
     COOKIES_LOGIN_REDIRECT,
     COOKIES_REFRESH_TOKEN,
+    COOKIE_CSRF,
     DASHBOARD_PAGE_PATH,
+    ERROR_PATH,
     LOGIN_PAGE_PATH,
     SOCIAL_MEDIA_ACCOUNTS_PAGE_PATH,
     SYSADMIN_MANAGE_ORGANISATIONS_PAGE_PATH,
 } from "./constants";
+import { CsrfError, createCsrfProtect } from "./utils/csrf";
 
-const {
-    COGNITO_CLIENT_ID: cognitoClientId,
-    COGNITO_CLIENT_SECRET: cognitoClientSecret,
-    COGNITO_USER_POOL_ID: userPoolId,
-    MIDDLEWARE_AWS_ACCESS_KEY_ID: accessKeyId,
-    MIDDLEWARE_AWS_SECRET_ACCESS_KEY: secretAccessKey,
-} = process.env;
+const cognitoClientId = process.env.COGNITO_CLIENT_ID;
+const cognitoClientSecret = process.env.COGNITO_CLIENT_SECRET;
+const userPoolId = process.env.COGNITO_USER_POOL_ID;
+const accessKeyId = process.env.MIDDLEWARE_AWS_ACCESS_KEY_ID;
+const secretAccessKey = process.env.MIDDLEWARE_AWS_SECRET_ACCESS_KEY;
 
 if (!cognitoClientSecret || !cognitoClientId || !userPoolId || !accessKeyId || !secretAccessKey) {
     throw new Error("Cognito env vars not set");
@@ -107,7 +107,7 @@ const csrfProtect = createCsrfProtect({
         sameSite: "lax",
     },
     token: {
-        value: async (req) => {
+        value: async (req: NextRequest) => {
             const queryCsrf = req.url.match(/_csrf=(.[^&]*)/)?.[1];
 
             return queryCsrf
@@ -143,7 +143,6 @@ const unauthenticatedRoutes = [
     "/favicon.ico",
     "/500",
     "/404",
-    "/changelog",
 ];
 
 const allowedRoutesForSysadmin = [
@@ -159,7 +158,7 @@ const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.COGNITO_ISSUER ?? ""
     timeoutDuration: 10000,
 });
 
-export async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
     const response = NextResponse.next();
 
     const domain = process.env.DOMAIN_NAME;
@@ -169,7 +168,12 @@ export async function middleware(request: NextRequest) {
         await csrfProtect(request, response);
     } catch (err) {
         if (err instanceof CsrfError) {
-            return new NextResponse("invalid csrf token", { status: 403 });
+            console.error("CSRF validation failed: ", err.stack);
+            const csrfErrorResponse = NextResponse.redirect(new URL(ERROR_PATH, domain), { status: 303 });
+            // Clear the CSRF cookie to force a new one to be issued on the next request
+            csrfErrorResponse.cookies.delete(COOKIE_CSRF);
+
+            return csrfErrorResponse;
         }
 
         throw err;

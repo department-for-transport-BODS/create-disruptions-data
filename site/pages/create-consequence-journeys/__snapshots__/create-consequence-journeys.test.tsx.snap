@@ -629,7 +629,7 @@ exports[`pages > CreateConsequenceJourneys > should render correctly when global
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -744,7 +744,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly when global
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -923,16 +922,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly when global
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -1662,7 +1651,7 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with errors
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -1772,12 +1761,10 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with errors
           <input
             name="disruptionId"
             type="hidden"
-            value=""
           />
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -1956,16 +1943,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with errors
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -2629,7 +2606,7 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with inputs
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -2744,7 +2721,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with inputs
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -2923,16 +2899,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with inputs
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -3601,7 +3567,7 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with inputs
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -3716,7 +3682,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with inputs
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -3895,16 +3860,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with inputs
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -4573,7 +4528,7 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with inputs
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -4688,7 +4643,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with inputs
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -4867,16 +4821,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with inputs
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -5416,7 +5360,7 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with no inp
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -5449,7 +5393,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with no inp
                       name="disruptionDelay"
                       placeholder=""
                       type="text"
-                      value=""
                     />
                   </div>
                 </div>
@@ -5526,12 +5469,10 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with no inp
           <input
             name="disruptionId"
             type="hidden"
-            value=""
           />
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -5710,16 +5651,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with no inp
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -6383,7 +6314,7 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with query 
             class="govuk-form-group"
           >
             <div
-              class="govuk-form-group "
+              class="govuk-form-group"
               id="disruption-delay"
             >
               <div>
@@ -6498,7 +6429,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with query 
           <input
             name="consequenceIndex"
             type="hidden"
-            value=""
           />
           <button
             class="govuk-button mt-8"
@@ -6677,16 +6607,6 @@ exports[`pages > CreateConsequenceJourneys > should render correctly with query 
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>

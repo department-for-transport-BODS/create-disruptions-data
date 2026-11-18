@@ -284,16 +284,6 @@ exports[`ViewAllRoadworks > should render correctly when no roadworks data is pr
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -469,7 +459,7 @@ exports[`ViewAllRoadworks > should render correctly when roadworks data is prese
                 >
                   <a
                     class="govuk-link"
-                    href="roadwork-detail/AZ1231001293426-01"
+                    href="/roadwork-detail/AZ1231001293426-01"
                   >
                     TENNYSON AVENUE - Utility repair and maintenance works
                   </a>
@@ -488,7 +478,7 @@ exports[`ViewAllRoadworks > should render correctly when roadworks data is prese
                 >
                   <a
                     class="govuk-link"
-                    href="roadwork-detail/AZ1231001295811-01"
+                    href="/roadwork-detail/AZ1231001295811-01"
                   >
                     SILVERTON CLOSE - Utility repair and maintenance works
                   </a>
@@ -507,7 +497,7 @@ exports[`ViewAllRoadworks > should render correctly when roadworks data is prese
                 >
                   <a
                     class="govuk-link"
-                    href="roadwork-detail/GX01094171404-02"
+                    href="/roadwork-detail/GX01094171404-02"
                   >
                     PICCADILLY - Highway repair and maintenance works
                   </a>
@@ -526,7 +516,7 @@ exports[`ViewAllRoadworks > should render correctly when roadworks data is prese
                 >
                   <a
                     class="govuk-link"
-                    href="roadwork-detail/GX01002299233-02"
+                    href="/roadwork-detail/GX01002299233-02"
                   >
                     BURFORD DRIVE - Section 58
                   </a>
@@ -545,7 +535,7 @@ exports[`ViewAllRoadworks > should render correctly when roadworks data is prese
                 >
                   <a
                     class="govuk-link"
-                    href="roadwork-detail/AZ1241001301115-01"
+                    href="/roadwork-detail/AZ1241001301115-01"
                   >
                     MANCHESTER ROAD - Utility repair and maintenance works
                   </a>
@@ -564,7 +554,7 @@ exports[`ViewAllRoadworks > should render correctly when roadworks data is prese
                 >
                   <a
                     class="govuk-link"
-                    href="roadwork-detail/AZ1241001301177-01"
+                    href="/roadwork-detail/AZ1241001301177-01"
                   >
                     ST CHRISTOPHERS ROAD - Utility repair and maintenance works
                   </a>
@@ -583,7 +573,7 @@ exports[`ViewAllRoadworks > should render correctly when roadworks data is prese
                 >
                   <a
                     class="govuk-link"
-                    href="roadwork-detail/BC004WF8RW33S-01"
+                    href="/roadwork-detail/BC004WF8RW33S-01"
                   >
                     DEANE CLOSE - New service connection
                   </a>
@@ -602,7 +592,7 @@ exports[`ViewAllRoadworks > should render correctly when roadworks data is prese
                 >
                   <a
                     class="govuk-link"
-                    href="roadwork-detail/NK128FIBREUP-WIG-CC03L3A-01"
+                    href="/roadwork-detail/NK128FIBREUP-WIG-CC03L3A-01"
                   >
                     KENSINGTON DRIVE - Utility repair and maintenance works
                   </a>
@@ -767,16 +757,6 @@ exports[`ViewAllRoadworks > should render correctly when roadworks data is prese
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>

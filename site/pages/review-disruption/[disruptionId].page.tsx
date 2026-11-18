@@ -604,9 +604,9 @@ const ReviewDisruption = ({
                                     ...(disruption.template ? { template: disruption.template?.toString() } : {}),
                                 },
                             }}
-                            className={`govuk-button mt-2 govuk-button--secondary ${
+                            className={`govuk-button mt-2 govuk-button--secondary${
                                 disruption.consequences && disruption.consequences.length >= MAX_CONSEQUENCES
-                                    ? "pointer-events-none govuk-button--disabled"
+                                    ? " pointer-events-none govuk-button--disabled"
                                     : ""
                             }`}
                         >
@@ -659,9 +659,9 @@ const ReviewDisruption = ({
                         </div>
 
                         <Link
-                            className={`govuk-button mt-2 govuk-button--secondary ${
+                            className={`govuk-button mt-2 govuk-button--secondary${
                                 disruption.socialMediaPosts && disruption.socialMediaPosts.length >= 5
-                                    ? "pointer-events-none govuk-button--disabled"
+                                    ? " pointer-events-none govuk-button--disabled"
                                     : ""
                             }`}
                             href={{
@@ -710,9 +710,9 @@ const ReviewDisruption = ({
                             <Link
                                 role="button"
                                 href={DASHBOARD_PAGE_PATH}
-                                className={`govuk-button mt-8 ${
+                                className={`govuk-button mt-8${
                                     canPublish && disruption.publishStatus !== PublishStatus.published
-                                        ? "govuk-button--secondary mr-5"
+                                        ? " govuk-button--secondary mr-5"
                                         : ""
                                 }`}
                             >

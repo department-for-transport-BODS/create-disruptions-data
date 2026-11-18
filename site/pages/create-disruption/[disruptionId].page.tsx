@@ -393,9 +393,6 @@ const CreateDisruption = (props: DisruptionPageProps): ReactElement => {
                                     stateUpdater={validityStateUpdater}
                                     initialErrors={pageState.errors}
                                     reset={addValidityClicked}
-                                    minWidth={`w-[203px] ${
-                                        dateColumnError ? "lg:w-[50%] sm:w-[80%] @screen xs:w-[80%]" : ""
-                                    }`}
                                     inputDivWidth={
                                         dateColumnError ? "w-[400px] lg:w-[80%] sm:w-[100%] @screen xs:w-[100%]" : ""
                                     }
@@ -443,9 +440,6 @@ const CreateDisruption = (props: DisruptionPageProps): ReactElement => {
                                     stateUpdater={validityStateUpdater}
                                     initialErrors={pageState.errors}
                                     reset={addValidityClicked}
-                                    minWidth={`w-[203px] ${
-                                        dateColumnError ? "lg:w-[50%] sm:w-[80%] @screen xs:w-[80%]" : ""
-                                    }`}
                                     inputDivWidth={
                                         dateColumnError ? "w-[400px] lg:w-[80%] sm:w-[100%] @screen xs:w-[100%]" : ""
                                     }
@@ -506,8 +500,8 @@ const CreateDisruption = (props: DisruptionPageProps): ReactElement => {
                                     inputName="publishStartDate"
                                     stateUpdater={stateUpdater}
                                     initialErrors={pageState.errors}
-                                    minWidth={`w-[203px] ${
-                                        dateColumnError ? "lg:w-[50%] sm:w-[80%] @screen xs:w-[80%]" : ""
+                                    minWidth={`w-[203px]${
+                                        dateColumnError ? " lg:w-[50%] sm:w-[80%] @screen xs:w-[80%]" : ""
                                     }`}
                                     inputDivWidth={
                                         dateColumnError ? "w-[400px] lg:w-[80%] sm:w-[100%] @screen xs:w-[100%]" : ""
@@ -567,8 +561,8 @@ const CreateDisruption = (props: DisruptionPageProps): ReactElement => {
                                     inputName="publishEndDate"
                                     stateUpdater={stateUpdater}
                                     initialErrors={pageState.errors}
-                                    minWidth={`w-[203px] ${
-                                        dateColumnError ? "lg:w-[50%] sm:w-[80%] @screen xs:w-[80%]" : ""
+                                    minWidth={`w-[203px]${
+                                        dateColumnError ? " lg:w-[50%] sm:w-[80%] @screen xs:w-[80%]" : ""
                                     }`}
                                     inputDivWidth={
                                         dateColumnError ? "w-[400px] lg:w-[80%] sm:w-[100%] @screen xs:w-[100%]" : ""

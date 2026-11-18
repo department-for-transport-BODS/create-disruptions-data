@@ -334,16 +334,6 @@ exports[`ViewAllDisruptions > should render correctly when there are enough disr
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -736,16 +726,6 @@ exports[`ViewAllDisruptions > should render correctly when there are enough disr
                 Privacy
               </a>
             </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
-              </a>
-            </li>
           </ul>
           <p
             class="govuk-footer__body"
@@ -1136,16 +1116,6 @@ exports[`ViewAllDisruptions > should render correctly when there are no disrupti
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>

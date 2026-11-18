@@ -83,7 +83,6 @@ exports[`AddOperator > should render correctly when there are no inputs 1`] = `
                     maxlength="100"
                     name="operatorName"
                     type="text"
-                    value=""
                   />
                 </div>
               </div>
@@ -392,16 +391,6 @@ exports[`AddOperator > should render correctly when there are no inputs 1`] = `
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>
@@ -893,16 +882,6 @@ exports[`AddOperator > should render correctly with inputs 1`] = `
                 href="/privacy"
               >
                 Privacy
-              </a>
-            </li>
-            <li
-              class="govuk-footer__inline-list-item"
-            >
-              <a
-                class="govuk-footer__link"
-                href="/changelog"
-              >
-                Service changelog
               </a>
             </li>
           </ul>

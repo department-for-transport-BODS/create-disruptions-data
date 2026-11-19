@@ -1,6 +1,7 @@
 import datetime
 import math
 import os
+from urllib.parse import quote
 
 
 def main(event, context):
@@ -33,10 +34,11 @@ def main(event, context):
 
 
 def template_register(username, key, orgId, register_link):
+    # key is Cognito's {####} placeholder, replaced after this returns, so its characters must stay unescaped
     template = f"""<div style="font-family: Arial, sans-serif; padding-left: 30px">
                        <h1>Create account - Create Transport Disruptions Data service</h1>
                        <p>To create an account to access the Create Transport Disruptions Data service click the link below:</p>
-                       <a href="{register_link}?key={key}&email={username}&orgId={orgId}">Link to registration</a>
+                       <a href="{register_link}?key={quote(key, safe='{#}')}&email={quote(username, safe='')}&orgId={quote(orgId, safe='')}">Link to registration</a>
                        <p>The link is valid for 72 hours for the following email address {username}.</p>
                    </div>"""
 

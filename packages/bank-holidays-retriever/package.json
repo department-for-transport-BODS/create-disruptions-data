@@ -11,11 +11,11 @@
     "license": "ISC",
     "type": "module",
     "dependencies": {
-        "axios": "^1.13.5"
+        "axios": "^1.21.1"
     },
     "devDependencies": {
-        "@types/aws-lambda": "^8.10.110",
-        "@types/node": "^20.11.19",
-        "vitest": "^0.29.1"
+        "@types/aws-lambda": "^8.10.149",
+        "@types/node": "^20.17.41",
+        "vitest": "^3.2.7"
     }
 }

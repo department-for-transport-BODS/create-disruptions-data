@@ -6,6 +6,6 @@
         "copy-orgs": "node --experimental-specifier-resolution=node --experimental-modules --no-warnings --loader ts-node/esm  copy-org-table.ts"
     },
     "devDependencies": {
-        "vitest": "^3.0.9"
+        "vitest": "^3.2.7"
     }
 }

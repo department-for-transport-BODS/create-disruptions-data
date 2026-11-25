@@ -1,0 +1,26 @@
+diff --git a/constructs/cdk/certificate-base.d.ts b/constructs/cdk/certificate-base.d.ts
+index 89a3124e53a53f73366058060a3148b045d286c0..45869e4febc033861f0b2c56214adf137df531a6 100644
+--- a/constructs/cdk/certificate-base.d.ts
++++ b/constructs/cdk/certificate-base.d.ts
+@@ -8,6 +8,7 @@ import { ICertificate } from "aws-cdk-lib/aws-certificatemanager";
+  */
+ export declare abstract class CertificateBase extends Resource implements ICertificate {
+     abstract readonly certificateArn: string;
++    get certificateRef(): { readonly certificateArn: string };
+     /**
+      * If the certificate is provisionned in a different region than the
+      * containing stack, this should be the region in which the certificate lives
+diff --git a/constructs/cdk/certificate-base.js b/constructs/cdk/certificate-base.js
+index ab7aa7bd38f54948cd29f5ab0fda738a8714d1eb..2a3bfbcc47d7cabe2c394e79fdc335df9ec3a7cc 100644
+--- a/constructs/cdk/certificate-base.js
++++ b/constructs/cdk/certificate-base.js
+@@ -6,6 +6,9 @@ import { Duration, Resource } from "aws-cdk-lib/core";
+  * @internal
+  */
+ export class CertificateBase extends Resource {
++    get certificateRef() {
++        return { certificateArn: this.certificateArn };
++    }
+     /**
+      * If the certificate is provisionned in a different region than the
+      * containing stack, this should be the region in which the certificate lives

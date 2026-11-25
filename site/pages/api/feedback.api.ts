@@ -80,18 +80,21 @@ export const redactEmailAddress = (
         if (typeof toRedact === "string") {
             return redact(toRedact);
         }
-        if (Object.hasOwn(toRedact, "name") && Object.hasOwn(toRedact, "address")) {
-            const email = toRedact as Mail.Address;
-            return redact(email.address);
-        }
-        if (typeof toRedact === "object") {
-            const addresses = toRedact as Mail.Address[];
-            return addresses.map((email) => {
-                if (Object.hasOwn(email, "name") && Object.hasOwn(email, "address")) {
-                    return redact(email.address);
-                }
-                return redact(email as unknown as string);
-            });
+        if (typeof toRedact === "object" && toRedact !== null) {
+            if ("address" in toRedact && typeof toRedact.address === "string") {
+                return redact(toRedact.address);
+            }
+            if (Array.isArray(toRedact)) {
+                return toRedact.map((email) => {
+                    if (typeof email === "string") {
+                        return redact(email);
+                    }
+                    if (typeof email.address === "string") {
+                        return redact(email.address);
+                    }
+                    return "*****@*****.***";
+                });
+            }
         }
     }
     return "*****@*****.***";

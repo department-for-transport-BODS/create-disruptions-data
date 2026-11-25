@@ -7,15 +7,15 @@
     "license": "ISC",
     "type": "module",
     "dependencies": {
-        "@aws-sdk/client-s3": "^3.974.0",
-        "@aws-sdk/lib-storage": "^3.974.0",
+        "@aws-sdk/client-s3": "^3.1039.0",
+        "@aws-sdk/lib-storage": "^3.1039.0",
         "@create-disruptions-data/shared-ts": "workspace:^",
-        "basic-ftp": "^5.0.5",
-        "dayjs": "^1.11.7",
-        "zod": "^3.23.8"
+        "basic-ftp": "^5.3.1",
+        "dayjs": "^1.11.13",
+        "zod": "^3.25.76"
     },
     "devDependencies": {
-        "@types/aws-lambda": "^8.10.110",
-        "@types/node": "^20.11.19"
+        "@types/aws-lambda": "^8.10.149",
+        "@types/node": "^20.17.41"
     }
 }

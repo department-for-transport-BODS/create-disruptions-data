@@ -44,18 +44,39 @@ import {
 import { getValidityAndPublishStartAndEndDates } from "../utils/dates";
 import logger from "../utils/logger";
 
+type DisruptionWithSerializableDates = Omit<
+    DisruptionDB,
+    "validityStartTimestamp" | "validityEndTimestamp" | "publishStartTimestamp" | "publishEndTimestamp"
+> & {
+    validityStartTimestamp: Date | string;
+    validityEndTimestamp: Date | string | null;
+    publishStartTimestamp: Date | string;
+    publishEndTimestamp: Date | string | null;
+};
+
 export const mapDisruptionToDb = ({
     consequences,
     editedDisruption,
     editExistsInDb,
     ...disruption
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-}: DisruptionDB & { consequences?: any; editedDisruption?: any; editExistsInDb?: any }): NewDisruptionDB => ({
-    ...disruption,
-    history: json(disruption.history),
-    validity: disruption.validity && json(disruption.validity),
-    socialMediaPosts: disruption.socialMediaPosts && json(disruption.socialMediaPosts),
-});
+}: DisruptionWithSerializableDates & {
+    consequences?: unknown;
+    editedDisruption?: unknown;
+    editExistsInDb?: unknown;
+}): NewDisruptionDB => {
+    const asDate = (value: Date | string): Date => (value instanceof Date ? value : new Date(value));
+
+    return {
+        ...disruption,
+        validityStartTimestamp: asDate(disruption.validityStartTimestamp),
+        validityEndTimestamp: disruption.validityEndTimestamp === null ? null : asDate(disruption.validityEndTimestamp),
+        publishStartTimestamp: asDate(disruption.publishStartTimestamp),
+        publishEndTimestamp: disruption.publishEndTimestamp === null ? null : asDate(disruption.publishEndTimestamp),
+        history: json(disruption.history),
+        validity: disruption.validity && json(disruption.validity),
+        socialMediaPosts: disruption.socialMediaPosts && json(disruption.socialMediaPosts),
+    };
+};
 
 export const mapConsequenceToDb = (consequence: ConsequenceDB) => ({
     ...consequence,

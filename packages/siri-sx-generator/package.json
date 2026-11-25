@@ -10,25 +10,25 @@
         "dynamo-publish-site-disruptions": "node --experimental-specifier-resolution=node --experimental-modules --no-warnings --loader ts-node/esm test/uploadTestDisruptions.ts"
     },
     "devDependencies": {
-        "@tsconfig/node20": "^20.1.2",
-        "@types/aws-lambda": "^8.10.110",
-        "@types/jstoxml": "^2.0.2",
+        "@tsconfig/node20": "^20.1.5",
+        "@types/aws-lambda": "^8.10.149",
+        "@types/jstoxml": "^2.0.4",
         "@types/lambda-log": "^2.2.1",
-        "@types/node": "^20.10.5",
-        "aws-sdk-client-mock": "^3.0.0",
-        "dayjs": "^1.11.7",
+        "@types/node": "^20.17.41",
+        "aws-sdk-client-mock": "^3.1.0",
+        "dayjs": "^1.11.13",
         "mockdate": "^3.0.5",
-        "ts-node": "^10.9.1",
-        "vitest": "^3.0.9"
+        "ts-node": "^10.9.2",
+        "vitest": "^3.2.7"
     },
     "dependencies": {
-        "@aws-sdk/client-s3": "^3.974.0",
+        "@aws-sdk/client-s3": "^3.1039.0",
         "@create-disruptions-data/shared-ts": "workspace:^",
         "js2xmlparser": "^5.0.0",
-        "json-2-csv": "^4.1.0",
-        "kysely": "^0.27.5",
+        "json-2-csv": "^4.1.1",
+        "kysely": "^0.27.6",
         "lambda-log": "^3.1.0",
-        "pg": "^8.13.1",
-        "xml-formatter": "^3.3.0"
+        "pg": "^8.15.6",
+        "xml-formatter": "^3.6.5"
     }
 }

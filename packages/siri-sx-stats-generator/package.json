@@ -8,17 +8,17 @@
         "typecheck": "tsc -noEmit"
     },
     "devDependencies": {
-        "@tsconfig/node20": "^20.1.2",
-        "@types/aws-lambda": "^8.10.110",
+        "@tsconfig/node20": "^20.1.5",
+        "@types/aws-lambda": "^8.10.149",
         "@types/lambda-log": "^2.2.1",
-        "@types/node": "^20.10.5",
-        "ts-node": "^10.9.1",
-        "vitest": "^3.0.9"
+        "@types/node": "^20.17.41",
+        "ts-node": "^10.9.2",
+        "vitest": "^3.2.7"
     },
     "dependencies": {
         "@create-disruptions-data/shared-ts": "workspace:^",
-        "kysely": "^0.27.5",
+        "kysely": "^0.27.6",
         "lambda-log": "^3.1.0",
-        "pg": "^8.13.1"
+        "pg": "^8.15.6"
     }
 }

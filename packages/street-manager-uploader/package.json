@@ -7,13 +7,13 @@
         "typecheck": "tsc -noEmit"
     },
     "devDependencies": {
-        "@types/aws-lambda": "^8.10.110",
-        "@types/node": "^18.13.0",
-        "vitest": "^3.0.5"
+        "@types/aws-lambda": "^8.10.149",
+        "@types/node": "^18.19.96",
+        "vitest": "^3.2.7"
     },
     "dependencies": {
         "@create-disruptions-data/shared-ts": "workspace:^",
-        "kysely": "^0.27.5",
-        "pg": "^8.13.1"
+        "kysely": "^0.27.6",
+        "pg": "^8.16.2"
     }
 }

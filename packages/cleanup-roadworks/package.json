@@ -6,10 +6,10 @@
         "typecheck": "tsc -noEmit"
     },
     "devDependencies": {
-        "@types/node": "^18.13.0"
+        "@types/node": "^18.19.96"
     },
     "dependencies": {
-        "kysely": "^0.27.5",
-        "pg": "^8.13.1"
+        "kysely": "^0.27.6",
+        "pg": "^8.16.2"
     }
 }

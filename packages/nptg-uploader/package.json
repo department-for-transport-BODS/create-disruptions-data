@@ -7,16 +7,16 @@
         "typecheck": "tsc -noEmit"
     },
     "devDependencies": {
-        "@types/aws-lambda": "^8.10.110",
+        "@types/aws-lambda": "^8.10.149",
         "@types/bluebird": "^3.5.42",
-        "@types/node": "^18.13.0",
+        "@types/node": "^18.19.96",
         "@types/xml2js": "^0.4.14",
-        "vitest": "^3.0.5"
+        "vitest": "^3.2.7"
     },
     "dependencies": {
         "bluebird": "^3.7.2",
-        "kysely": "^0.27.5",
-        "pg": "^8.13.1",
+        "kysely": "^0.27.6",
+        "pg": "^8.16.2",
         "xml2js": "^0.6.2"
     }
 }

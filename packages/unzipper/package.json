@@ -9,11 +9,11 @@
     "dependencies": {
         "@create-disruptions-data/shared-ts": "workspace:^",
         "unzipper": "^0.12.3",
-        "zod": "^3.23.8"
+        "zod": "^3.25.76"
     },
     "devDependencies": {
-        "@types/aws-lambda": "^8.10.110",
-        "@types/node": "^20.11.19",
-        "@types/unzipper": "^0.10.10"
+        "@types/aws-lambda": "^8.10.149",
+        "@types/node": "^20.17.41",
+        "@types/unzipper": "^0.10.11"
     }
 }

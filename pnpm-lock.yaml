@@ -1072,8 +1072,8 @@ importers:
         specifier: ^0.9.13
         version: 0.9.13(next@16.4.6(@babel/core@7.29.13(supports-color@7.2.0))(@playwright/test@1.52.0)(@types/node@26.2.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(sass@1.87.0))(react@19.2.8)
       nodemailer:
-        specifier: ^10.0.6
-        version: 10.0.6
+        specifier: ^10.1.4
+        version: 10.1.4
       postcss:
         specifier: ^8.5.33
         version: 8.5.33
@@ -7190,8 +7190,8 @@ packages:
     resolution: {integrity: sha512-PfvofsGQ+MiOQIPkX9fU8ELUWmy5zL74CdQaph/ismKszfFkfwXaw0cGiwbwym2hT9k5+mdyl8O5WQ1MD8EHmA==}
     engines: {node: '>=18'}
 
-  nodemailer@10.0.6:
-    resolution: {integrity: sha512-2u7OHvEQVVGvPo9Yhw/eN3xMO2Gnj2U2fGDP0BDpnRwJR//65AfGRQDiJqxix28gFRBvMqi2USA13x6RrfWuGg==}
+  nodemailer@10.1.4:
+    resolution: {integrity: sha512-EsMnOR2oRv4LGnWvHgcVYkkQ4O2j8KO4WTw6l+PHR4sOXo8SAgIraxtEnGDmotjbhv0hDsu3IuDIFZm8iXwO4A==}
     engines: {node: '>=20.0.0'}
 
   nookies@2.5.2:
@@ -18091,7 +18091,7 @@ snapshots:
 
   node-releases@2.0.65: {}
 
-  nodemailer@10.0.6: {}
+  nodemailer@10.1.4: {}
 
   nookies@2.5.2:
     dependencies:

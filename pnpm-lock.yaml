@@ -56,6 +56,9 @@ overrides:
   vite@>=6.0.0 <=6.4.1: ^6.4.2
   vitest@<3.2.6: ^3.2.6
 
+patchedDependencies:
+  sst@2.49.8: d842fa4a44800587a7a4991825e6c89926549639f8d907ebae50a34bbf08738d
+
 importers:
 
   .:
@@ -114,7 +117,7 @@ importers:
         version: 8.0.3
       sst:
         specifier: 2.49.8
-        version: 2.49.8(@aws-cdk/cli-plugin-contract@2.179.0)(@aws-sdk/client-sso-oidc@3.699.0(@aws-sdk/client-sts@3.699.0(aws-crt@1.26.2(supports-color@7.2.0)))(aws-crt@1.26.2(supports-color@7.2.0)))(@types/react@19.2.18)(aws-crt@1.26.2(supports-color@7.2.0))(pg@8.16.3)(supports-color@7.2.0)
+        version: 2.49.8(patch_hash=d842fa4a44800587a7a4991825e6c89926549639f8d907ebae50a34bbf08738d)(@aws-cdk/cli-plugin-contract@2.179.0)(@aws-sdk/client-sso-oidc@3.699.0(@aws-sdk/client-sts@3.699.0(aws-crt@1.26.2(supports-color@7.2.0)))(aws-crt@1.26.2(supports-color@7.2.0)))(@types/react@19.2.18)(aws-crt@1.26.2(supports-color@7.2.0))(pg@8.16.3)(supports-color@7.2.0)
       tsx:
         specifier: 4.15.4
         version: 4.15.4
@@ -19216,7 +19219,7 @@ snapshots:
 
   split2@4.2.0: {}
 
-  sst@2.49.8(@aws-cdk/cli-plugin-contract@2.179.0)(@aws-sdk/client-sso-oidc@3.699.0(@aws-sdk/client-sts@3.699.0(aws-crt@1.26.2(supports-color@7.2.0)))(aws-crt@1.26.2(supports-color@7.2.0)))(@types/react@19.2.18)(aws-crt@1.26.2(supports-color@7.2.0))(pg@8.16.3)(supports-color@7.2.0):
+  sst@2.49.8(patch_hash=d842fa4a44800587a7a4991825e6c89926549639f8d907ebae50a34bbf08738d)(@aws-cdk/cli-plugin-contract@2.179.0)(@aws-sdk/client-sso-oidc@3.699.0(@aws-sdk/client-sts@3.699.0(aws-crt@1.26.2(supports-color@7.2.0)))(aws-crt@1.26.2(supports-color@7.2.0)))(@types/react@19.2.18)(aws-crt@1.26.2(supports-color@7.2.0))(pg@8.16.3)(supports-color@7.2.0):
     dependencies:
       '@aws-cdk/aws-lambda-python-alpha': 2.201.0-alpha.0(aws-cdk-lib@2.278.0(constructs@10.3.0))(constructs@10.3.0)
       '@aws-cdk/cloud-assembly-schema': 48.0.0

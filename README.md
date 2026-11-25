@@ -52,7 +52,19 @@ make start-site
 
 -   There is a known issue where the site process does not stop correctly and so continues to run on port 3000 in the background, this will lead to a port conflict error where the site will start on port 3001. To prevent this, run `make kill-site` to stop the process
 
+## Infrastructure compatibility
+
+SST 2.49.8 includes a legacy certificate implementation that lacks the
+`certificateRef` property required by the upgraded AWS CDK. The tracked
+[SST patch](patches/sst@2.49.8.patch) adds that reference without changing
+certificate resources or downgrading CDK security fixes. pnpm applies it during
+installation. Reassess the patch when upgrading SST.
+
+Run `pnpm test:infrastructure` to check certificate/CloudFront synthesis without
+AWS credentials. This check also runs as part of `pnpm test:javascript`.
+
 ## Components
+
 For replaying archived Street Manager roadworks notifications, see the [backfill runbook](scripts/README.md).
 
 ### Site
